@@ -1,3 +1,25 @@
-- clean: []
-- link: {}
-- shell: []
+- defaults:
+    link:
+      create: true
+      relink: true
+    shell:
+      stderr: true
+
+# Text editors
+- link:
+    ~/.vim: editors/.vim
+    ~/.config/neovim: editors/neovim
+    ~/.vimrc: editors/.vimrc
+
+# ZSH
+- clean: ['~', '~/.oh-my-zsh/custom/', '~/.oh-my-zsh/custom/plugins/']
+- shell:
+  - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom forlders]
+  - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins forlders]
+- link:
+    ~/.zshrc:
+      force: true
+      path: zsh/.zshrc
+    ~/.oh-my-zsh/custom: zsh/oh-my-zsh-custom
+    ~/.p10k.zsh: zsh/.p10k.zsh
+
