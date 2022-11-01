@@ -5,10 +5,40 @@
     shell:
       stderr: true
 
-# Text editors
+# We have a few sumodules
+- shell: 
+  - [git submodule update --recursive -f, Updating submodules...]
+
+# Ensure we have homebrew on Mac
+- shell: 
+  - [./setup-homebrew.sh, Setting up homebrew for mac.]
+
+# Ensure we have homebrew on Mac
+- shell: 
+  - [./setup-zsh.sh, Setting up zsh]
+
+# Python
+- shell:
+  - [./setup-python.sh, Setting up pip]
+
+# Node (nvm)
+- shell:
+  - [curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash, Installing nvm for node]
+  - [source $HOME/.nvm/nvm.sh; nvm install node, Init nvm]
+  - [source $HOME/.nvm/nvm.sh; node || nvm use node ]
+
+# Rust
+- shell:
+  - ["curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path -c rust-analyzer -c clippy", "Installing rust"]
+
+# Go
+
+
+# vim/neovim
+- shell:
+  - [./setup-neovim.sh, Installing neovim]
 - link:
-    ~/.vim: editors/.vim
-    ~/.config/neovim: editors/neovim
+    ~/.config/nvim: editors/neovim
     ~/.vimrc: editors/.vimrc
 
 # ZSH
@@ -17,9 +47,14 @@
   - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom forlders]
   - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins forlders]
 - link:
+    ~/.zshenv:
+      force: true
+      path: zsh/.zshenv
     ~/.zshrc:
       force: true
       path: zsh/.zshrc
-    ~/.oh-my-zsh/custom: zsh/oh-my-zsh-custom
+    ~/.oh-my-zsh/custom:
+      force: true
+      path: zsh/oh-my-zsh-custom
     ~/.p10k.zsh: zsh/.p10k.zsh
 
