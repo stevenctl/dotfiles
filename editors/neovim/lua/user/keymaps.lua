@@ -11,6 +11,9 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 
+-- Sane redo
+keymap("n", "U", "<C-r>", opts)
+
 -- Ctrl + hjkl to move windows (instead of Ctrl-w; k)
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -18,7 +21,7 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Open file browser (30 chars wide)
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+keymap("n", "<leader>f", ":Lex 30<cr>", opts)
 
 -- Cycle buffers
 keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
