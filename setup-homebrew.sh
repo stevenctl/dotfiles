@@ -1,13 +1,15 @@
 #!/bin/bash
 
-uname > /dev/null | grep -i darwin || exit 0
+if [ "$(uname)" != "Darwin" ]; then
+	echo "not a mac" && exit 0
+fi
 
 # Check if Homebrew is installed
-if [ ! -f "`which brew`" ]; then
-  echo 'Installing homebrew'
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-else
+if which brew; then
   echo 'Updating homebrew'
   brew update
+else
+	echo "Installing Homebrew"
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 

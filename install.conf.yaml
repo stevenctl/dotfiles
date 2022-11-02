@@ -11,10 +11,6 @@
 
 # Ensure we have homebrew on Mac
 - shell: 
-  - [./setup-homebrew.sh, Setting up homebrew for mac.]
-
-# Ensure we have homebrew on Mac
-- shell: 
   - [./setup-zsh.sh, Setting up zsh]
 
 # Python
@@ -33,6 +29,10 @@
 
 # Go
 
+
+# gcloud
+- shell:
+  - [./setup-gcloud.sh, Installing gcloud]
 
 # vim/neovim
 - shell:
