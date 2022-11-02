@@ -12,8 +12,15 @@ cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive 
 
+
+[ "$(uname)" == "Linux" ] && sudo apt-get update -y
+[ "$(uname)" == "Darwin" ] && brew update
+
 . "${BASEDIR}"/setup-homebrew.sh
-eval "$(/opt/homebrew/bin/brew shellenv)"
+[ "$(uname)" == "Darwin" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+
+which python || ./aptbrew.sh python3
+
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
 
 if [ "$(uname)" = "Darwin" ]; then

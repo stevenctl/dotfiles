@@ -15,6 +15,7 @@
 
 # Python
 - shell:
+  - [./aptbrew.sh python3, Making sure python is installed]
   - [./setup-python.sh, Setting up pip]
 
 # Node (nvm)

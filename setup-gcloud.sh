@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 
 function setup_gcp() {
 	if uname | grep -i linux; then
