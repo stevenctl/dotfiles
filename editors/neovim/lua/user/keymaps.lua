@@ -9,6 +9,13 @@ keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Disable Arrow Keys --
+for i, mode in ipairs({"n", "i", "v"}) do
+	for j, key in ipairs({"<Left>", "<Right>", "<Up>", "<Down>"}) do
+		keymap(mode, key, "<ESC>", opts)
+	end
+end
+
 -- Normal --
 
 -- Sane redo
@@ -19,9 +26,10 @@ keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
+keymap("n", "<C-w>", "<C-w>c", opts)
 
 -- Open file browser (30 chars wide)
-keymap("n", "<leader>f", ":Lex 30<cr>", opts)
+keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
 -- Cycle buffers
 keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
@@ -39,9 +47,12 @@ keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
-keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+-- TODO make it so out of range dosn't break visual mode
 
+-- Select --
+keymap("s", "p", "p", opts) -- fix writing the letter P in function name
 

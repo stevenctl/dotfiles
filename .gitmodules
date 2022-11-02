@@ -5,3 +5,9 @@
 [submodule "zsh/oh-my-zsh-custom/themes/powerlevel10k"]
 	path = zsh/oh-my-zsh-custom/themes/powerlevel10k
 	url = https://github.com/romkatv/powerlevel10k.git
+[submodule "editors/neovim.chat"]
+	path = editors/neovim.chat
+	url = https://github.com/NvChad/NvChad
+[submodule "editors/neovim.chad"]
+	path = editors/neovim.chad
+	url = https://github.com/NvChad/NvChad
