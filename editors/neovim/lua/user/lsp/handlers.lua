@@ -33,6 +33,7 @@ local rounded_borders = {
 local function lsp_keymaps(bufnr)
   local opts = { noremap = true, silent = true }
 
+	-- Quick Jumps
 	local present, _ = pcall(require, "telescope")
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>Telescope declaration()<CR>", opts) -- declaration not in telescope.. merge with definition?
 	if present then
@@ -46,10 +47,10 @@ local function lsp_keymaps(bufnr)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
 	end
 
-	-- Some actions, disabled for now
-	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-	-- vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>f", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+	-- Code Actions
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader><CR>", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
 	-- Get some info about current hovered item 
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
