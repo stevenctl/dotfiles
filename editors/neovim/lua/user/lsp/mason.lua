@@ -5,6 +5,8 @@ local servers = {
 	"jsonls",
 	"rust_analyzer",
 	"gopls",
+	"bashls",
+	"shellcheck",
 }
 
 local settings = {
