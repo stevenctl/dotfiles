@@ -52,9 +52,15 @@ return packer.startup(function(use)
 	use "L3MON4D3/LuaSnip"				--snippet engine
 	use "rafamadriz/friendly-snippets"	-- a bunch of snippets to use
 
+	-- lsp
 	use "neovim/nvim-lspconfig"				-- enable LSP
 	use "williamboman/mason.nvim"			-- easy install lsp
 	use "williamboman/mason-lspconfig.nvim"	-- easy install lsp
+
+	-- Fuzzy Finder (telescope)
+	use "nvim-telescope/telescope.nvim"					-- fuzzy find everything
+	use "nvim-telescope/telescope-media-files.nvim"		-- previews
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

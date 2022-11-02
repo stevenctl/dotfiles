@@ -56,3 +56,10 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 -- Select --
 keymap("s", "p", "p", opts) -- fix writing the letter P in function name
 
+-- Telescope --
+keymap("n", "<leader>ff", "<cmd>Telescope git_files<cr>", opts)
+keymap("n", "<leader>faf", "<cmd>Telescope find_files<cr>", opts)
+keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
+keymap("n", "<leader>tt", "<cmd>Telescope<cr>", opts)
+keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
+
