@@ -10,8 +10,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Disable Arrow Keys --
-for i, mode in ipairs({"n", "i", "v"}) do
-	for j, key in ipairs({"<Left>", "<Right>", "<Up>", "<Down>"}) do
+for _, mode in ipairs({"n", "i", "v"}) do
+	for _, key in ipairs({"<Left>", "<Right>", "<Up>", "<Down>"}) do
 		keymap(mode, key, "<ESC>", opts)
 	end
 end
@@ -29,7 +29,7 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-w>", "<C-w>c", opts)
 
 -- Open file browser (30 chars wide)
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
+keymap("n", "<leader>e", ":Lex 20<cr>", opts)
 
 -- Cycle buffers
 keymap("n", "<S-Tab>", ":bprevious<CR>", opts)

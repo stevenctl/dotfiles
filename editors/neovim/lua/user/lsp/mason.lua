@@ -4,6 +4,7 @@ local servers = {
 	"pyright",
 	"jsonls",
 	"rust_analyzer",
+	"gopls",
 }
 
 local settings = {
