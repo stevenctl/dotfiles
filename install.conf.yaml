@@ -5,7 +5,7 @@
     shell:
       stderr: true
 
-# We have a few sumodules
+# We have a few submodules
 - shell: 
   - [git submodule update --recursive -f, Updating submodules...]
 
@@ -33,6 +33,10 @@
 # gcloud
 - shell:
   - [./setup-gcloud.sh, Installing gcloud]
+
+# Utils
+- shell:
+  - [./aptbrew.sh ripgrep, Installing ripgrep]
 
 # vim/neovim
 - shell:
