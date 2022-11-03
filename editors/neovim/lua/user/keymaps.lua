@@ -88,15 +88,15 @@ keymap("s", "p", "p", opts) -- fix writing the letter P in function name
 
 -- Telescope --
 
-if vim.fn.has("mac") then
-	keymap("n", "<C-S-O>", "<cmd>Telescope git_files<cr>", opts)
-	keymap("n", "<M-C-S-O>", "<cmd>Telescope find_files<cr>", opts)
-	keymap("n", "<C-S-F>", "<cmd>Telescope live_grep<cr>", opts)
-else
+if vim.fn.has("mac") == 0 then
 	keymap("n", "<C-O>", "<cmd>Telescope git_files<cr>", opts)
 	keymap("n", "<C-A-O>", "<cmd>Telescope find_files<cr>", opts)
 	keymap("n", "<C-F>", "<cmd>Telescope live_grep<cr>", opts)
 end
+keymap("n", "<C-S-O>", "<cmd>Telescope git_files<cr>", opts)
+keymap("n", "<M-C-S-O>", "<cmd>Telescope find_files<cr>", opts)
+keymap("n", "<C-S-F>", "<cmd>Telescope live_grep<cr>", opts)
+
 keymap("n", "<leader>faf", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>ff", "<cmd>Telescope git_files<cr>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)

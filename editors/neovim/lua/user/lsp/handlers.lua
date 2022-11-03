@@ -56,7 +56,7 @@ local function lsp_keymaps(bufnr)
 	-- Get some info about current hovered item
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 
-	if vim.fn.has("mac") then
+	if vim.fn.has("mac") == 1 then
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-S-K>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts) -- iterm2 fix
 	else
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-K>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)

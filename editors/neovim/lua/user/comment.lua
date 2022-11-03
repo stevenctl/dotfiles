@@ -5,7 +5,7 @@ end
 
 local config = {}
 local leader = "<C-_>" -- this is what I got using gnome term
-if vim.fn.has("mac") then
+if vim.fn.has("mac") == 1 then
 	leader = "<C-/>" -- on iterm2 in mac
 end
 for _, k in ipairs({ "opleader", "toggler" }) do
