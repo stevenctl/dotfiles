@@ -105,7 +105,7 @@ cmp.setup({
 			vim_item.menu = ({
 				nvm_lsp = "[LSP]",
 				nvim_lua = "[VIMLUA]",
-				-- luasnip = "[Snippet]",
+				luasnip = "[Snippet]",
 				buffer = "[Buffer]",
 				path = "[Path]",
 			})[entry.source.name]
@@ -113,7 +113,7 @@ cmp.setup({
 		end,
 	},
 	sources = {
-		-- { name = "luasnip" },
+		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "nvim_lua" },
