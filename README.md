@@ -1,40 +1,54 @@
-Dotfiles Template
+stov's dotfiles 
 =================
 
-This is a template repository for bootstrapping your dotfiles with [Dotbot][dotbot].
+This repo aims to setup _my_ dev environment on Linux (ubuntu) and Mac OSX.
+It is most likely not going to work well for others without removing/modifying things.
 
-To get started, you can [create a new repository from this template][template]
-(or you can [fork][fork] this repository, if you prefer). You can probably
-delete this README and rename your version to something like just `dotfiles`.
+## Usage
 
-In general, you should be using symbolic links for everything, and using git
-submodules whenever possible.
+This is not well tested yet for either OS. 
 
-To keep submodules at their proper versions, you could include something like
-`git submodule update --init --recursive` in your `install.conf.yaml`.
+Linux must have:
 
-To upgrade your submodules to their latest versions, you could periodically run
-`git submodule update --init --remote`.
+* git
+* sudo
+* apt-get
+* python (TODO, make the python automatic install work)
 
-Inspiration
------------
+Macs must have:
 
-If you're looking for inspiration for how to structure your dotfiles or what
-kinds of things you can include, you could take a look at some repos using
-Dotbot.
+* git 
+* probably some other stuff.. not sure (TODO!)
 
-* [anishathalye's dotfiles][anishathalye_dotfiles]
-* [csivanich's dotfiles][csivanich_dotfiles]
-* [m45t3r's dotfiles][m45t3r_dotfiles]
-* [alexwh's dotfiles][alexwh_dotfiles]
-* [azd325's dotfiles][azd325_dotfiles]
-* [wazery's dotfiles][wazery_dotfiles]
-* [thirtythreeforty's dotfiles][thirtythreeforty_dotfiles]
+## Outline
 
-And there are about [700 more here][dotbot-users].
+### Software Installation
 
-If you're using Dotbot and you'd like to include a link to your dotfiles here
-as an inspiration to others, please submit a pull request.
+* homebrew for mac
+* utils like: `yq`, `jq`, `ripgrep`.
+* gcloud + kubectl
+* neovim
+* zsh (this will be the default shell)
+
+### Programming Languages & Toolchains
+
+* Python3 (including pip3)
+* Go/Golang (TODO)
+* Rust via rustup
+
+### zsh with ohmyzsh
+
+* Theme: Powerlevel10k
+* Configuration: As little as I can in vimrc. Most is in separate files under ~/.oh-my-zsh/custom.
+
+The files under `/.oh-my-zsh/custom` are separated into stages by prefixing them with a number
+(ex. `0.setup.zsh`). Each one does things like adding dirs to `PATH`, exposing util `functions`
+and some (ba|z)sh `VARIABLE`s I find useful.
+
+### NeoVim
+
+The neovim setup is customized towards being an IDE. It's probably going to be an indefinite WIP.
+
 
 License
 -------
