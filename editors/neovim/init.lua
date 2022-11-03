@@ -7,4 +7,5 @@ require "user.lsp"
 require "user.telescope"
 require "user.comment"
 require "user.nvim-tree"
+print("print pls")
 
