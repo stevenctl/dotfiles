@@ -52,6 +52,9 @@ return packer.startup(function(use)
 	use "L3MON4D3/LuaSnip"				--snippet engine
 	use "rafamadriz/friendly-snippets"	-- a bunch of snippets to use
 
+	-- comments
+	use "numToStr/Comment.nvim"
+
 	-- lsp
 	use "neovim/nvim-lspconfig"				-- enable LSP
 	use "williamboman/mason.nvim"			-- easy install lsp
@@ -60,6 +63,9 @@ return packer.startup(function(use)
 	-- Fuzzy Finder (telescope)
 	use "nvim-telescope/telescope.nvim"					-- fuzzy find everything
 	use "nvim-telescope/telescope-media-files.nvim"		-- previews
+
+	-- File Explorer
+	use "nvim-tree/nvim-tree.lua"
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

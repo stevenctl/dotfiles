@@ -28,12 +28,26 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-w>", "<C-w>c", opts)
 
+-- Split windows
+keymap("n", "<leader>sv", "<C-w>v", opts)
+keymap("n", "<leader>sh", "<C-w>s", opts)
+
+-- Tabs
+keymap("n", "<leader>to", ":tabnew<CR>", opts)
+keymap("n", "<leader>tx", ":tabclose<CR>", opts) -- can just use <C-w> to close all the windows
+keymap("n", "<S-Tab>", ":tabp<CR>", opts)
+keymap("n", "<Tab>", ":tabn<CR>", opts)
+
 -- Open file browser (30 chars wide)
-keymap("n", "<leader>e", ":Lex 20<cr>", opts)
+keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 
 -- Cycle buffers
-keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
-keymap("n", "<Tab>", ":bnext<CR>", opts)
+-- keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
+-- keymap("n", "<Tab>", ":bnext<CR>", opts)
+
+-- Increment/Decrement numbers
+-- keymap("n", "<leader>+", "<C-a>", opts)
+-- keymap("n", "<leader>-", "<C-x>", opts)
 
 -- Visual --
 -- Stay in indent mode
@@ -58,10 +72,12 @@ keymap("s", "p", "p", opts) -- fix writing the letter P in function name
 
 -- Telescope --
 keymap("n", "<C-O>", "<cmd>Telescope git_files<cr>", opts) -- jetbrains-like
-keymap("n", "<leader>ff", "<cmd>Telescope git_files<cr>", opts)
+keymap("n", "<leader>ff", "<cmd>Telescope live_grep<cr>", opts) -- sort of jetbrains-like
 keymap("n", "<leader>faf", "<cmd>Telescope find_files<cr>", opts)
+keymap("n", "<C-A-O>", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<C-F>", "<cmd>Telescope live_grep<cr>", opts) -- jetbrains-like
 keymap("n", "<leader>tt", "<cmd>Telescope<cr>", opts)
 keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
+keymap("n", "<leader>b", "<cmd>Telescope buffers<cr>", opts)
 
