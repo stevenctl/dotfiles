@@ -59,6 +59,7 @@ return packer.startup(function(use)
 	use "neovim/nvim-lspconfig"				-- enable LSP
 	use "williamboman/mason.nvim"			-- easy install lsp
 	use "williamboman/mason-lspconfig.nvim"	-- easy install lsp
+	use "WhoIsSethDaniel/mason-tool-installer.nvim" -- automatically install mason stuff
 
 	-- Fuzzy Finder (telescope)
 	use "nvim-telescope/telescope.nvim"					-- fuzzy find everything

@@ -1,4 +1,4 @@
-
+-- Install with mason-lspconfig
 local servers = {
 	"sumneko_lua",
 	"pyright",
@@ -6,6 +6,10 @@ local servers = {
 	"rust_analyzer",
 	"gopls",
 	"bashls",
+}
+
+-- Install with mason-tool-installer
+local other_tools = {
 	"shellcheck",
 }
 
@@ -34,7 +38,6 @@ if not lspconfig_status_ok then
 end
 
 local opts = {}
-
 for _, server in pairs(servers) do
 	opts = {
 		on_attach = require("user.lsp.handlers").on_attach,
@@ -51,3 +54,4 @@ for _, server in pairs(servers) do
 	lspconfig[server].setup(opts)
 end
 
+require("mason-tool-installer").setup({ ensure_installed = other_tools })
