@@ -50,6 +50,11 @@ keymap("n", "<leader>E", ":NvimTreeFocus<cr>", opts)
 -- keymap("n", "<leader>+", "<C-a>", opts)
 -- keymap("n", "<leader>-", "<C-x>", opts)
 
+-- Quick Indent (requires using visual mode to do multi-line)
+
+keymap("n", "<", "<<", opts)
+keymap("n", ">", ">>", opts)
+
 -- Visual --
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
@@ -73,11 +78,13 @@ keymap("s", "p", "p", opts) -- fix writing the letter P in function name
 
 -- Telescope --
 keymap("n", "<C-O>", "<cmd>Telescope git_files<cr>", opts) -- jetbrains-like
+keymap("n", "<C-S-O>", "<cmd>Telescope git_files<cr>", opts) -- jetbrains-like (dupe that fixes iterm2 on mac)
 keymap("n", "<leader>ff", "<cmd>Telescope live_grep<cr>", opts) -- sort of jetbrains-like
 keymap("n", "<leader>faf", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<C-A-O>", "<cmd>Telescope find_files<cr>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
 keymap("n", "<C-F>", "<cmd>Telescope live_grep<cr>", opts) -- jetbrains-like
+keymap("n", "<C-S-F>", "<cmd>Telescope live_grep<cr>", opts) -- jetbrains-like
 keymap("n", "<leader>tt", "<cmd>Telescope<cr>", opts)
 keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
 keymap("n", "<leader>b", "<cmd>Telescope buffers<cr>", opts)

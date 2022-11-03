@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 PREFIX=https://github.com/neovim/neovim/releases/latest/download/
 
 if which nvim; then
@@ -14,4 +16,6 @@ fi
 
 pip3 install pynvim
 npm i -g neovim
+
+nvim --headless +PackerSync +qa
 

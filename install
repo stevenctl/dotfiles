@@ -12,14 +12,12 @@ cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
 git submodule update --init --recursive 
 
-
+# Pre-reqs, do them before dotbot
+. "${BASEDIR}"/setup-homebrew.sh
 [ "$(uname)" == "Linux" ] && sudo apt-get update -y
 [ "$(uname)" == "Darwin" ] && brew update
-
-. "${BASEDIR}"/setup-homebrew.sh
 [ "$(uname)" == "Darwin" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
-
-which python || ./aptbrew.sh python3
+./setup-python.sh
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
 
