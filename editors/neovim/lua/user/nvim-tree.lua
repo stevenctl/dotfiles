@@ -18,11 +18,12 @@ nvimtree.setup({
 			},
 		},
 	},
-	actions = {
-		open_file = {
-			window_picker = {
-				enable = false,
-			},
-		},
-	},
+	-- TODO not sure if this is causing issues or not...
+	-- actions = {
+	-- 	open_file = {
+	-- 		window_picker = {
+	-- 			enable = false,
+	-- 		},
+	-- 	},
+	-- },
 })

@@ -4,9 +4,13 @@ if not status_ok then
 end
 
 local config = {}
+local leader = "<C-_>" -- this is what I got using gnome term
+if vim.fn.has("mac") then
+	leader = "<C-/>" -- on iterm2 in mac
+end
 for _, k in ipairs({ "opleader", "toggler" }) do
 	config[k] = {
-		line = "<C-_>",
+		line = leader,
 	}
 end
 

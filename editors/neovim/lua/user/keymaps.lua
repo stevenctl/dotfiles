@@ -16,10 +16,20 @@ for _, mode in ipairs({ "n", "i", "v" }) do
 	end
 end
 
+-- Note on macs (maybe an automated warning is possible?)
+-- Mac with iTerm2 treats Ctrl+Letter as C-CAPITAL always.
+-- To differentiate, we use C-S-LETTER
+-- Also, Ctrl+A looks too much like Ctrl+Alt so we use M-C
+-- Use this search to find these things:
+-- 		C-[A-Z]
+
 -- Normal --
 
 -- Sane redo
 keymap("n", "U", "<C-r>", opts)
+
+-- Unhighlight
+keymap("n", "<leader>hh", ":nohl<cr>", opts)
 
 -- Ctrl + hjkl to move windows (instead of Ctrl-w; k)
 keymap("n", "<C-h>", "<C-w>h", opts)
@@ -34,9 +44,9 @@ keymap("n", "<leader>sh", "<C-w>s", opts)
 
 -- Tabs
 keymap("n", "<leader>to", ":tabnew<CR>", opts)
-keymap("n", "<leader>tx", ":tabclose<CR>", opts) -- can just use <C-w> to close all the windows
-keymap("n", "<S-Tab>", ":tabp<CR>", opts)
-keymap("n", "<Tab>", ":tabn<CR>", opts)
+keymap("n", "<leader>tx", ":tabclose<CR>", opts) -- i'll probably just ctrl+w each window :/
+keymap("n", "<A-h>", ":tabp<CR>", opts)
+keymap("n", "<A-l>", ":tabn<CR>", opts)
 
 -- Open file browser (30 chars wide)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
@@ -77,14 +87,19 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("s", "p", "p", opts) -- fix writing the letter P in function name
 
 -- Telescope --
-keymap("n", "<C-O>", "<cmd>Telescope git_files<cr>", opts) -- jetbrains-like
-keymap("n", "<C-S-O>", "<cmd>Telescope git_files<cr>", opts) -- jetbrains-like (dupe that fixes iterm2 on mac)
-keymap("n", "<leader>ff", "<cmd>Telescope live_grep<cr>", opts) -- sort of jetbrains-like
+
+if vim.fn.has("mac") then
+	keymap("n", "<C-S-O>", "<cmd>Telescope git_files<cr>", opts)
+	keymap("n", "<M-C-S-O>", "<cmd>Telescope find_files<cr>", opts)
+	keymap("n", "<C-S-F>", "<cmd>Telescope live_grep<cr>", opts)
+else
+	keymap("n", "<C-O>", "<cmd>Telescope git_files<cr>", opts)
+	keymap("n", "<C-A-O>", "<cmd>Telescope find_files<cr>", opts)
+	keymap("n", "<C-F>", "<cmd>Telescope live_grep<cr>", opts)
+end
 keymap("n", "<leader>faf", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<C-A-O>", "<cmd>Telescope find_files<cr>", opts)
+keymap("n", "<leader>ff", "<cmd>Telescope git_files<cr>", opts)
 keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<C-F>", "<cmd>Telescope live_grep<cr>", opts) -- jetbrains-like
-keymap("n", "<C-S-F>", "<cmd>Telescope live_grep<cr>", opts) -- jetbrains-like
 keymap("n", "<leader>tt", "<cmd>Telescope<cr>", opts)
 keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
 keymap("n", "<leader>b", "<cmd>Telescope buffers<cr>", opts)

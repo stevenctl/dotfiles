@@ -47,9 +47,9 @@ return packer.startup(function(use)
 	use("hrsh7th/cmp-nvim-lua") -- lua and vim config completions
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 
-	-- snippets
-	use("L3MON4D3/LuaSnip") --snippet engine
-	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+	-- snippets TODO they broke treesitter.. :(
+	-- use("L3MON4D3/LuaSnip") --snippet engine
+	-- use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- comments
 	use("numToStr/Comment.nvim")
@@ -69,6 +69,18 @@ return packer.startup(function(use)
 
 	-- File Explorer
 	use("nvim-tree/nvim-tree.lua")
+
+	-- treesitter (lighter than an lsp with lots of the same functionality)
+	use({
+		"nvim-treesitter/nvim-treesitter",
+		run = function()
+			require("nvim-treesitter.install")
+		end,
+	})
+
+	-- auto close
+	use("windwp/nvim-autopairs") -- add closing paren, quote, etc
+	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- treesitter friendlyness
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
