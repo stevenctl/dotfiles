@@ -4,11 +4,10 @@ if not status_ok then
 end
 
 local config = {}
-for _, k in ipairs({"opleader", "toggler"}) do
+for _, k in ipairs({ "opleader", "toggler" }) do
 	config[k] = {
 		line = "<C-_>",
 	}
 end
 
 comment.setup(config)
-

@@ -16,7 +16,7 @@ local config = {
 	underline = true,
 	severity_sort = true,
 	float = {
-	focusable = false,
+		focusable = false,
 		style = "minimal",
 		border = "rounded",
 		source = "always",
@@ -31,7 +31,7 @@ local rounded_borders = {
 }
 
 local function lsp_keymaps(bufnr)
-  local opts = { noremap = true, silent = true }
+	local opts = { noremap = true, silent = true }
 
 	-- Quick Jumps
 	local present, _ = pcall(require, "telescope")
@@ -52,7 +52,7 @@ local function lsp_keymaps(bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader><CR>", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
-	-- Get some info about current hovered item 
+	-- Get some info about current hovered item
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 
@@ -67,24 +67,24 @@ local function lsp_keymaps(bufnr)
 	)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "]d", '<cmd>lua vim.diagnostic.goto_next({ border = "rounded" })<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
-	vim.cmd [[ command! Format execute 'lua vim.lsp.buf.formatting()' ]]
+	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.formatting()' ]])
 end
 
 -- Highlights keywords you're hovered on
 local function lsp_highlight_document(client)
-  -- Set autocommands conditional on server_capabilities
-  if client.server_capabilities.documentHighlight then
-    vim.api.nvim_exec(
-      [[
+	-- Set autocommands conditional on server_capabilities
+	if client.server_capabilities.documentHighlight then
+		vim.api.nvim_exec(
+			[[
       augroup lsp_document_highlight
         autocmd! * <buffer>
         autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
         autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
       augroup END
     ]],
-      false
-    )
-  end
+			false
+		)
+	end
 end
 
 local M = {}
@@ -99,7 +99,7 @@ end
 
 M.setup = function()
 	for _, sign in ipairs(signs) do
-		  vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
+		vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
 	end
 	vim.diagnostic.config(config)
 	for k, v in ipairs(rounded_borders) do
@@ -114,4 +114,3 @@ M.on_attach = function(client, bufnr)
 end
 
 return M
-

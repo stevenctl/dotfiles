@@ -1,28 +1,27 @@
 local fn = vim.fn
 
 -- Packer install
-local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 if fn.empty(fn.glob(install_path)) > 0 then
-	PACKER_BOOTSTRAP = fn.system {
+	PACKER_BOOTSTRAP = fn.system({
 		"git",
 		"clone",
 		"--depth",
 		"1",
 		"https://github.com/wbthomason/packer.nvim",
 		install_path,
-	}
-	print "installing packer... close and reopen neovim."
-	vim.cmd [[packadd packer.nvim]]
+	})
+	print("installing packer... close and reopen neovim.")
+	vim.cmd([[packadd packer.nvim]])
 end
 
-
 -- Reload when we modify plugins file
-vim.cmd [[
+vim.cmd([[
 	augroup packer_user_config
 		autocmd!
 		autocmd BufWritePost plugins.lua source <afile> | PackerSync
 	augroup end
-]]
+]])
 
 -- Exit early on first use where packer isn't installed
 local status_ok, packer = pcall(require, "packer")
@@ -33,43 +32,43 @@ end
 -- Install your plugins here
 return packer.startup(function(use)
 	-- My plugins here
-	use "wbthomason/packer.nvim" 		-- Have packer manage itself
-	use "nvim-lua/popup.nvim"		 	-- An implementation of the Popup API from vim in Neovim
-	use "nvim-lua/plenary.nvim" 		-- Useful lua functions used ny lots of plugins
-	use "lunarvim/colorschemes"			-- Various colorschemes
-	use "sainnhe/everforest"			-- Easy on the eyes...
+	use("wbthomason/packer.nvim") -- Have packer manage itself
+	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
+	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
+	use("lunarvim/colorschemes") -- Various colorschemes
+	use("sainnhe/everforest") -- Easy on the eyes...
 
 	-- cmp plugins
-	use "hrsh7th/nvim-cmp"				-- The completion plugin
-	use "hrsh7th/cmp-buffer"			-- buffer completions
-	use "hrsh7th/cmp-path"				-- path completions
-	use "hrsh7th/cmp-cmdline"			-- cmdline completions
-	use "hrsh7th/cmp-nvim-lsp"			-- lsp completions
-	use "hrsh7th/cmp-nvim-lua"			-- lua and vim config completions
-	use "saadparwaiz1/cmp_luasnip"		-- snippet completions
+	use("hrsh7th/nvim-cmp") -- The completion plugin
+	use("hrsh7th/cmp-buffer") -- buffer completions
+	use("hrsh7th/cmp-path") -- path completions
+	use("hrsh7th/cmp-cmdline") -- cmdline completions
+	use("hrsh7th/cmp-nvim-lsp") -- lsp completions
+	use("hrsh7th/cmp-nvim-lua") -- lua and vim config completions
+	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 
 	-- snippets
-	use "L3MON4D3/LuaSnip"				--snippet engine
-	use "rafamadriz/friendly-snippets"	-- a bunch of snippets to use
+	use("L3MON4D3/LuaSnip") --snippet engine
+	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- comments
-	use "numToStr/Comment.nvim"
+	use("numToStr/Comment.nvim")
 
 	-- lsp
-	use "neovim/nvim-lspconfig"				-- enable LSP
-	use "williamboman/mason.nvim"			-- easy install lsp
-	use "williamboman/mason-lspconfig.nvim"	-- easy install lsp
+	use("neovim/nvim-lspconfig") -- enable LSP
+	use("williamboman/mason.nvim") -- easy install lsp
+	use("williamboman/mason-lspconfig.nvim") -- easy install lsp
 
 	-- formatting and linting (also uses mason)
-	use("jose-elias-alvarez/null-ls.nvim")	-- LSP for lint & format
-	use("jayp0521/mason-null-ls.nvim")		-- allow mason to manage linters & formatters
+	use("jose-elias-alvarez/null-ls.nvim") -- LSP for lint & format
+	use("jayp0521/mason-null-ls.nvim") -- allow mason to manage linters & formatters
 
 	-- Fuzzy Finder (telescope)
-	use "nvim-telescope/telescope.nvim"					-- fuzzy find everything
-	use "nvim-telescope/telescope-media-files.nvim"		-- previews
+	use("nvim-telescope/telescope.nvim") -- fuzzy find everything
+	use("nvim-telescope/telescope-media-files.nvim") -- previews
 
 	-- File Explorer
-	use "nvim-tree/nvim-tree.lua"
+	use("nvim-tree/nvim-tree.lua")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
@@ -77,4 +76,3 @@ return packer.startup(function(use)
 		require("packer").sync()
 	end
 end)
-

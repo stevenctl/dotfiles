@@ -11,8 +11,9 @@ local servers = {
 -- Install with mason-null-ls and then configure with null-ls
 local null_ls_tools = {
 	formatting = {
-     "gofumpt",
-     "goimports",
+		"gofumpt",
+		"goimports",
+		"stylua",
 	},
 	diagnostics = {
 		"shellcheck",
@@ -88,8 +89,28 @@ local function formatters_and_linters()
 		automatic_installation = true,
 	})
 
+	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 	local config = {
-		sources = {}
+		-- format on save
+		on_attach = function(curent_client, bufnr)
+			if curent_client.supports_method("textDocument/formatting") then
+				vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+				vim.api.nvim_create_autocmd("BufWritePre", {
+					group = augroup,
+					buffer = bufnr,
+					callback = function()
+						vim.lsp.buf.format({
+							bufnr = bufnr,
+							filter = function(client)
+								-- only use null-ls, don't use lsp server TODO (why though?)
+								return client.name == "null-ls"
+							end,
+						})
+					end,
+				})
+			end
+		end,
+		sources = {},
 	}
 	for k, list in pairs(null_ls_tools) do
 		for _, tool in ipairs(list) do
@@ -99,4 +120,3 @@ local function formatters_and_linters()
 	null_ls.setup(config)
 end
 formatters_and_linters()
-

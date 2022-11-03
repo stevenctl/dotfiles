@@ -17,12 +17,12 @@ nvimtree.setup({
 				},
 			},
 		},
-	},	actions = {
+	},
+	actions = {
 		open_file = {
 			window_picker = {
 				enable = false,
 			},
 		},
-	}
+	},
 })
-

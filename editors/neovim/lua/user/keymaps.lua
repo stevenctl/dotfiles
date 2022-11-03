@@ -10,8 +10,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Disable Arrow Keys --
-for _, mode in ipairs({"n", "i", "v"}) do
-	for _, key in ipairs({"<Left>", "<Right>", "<Up>", "<Down>"}) do
+for _, mode in ipairs({ "n", "i", "v" }) do
+	for _, key in ipairs({ "<Left>", "<Right>", "<Up>", "<Down>" }) do
 		keymap(mode, key, "<ESC>", opts)
 	end
 end
@@ -40,6 +40,7 @@ keymap("n", "<Tab>", ":tabn<CR>", opts)
 
 -- Open file browser (30 chars wide)
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
+keymap("n", "<leader>E", ":NvimTreeFocus<cr>", opts)
 
 -- Cycle buffers
 -- keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
@@ -80,4 +81,3 @@ keymap("n", "<C-F>", "<cmd>Telescope live_grep<cr>", opts) -- jetbrains-like
 keymap("n", "<leader>tt", "<cmd>Telescope<cr>", opts)
 keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
 keymap("n", "<leader>b", "<cmd>Telescope buffers<cr>", opts)
-
