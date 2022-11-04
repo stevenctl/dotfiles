@@ -38,9 +38,27 @@ local function lsp_keymaps(bufnr)
 	-- TODO more jumps that open a separate window or popup
 	if present then
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>Telescope declaration()<CR>", opts) -- declaration not in telescope.. merge with definition?
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Telescope lsp_definitions<CR>", opts)
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>Telescope lsp_implementations<CR>", opts)
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>Telescope lsp_references<CR>", opts)
+		vim.api.nvim_buf_set_keymap(
+			bufnr,
+			"n",
+			"gd",
+			"<cmd>lua require('telescope-custom.lsp').lsp_definitions()<CR>",
+			opts
+		)
+		vim.api.nvim_buf_set_keymap(
+			bufnr,
+			"n",
+			"gi",
+			"<cmd>lua require('telescope-custom.lsp').lsp_implementations()<CR>",
+			opts
+		)
+		vim.api.nvim_buf_set_keymap(
+			bufnr,
+			"n",
+			"gr",
+			"<cmd>lua require('telescope-custom.lsp').lsp_references()<CR>",
+			opts
+		)
 	else
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
@@ -49,7 +67,7 @@ local function lsp_keymaps(bufnr)
 	end
 
 	-- Code Actions
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader><CR>", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 

@@ -31,12 +31,14 @@ end
 
 -- Install your plugins here
 return packer.startup(function(use)
-	-- My plugins here
+	-- Deps for many other plugins
 	use("wbthomason/packer.nvim") -- Have packer manage itself
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
+
 	use("lunarvim/colorschemes") -- Various colorschemes
-	use("sainnhe/everforest") -- Easy on the eyes...
+	use("sainnhe/everforest") -- a4j likes this one
+	use("kyazdani42/nvim-web-devicons") -- used by several other packages
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
@@ -69,6 +71,8 @@ return packer.startup(function(use)
 
 	-- File Explorer
 	use("nvim-tree/nvim-tree.lua")
+	-- Tabline
+	use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "kyazdani42/nvim-web-devicons" })
 
 	-- treesitter (lighter than an lsp with lots of the same functionality)
 	use({

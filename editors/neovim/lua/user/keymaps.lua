@@ -25,6 +25,8 @@ end
 
 -- Normal --
 
+-- Format
+keymap("n", "<M-C-L>", ":doautocmd BufWritePre<cr>", opts)
 -- Sane redo
 keymap("n", "U", "<C-r>", opts)
 
@@ -43,12 +45,20 @@ keymap("n", "<leader>sv", "<C-w>v", opts)
 keymap("n", "<leader>sh", "<C-w>s", opts)
 
 -- Tabs
-keymap("n", "<leader>to", ":tabnew<CR>", opts)
-keymap("n", "<leader>tx", ":tabclose<CR>", opts) -- i'll probably just ctrl+w each window :/
-keymap("n", "<A-h>", ":tabp<CR>", opts)
-keymap("n", "<A-l>", ":tabn<CR>", opts)
+local bufferline, _ = pcall(require, "bufferline")
+if bufferline then
+	-- note these are doing buffer stuff because of barbar
+	keymap("n", "<M-,>", ":BufferLineCyclePrev<CR>", opts)
+	keymap("n", "<M-.>", ":BufferLineCycleNext<CR>", opts)
+	keymap("n", "<M-w>", ":bdelete<CR>", opts)
+else
+	keymap("n", "<leader>to", ":tabnew<CR>", opts)
+	keymap("n", "<leader>tx", ":tabclose<CR>", opts) -- i'll probably just ctrl+w each window :/
+	keymap("n", "<M-,>", ":tabp<CR>", opts)
+	keymap("n", "<M-.>", ":tabn<CR>", opts)
+end
 
--- Open file browser (30 chars wide)
+-- Open file browser
 keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
 keymap("n", "<leader>E", ":NvimTreeFocus<cr>", opts)
 
@@ -71,16 +81,16 @@ keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
 -- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
+keymap("v", "<M-j>", ":m .+1<CR>==", opts)
+keymap("v", "<M-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
 -- Move text up and down
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
-keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
+keymap("x", "<M-j>", ":move '>+1<CR>gv-gv", opts)
+keymap("x", "<M-k>", ":move '<-2<CR>gv-gv", opts)
 -- TODO make it so out of range dosn't break visual mode
 
 -- Select --
@@ -89,12 +99,12 @@ keymap("s", "p", "p", opts) -- fix writing the letter P in function name
 -- Telescope --
 
 if vim.fn.has("mac") == 0 then
-	keymap("n", "<C-O>", "<cmd>Telescope git_files<cr>", opts)
-	keymap("n", "<C-A-O>", "<cmd>Telescope find_files<cr>", opts)
+	keymap("n", "<C-O>", "<cmd>Telescope find_files<cr>", opts)
+	keymap("n", "<C-M-O>", "<cmd>Telescope git_filescr>", opts)
 	keymap("n", "<C-F>", "<cmd>Telescope live_grep<cr>", opts)
 end
-keymap("n", "<C-S-O>", "<cmd>Telescope git_files<cr>", opts)
-keymap("n", "<M-C-S-O>", "<cmd>Telescope find_files<cr>", opts)
+keymap("n", "<C-S-O>", "<cmd>Telescope find_files<cr>", opts)
+keymap("n", "<M-C-S-O>", "<cmd>Telescope git_filescr>", opts)
 keymap("n", "<C-S-F>", "<cmd>Telescope live_grep<cr>", opts)
 
 keymap("n", "<leader>faf", "<cmd>Telescope find_files<cr>", opts)
