@@ -51,6 +51,7 @@ if bufferline then
 	keymap("n", "<M-h>", ":BufferLineCyclePrev<CR>", opts)
 	keymap("n", "<M-l>", ":BufferLineCycleNext<CR>", opts)
 	keymap("n", "<M-w>", ":bdelete<CR>", opts)
+	keymap("n", "<M-W>", ":bdelete!<CR>", opts)
 else
 	keymap("n", "<leader>to", ":tabnew<CR>", opts)
 	keymap("n", "<leader>tx", ":tabclose<CR>", opts) -- i'll probably just ctrl+w each window :/
