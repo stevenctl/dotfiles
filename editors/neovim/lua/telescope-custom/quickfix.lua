@@ -26,11 +26,6 @@ end
 -- Don't append an empty ().
 local custom_send_all_to_qf = function(prompt_bufnr)
 	local picker = action_state.get_current_picker(prompt_bufnr)
-	for k, v in pairs(picker) do
-		if type(k) == "string" and type(v) == "string" then
-			print(k .. " => " .. v)
-		end
-	end
 	local manager = picker.manager
 	local qf_entries = {}
 	for entry in manager:iter() do
@@ -44,7 +39,7 @@ local custom_send_all_to_qf = function(prompt_bufnr)
 
 	vim.fn.setqflist(qf_entries)
 	local qf_title = picker.prompt_title
-	if prompt.len() > 0 then
+	if prompt ~= nil and string.len(prompt) > 0 then
 		qf_title = string.format([[%s (%s)]], picker.prompt_title, prompt)
 	end
 	vim.fn.setqflist({}, "a", { title = qf_title })
