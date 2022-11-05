@@ -48,14 +48,14 @@ keymap("n", "<leader>sh", "<C-w>s", opts)
 local bufferline, _ = pcall(require, "bufferline")
 if bufferline then
 	-- note these are doing buffer stuff because of barbar
-	keymap("n", "<M-,>", ":BufferLineCyclePrev<CR>", opts)
-	keymap("n", "<M-.>", ":BufferLineCycleNext<CR>", opts)
+	keymap("n", "<M-h>", ":BufferLineCyclePrev<CR>", opts)
+	keymap("n", "<M-l>", ":BufferLineCycleNext<CR>", opts)
 	keymap("n", "<M-w>", ":bdelete<CR>", opts)
 else
 	keymap("n", "<leader>to", ":tabnew<CR>", opts)
 	keymap("n", "<leader>tx", ":tabclose<CR>", opts) -- i'll probably just ctrl+w each window :/
-	keymap("n", "<M-,>", ":tabp<CR>", opts)
-	keymap("n", "<M-.>", ":tabn<CR>", opts)
+	keymap("n", "<M-h>", ":tabp<CR>", opts)
+	keymap("n", "<M-l>", ":tabn<CR>", opts)
 end
 
 -- Open file browser

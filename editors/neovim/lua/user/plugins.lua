@@ -42,16 +42,21 @@ return packer.startup(function(use)
 
 	-- cmp plugins
 	use("hrsh7th/nvim-cmp") -- The completion plugin
-	use("hrsh7th/cmp-buffer") -- buffer completions
-	use("hrsh7th/cmp-path") -- path completions
-	use("hrsh7th/cmp-cmdline") -- cmdline completions
-	use("hrsh7th/cmp-nvim-lsp") -- lsp completions
-	use("hrsh7th/cmp-nvim-lua") -- lua and vim config completions
-	use("saadparwaiz1/cmp_luasnip") -- snippet completions
+	use({
+		"hrsh7th/cmp-buffer", -- buffer completions
+		"hrsh7th/cmp-path", -- path completions
+		"hrsh7th/cmp-cmdline", -- cmdline completions
+		"hrsh7th/cmp-nvim-lsp", -- lsp completions
+		"hrsh7th/cmp-nvim-lua", -- lua and vim config completions
+		"hrsh7th/cmp-vsnip", -- snipped completions
+		-- "saadparwaiz1/cmp_luasnip", -- snippet completions
+		after = { "hrsh7th/nvim-cmp" },
+	})
 
 	-- snippets TODO they broke treesitter.. :(
-	use("L3MON4D3/LuaSnip") --snippet engine
-	use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
+	use("hrsh7th/vim-vsnip")
+	-- use("L3MON4D3/LuaSnip") --snippet engine
+	-- use("rafamadriz/friendly-snippets") -- a bunch of snippets to use
 
 	-- comments
 	use("numToStr/Comment.nvim")

@@ -35,14 +35,13 @@ local function lsp_keymaps(bufnr)
 
 	-- Quick Jumps
 	local present, _ = pcall(require, "telescope")
-	-- TODO more jumps that open a separate window or popup
 	if present then
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>Telescope declaration()<CR>", opts) -- declaration not in telescope.. merge with definition?
 		vim.api.nvim_buf_set_keymap(
 			bufnr,
 			"n",
 			"gd",
-			"<cmd>lua require('telescope-custom.lsp').lsp_definitions()<CR>",
+			"<cmd>lua require('telescope-custom.lsp').lsp_definitions()<CR>", -- TODO make it a telescope extension so I can :Telescope custom_lsp_defs
 			opts
 		)
 		vim.api.nvim_buf_set_keymap(
@@ -70,6 +69,7 @@ local function lsp_keymaps(bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>r", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader><CR>", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<M-CR>", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
 	-- Get some info about current hovered item
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -133,6 +133,7 @@ end
 
 M.on_attach = function(client, bufnr)
 	-- TODO check `client.name` to do customize per-server capabilities
+	print("LSP setup for: " .. client.name)
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 end
