@@ -133,7 +133,6 @@ end
 
 M.on_attach = function(client, bufnr)
 	-- TODO check `client.name` to do customize per-server capabilities
-	print("LSP setup for: " .. client.name)
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)
 end

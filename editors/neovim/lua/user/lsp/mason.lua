@@ -21,12 +21,14 @@ local null_ls_tools = {
 		"shellcheck",
 		"buf",
 		"golangci_lint",
-		"luacheck",
 		"markdownlint",
 		"misspell",
 		"protoc_gen_lint",
 		"pylint",
 		"zsh",
+	},
+	code_actions = {
+		"gitsigns",
 	},
 }
 
@@ -88,13 +90,18 @@ local function formatters_and_linters()
 		print("Warning: null-ls is missing")
 		return
 	end
+	local mnls_ok, mason_null_ls = pcall(require, "mason-null-ls")
+	if not mnls_ok then
+		print("Warning: mason-null-ls is missing")
+		return
+	end
 	local all_null_ls = {}
 	for _, l in pairs(null_ls_tools) do
 		for _, v in pairs(l) do
 			table.insert(all_null_ls, v)
 		end
 	end
-	require("mason-null-ls").setup({
+	mason_null_ls.setup({
 		ensure_installed = all_null_ls,
 		automatic_installation = true,
 	})
@@ -102,8 +109,8 @@ local function formatters_and_linters()
 	local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 	local config = {
 		-- format on save
-		on_attach = function(curent_client, bufnr)
-			if curent_client.supports_method("textDocument/formatting") then
+		on_attach = function(current_client, bufnr)
+			if current_client.supports_method("textDocument/formatting") then
 				vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
 				vim.api.nvim_create_autocmd("BufWritePre", {
 					group = augroup,

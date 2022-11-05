@@ -92,6 +92,20 @@ return packer.startup(function(use)
 	use("windwp/nvim-autopairs") -- add closing paren, quote, etc
 	use({ "windwp/nvim-ts-autotag", after = "nvim-treesitter" }) -- treesitter friendlyness
 
+	-- Status line
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
+
+	-- Git gutters
+	use({
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup({ numhl = true })
+		end,
+	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
