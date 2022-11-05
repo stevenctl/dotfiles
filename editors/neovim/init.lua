@@ -10,4 +10,9 @@ require("user.autopairs")
 require("user.treesitter")
 require("user.bufferline")
 require("user.lualine")
-require("user.options")
+local opts = require("user.options")
+
+---@diagnostic disable-next-line: lowercase-global
+function polish()
+	opts.set_user_opts()
+end
