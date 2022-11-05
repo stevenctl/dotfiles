@@ -36,30 +36,12 @@ local function lsp_keymaps(bufnr)
 	-- Quick Jumps
 	local present, _ = pcall(require, "telescope")
 	if present then
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>Telescope declaration()<CR>", opts) -- declaration not in telescope.. merge with definition?
-		vim.api.nvim_buf_set_keymap(
-			bufnr,
-			"n",
-			"gd",
-			"<cmd>lua require('telescope-custom.lsp').lsp_definitions()<CR>", -- TODO make it a telescope extension so I can :Telescope custom_lsp_defs
-			opts
-		)
-		vim.api.nvim_buf_set_keymap(
-			bufnr,
-			"n",
-			"gi",
-			"<cmd>lua require('telescope-custom.lsp').lsp_implementations()<CR>",
-			opts
-		)
-		vim.api.nvim_buf_set_keymap(
-			bufnr,
-			"n",
-			"gr",
-			"<cmd>lua require('telescope-custom.lsp').lsp_references()<CR>",
-			opts
-		)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", ":Trouble lsp_type_definitions<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", ":Trouble lsp_definitions<cr>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", ":Trouble lsp_implementations<cr>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", ":Trouble lsp_references<cr>", opts)
 	else
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)

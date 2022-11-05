@@ -106,6 +106,22 @@ return packer.startup(function(use)
 		end,
 	})
 
+	-- Quickfixlist but nicer
+	use({
+		"folke/trouble.nvim",
+		requires = "kyazdani42/nvim-web-devicons",
+		config = function()
+			require("trouble").setup({
+				auto_jump = {
+					"lsp_definitions",
+					"lsp_type_definitions",
+					"lsp_references",
+					"lsp_implementations",
+				},
+			})
+		end,
+	})
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then
