@@ -14,9 +14,19 @@ local null_ls_tools = {
 		"gofumpt",
 		"goimports",
 		"stylua",
+		"rustfmt",
+		"fixjson",
 	},
 	diagnostics = {
 		"shellcheck",
+		"buf",
+		"golangci_lint",
+		"luacheck",
+		"markdownlint",
+		"misspell",
+		"protoc_gen_lint",
+		"pylint",
+		"zsh",
 	},
 }
 

@@ -70,9 +70,10 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim") -- LSP for lint & format
 	use("jayp0521/mason-null-ls.nvim") -- allow mason to manage linters & formatters
 
-	-- Fuzzy Finder (telescope)
+	-- All kind's of pickin'
 	use("nvim-telescope/telescope.nvim") -- fuzzy find everything
 	use("nvim-telescope/telescope-media-files.nvim") -- previews
+	use("nvim-telescope/telescope-ui-select.nvim") -- make all kinds of nvim builtin pickers use telescope
 
 	-- File Explorer
 	use("nvim-tree/nvim-tree.lua")

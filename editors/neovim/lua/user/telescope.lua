@@ -6,15 +6,14 @@ end
 local actions = require("telescope.actions") -- no pcall, unlikely to fail if telescope fails
 
 local send_to_qf = actions.send_to_qflist
-local status_ok, custom_send_to_qf = pcall(require, "telescope-custom.quickfix")
-if status_ok then
+local ok_qf, custom_send_to_qf = pcall(require, "telescope-custom.quickfix")
+if ok_qf then
 	send_to_qf = custom_send_to_qf
 end
 
-local custom_refs = require("telescope-custom.lsp").lsp_references
+-- local custom_refs = require("telescope-custom.lsp").lsp_references
 
 -- The actual config --
-telescope.load_extension("media_files")
 telescope.setup({
 	defaults = {
 		preview = true,
@@ -46,7 +45,7 @@ telescope.setup({
 
 				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-				["<C-q>"] = custom_send_to_qf, -- + actions.open_qflist,
+				["<C-q>"] = send_to_qf, -- + actions.open_qflist,
 				-- ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 				["<C-l>"] = actions.complete_tag,
 				["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
@@ -86,6 +85,7 @@ telescope.setup({
 		},
 	},
 	extensions = {
+		["ui-select"] = {},
 		media_files = {
 			-- filetypes whitelist
 			-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
@@ -99,3 +99,5 @@ telescope.setup({
 		-- please take a look at the readme of the extension you want to configure
 	},
 })
+telescope.load_extension("media_files")
+telescope.load_extension("ui-select")
