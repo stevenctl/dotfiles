@@ -70,10 +70,14 @@ return packer.startup(function(use)
 	use("jose-elias-alvarez/null-ls.nvim") -- LSP for lint & format
 	use("jayp0521/mason-null-ls.nvim") -- allow mason to manage linters & formatters
 
-	-- All kind's of pickin'
-	use("nvim-telescope/telescope.nvim") -- fuzzy find everything
+	-- Telescope to search the stars...
+	use({ "nvim-telescope/telescope.nvim", requires = {
+		{ "nvim-telescope/telescope-live-grep-args.nvim" },
+	} })
 	use("nvim-telescope/telescope-media-files.nvim") -- previews
-	use("nvim-telescope/telescope-ui-select.nvim") -- make all kinds of nvim builtin pickers use telescope
+
+	-- Replace the default "input" and "select" with something prettier
+	use({ "stevearc/dressing.nvim" })
 
 	-- File Explorer
 	use("nvim-tree/nvim-tree.lua")
@@ -106,7 +110,7 @@ return packer.startup(function(use)
 		end,
 	})
 
-	-- Quickfixlist but nicer
+	-- Trouble - Quickfixlist but nicer
 	use({
 		"folke/trouble.nvim",
 		requires = "kyazdani42/nvim-web-devicons",
@@ -121,6 +125,9 @@ return packer.startup(function(use)
 			})
 		end,
 	})
+
+	-- Help with keymaps
+	use("folke/which-key.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

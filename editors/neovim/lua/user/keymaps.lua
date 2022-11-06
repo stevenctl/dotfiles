@@ -1,5 +1,5 @@
 local opts = { noremap = true, silent = true }
-local term_opts = { slient = true }
+-- local term_opts = { slient = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
@@ -16,63 +16,26 @@ for _, mode in ipairs({ "n", "i", "v" }) do
 	end
 end
 
--- Note on macs (maybe an automated warning is possible?)
--- Mac with iTerm2 treats Ctrl+Letter as C-CAPITAL always.
--- To differentiate, we use C-S-LETTER
--- Also, Ctrl+A looks too much like Ctrl+Alt so we use M-C
--- Use this search to find these things:
--- 		C-[A-Z]
-
 -- Normal --
-
--- Format
+-- Jetbrains-like formatting
 keymap("n", "<M-C-L>", ":doautocmd BufWritePre<cr>", opts)
--- Sane redo
+keymap("n", "<C-S-O>", ":echoerr 'This is not Jetbrains (try <leader>o)'<cr>", opts) -- old habits..
+-- Better Redo
 keymap("n", "U", "<C-r>", opts)
 
--- Unhighlight
-keymap("n", "<leader>hh", ":nohl<cr>", opts)
-
--- Ctrl + hjkl to move windows (instead of Ctrl-w; k)
+-- Better Window Navigation (C-hjkl)
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
-keymap("n", "<C-w>", "<C-w>c", opts)
 
--- Split windows
-keymap("n", "<leader>sv", "<C-w>v", opts)
-keymap("n", "<leader>sh", "<C-w>s", opts)
+-- Tabs (really buffers)
+keymap("n", "<M-h>", ":BufferLineCyclePrev<CR>", opts)
+keymap("n", "<M-l>", ":BufferLineCycleNext<CR>", opts)
+keymap("n", "<M-w>", ":bdelete<CR>", opts)
+keymap("n", "<M-W>", ":bdelete!<CR>", opts)
 
--- Tabs
-local bufferline, _ = pcall(require, "bufferline")
-if bufferline then
-	-- note these are doing buffer stuff because of barbar
-	keymap("n", "<M-h>", ":BufferLineCyclePrev<CR>", opts)
-	keymap("n", "<M-l>", ":BufferLineCycleNext<CR>", opts)
-	keymap("n", "<M-w>", ":bdelete<CR>", opts)
-	keymap("n", "<M-W>", ":bdelete!<CR>", opts)
-else
-	keymap("n", "<leader>to", ":tabnew<CR>", opts)
-	keymap("n", "<leader>tx", ":tabclose<CR>", opts) -- i'll probably just ctrl+w each window :/
-	keymap("n", "<M-h>", ":tabp<CR>", opts)
-	keymap("n", "<M-l>", ":tabn<CR>", opts)
-end
-
--- Open file browser
-keymap("n", "<leader>e", ":NvimTreeToggle<cr>", opts)
-keymap("n", "<leader>E", ":NvimTreeFocus<cr>", opts)
-
--- Cycle buffers
--- keymap("n", "<S-Tab>", ":bprevious<CR>", opts)
--- keymap("n", "<Tab>", ":bnext<CR>", opts)
-
--- Increment/Decrement numbers
--- keymap("n", "<leader>+", "<C-a>", opts)
--- keymap("n", "<leader>-", "<C-x>", opts)
-
--- Quick Indent (requires using visual mode to do multi-line)
-
+-- Normal Mode Quick Indent (requires using visual mode to do multi-line)
 keymap("n", "<", "<<", opts)
 keymap("n", ">", ">>", opts)
 
@@ -85,32 +48,56 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "<M-j>", ":m .+1<CR>==", opts)
 keymap("v", "<M-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
-
--- Visual Block --
--- Move text up and down
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<M-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<M-k>", ":move '<-2<CR>gv-gv", opts)
--- TODO make it so out of range dosn't break visual mode
 
--- Select --
-keymap("s", "p", "p", opts) -- fix writing the letter P in function name
+-- Fix the use of snippets where we type p in some section
+keymap("s", "p", "p", opts)
 
--- Telescope --
-
-if vim.fn.has("mac") == 0 then
-	keymap("n", "<C-O>", "<cmd>Telescope find_files<cr>", opts)
-	keymap("n", "<C-M-O>", "<cmd>Telescope git_filescr>", opts)
-	keymap("n", "<C-F>", "<cmd>Telescope live_grep<cr>", opts)
+local wk_ok, wk = pcall(require, "which-key")
+if not wk_ok then
+	print("Warning: which-key not found!")
 end
-keymap("n", "<C-S-O>", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<M-C-S-O>", "<cmd>Telescope git_filescr>", opts)
-keymap("n", "<C-S-F>", "<cmd>Telescope live_grep<cr>", opts)
 
-keymap("n", "<leader>faf", "<cmd>Telescope find_files<cr>", opts)
-keymap("n", "<leader>ff", "<cmd>Telescope git_files<cr>", opts)
-keymap("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", opts)
-keymap("n", "<leader>tt", "<cmd>Telescope<cr>", opts)
-keymap("n", "<leader>fk", "<cmd>Telescope keymaps<cr>", opts)
-keymap("n", "<leader>b", "<cmd>Telescope buffers<cr>", opts)
+-- Anything starting with <leader> goes here!
+wk.setup({
+	plugins = {
+		-- consider setting registers = false
+		presets = {
+			operators = false, -- dyc etc
+			motions = false, -- hjkl etc
+			nav = false, -- window nav is easy
+		},
+	},
+})
+wk.register({
+	e = { "<cmd>NvimTreeFocus<cr>", "Explorer" },
+	o = { "<cmd>Telescope find_files<cr>", "Open File" },
+	w = { "<cmd>w<cr>", "Write File" },
+	b = { "<cmd>Telescope buffers<cr>", "Buffer Pick" },
+	f = {
+		name = "Find...",
+		f = { "<cmd>Telescope live_grep_args<cr>", "Text" },
+		k = { "<cmd>Telescope keymaps<cr>", "Keymaps" },
+		h = { "<cmd>Telescope help_tags<cr>", "Help" },
+		c = { "<cmd>Telescope commands", "Commands" },
+		t = { "<cmd>Telescope<cr>", "Telescope" },
+	},
+	t = { "<cmd>TroubleToggle<cr>", "Trouble" },
+	-- n create files/scratch files
+	s = {
+		name = "Split...",
+		h = { "<C-w>s", "Horizontal" },
+		v = { "<C-w>v", "Vertical" },
+	},
+	g = {
+		name = "Git...",
+		s = { "<cmd>Telescope git_status<cr>", "Status" },
+		f = { "<cmd>Telescope git_files<cr>", "Files" },
+		b = { "<cmd>Telescope git_branches<cr>", "Branches" },
+		l = { "<cmd>Telescope git_commits<cr>", "Log (commits)" },
+	},
+	h = { "<cmd>nohl<cr>", "which_key_ignore" },
+}, { prefix = "<leader>" })

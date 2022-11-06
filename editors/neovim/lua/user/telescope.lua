@@ -4,14 +4,7 @@ if not status_ok then
 end
 
 local actions = require("telescope.actions") -- no pcall, unlikely to fail if telescope fails
-
-local send_to_qf = actions.send_to_qflist
-local ok_qf, custom_send_to_qf = pcall(require, "telescope-custom.quickfix")
-if ok_qf then
-	send_to_qf = custom_send_to_qf
-end
-
--- local custom_refs = require("telescope-custom.lsp").lsp_references
+local trouble = require("trouble.providers.telescope")
 
 -- The actual config --
 telescope.setup({
@@ -38,15 +31,13 @@ telescope.setup({
 				["<CR>"] = actions.select_default,
 				["<C-x>"] = actions.select_horizontal,
 				["<C-v>"] = actions.select_vertical,
-				["<C-t>"] = actions.select_tab,
+				["<C-t>"] = trouble.open_with_trouble,
 
 				["<PageUp>"] = actions.preview_scrolling_up,
 				["<PageDown>"] = actions.preview_scrolling_down,
 
 				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
-				["<C-q>"] = send_to_qf, -- + actions.open_qflist,
-				-- ["<M-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
 				["<C-l>"] = actions.complete_tag,
 				["<C-_>"] = actions.which_key, -- keys from pressing <C-/>
 			},
@@ -56,7 +47,7 @@ telescope.setup({
 				["<CR>"] = actions.select_default,
 				["<C-x>"] = actions.select_horizontal,
 				["<C-v>"] = actions.select_vertical,
-				["<C-t>"] = actions.select_tab,
+				["<C-t>"] = trouble.open_with_trouble,
 
 				["<Tab>"] = actions.toggle_selection + actions.move_selection_worse,
 				["<S-Tab>"] = actions.toggle_selection + actions.move_selection_better,
@@ -85,12 +76,14 @@ telescope.setup({
 		},
 	},
 	extensions = {
-		["ui-select"] = {},
 		media_files = {
 			-- filetypes whitelist
 			-- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
 			filetypes = { "png", "webp", "jpg", "jpeg" },
 			find_cmd = "rg", -- find command (defaults to `fd`)
+		},
+		live_grep_args = {
+			auto_quoting = true,
 		},
 		-- Your extension configuration goes here:
 		-- extension_name = {
@@ -100,4 +93,4 @@ telescope.setup({
 	},
 })
 telescope.load_extension("media_files")
-telescope.load_extension("ui-select")
+telescope.load_extension("live_grep_args")

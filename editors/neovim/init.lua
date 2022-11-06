@@ -1,5 +1,5 @@
-require("user.keymaps")
 require("user.plugins")
+require("user.keymaps")
 require("user.colorscheme")
 require("user.cmp")
 require("user.lsp")
@@ -10,6 +10,7 @@ require("user.autopairs")
 require("user.treesitter")
 require("user.bufferline")
 require("user.lualine")
+require("user.dressing")
 local opts = require("user.options")
 
 ---@diagnostic disable-next-line: lowercase-global
