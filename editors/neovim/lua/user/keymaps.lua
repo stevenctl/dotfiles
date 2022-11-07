@@ -74,7 +74,10 @@ wk.setup({
 })
 wk.register({
 	e = { "<cmd>NvimTreeFocus<cr>", "Explorer" },
+	-- o = { "<cmd>Telescope find_files<cr>", "Open File" },
 	o = { "<cmd>Telescope find_files<cr>", "Open File" },
+	O = { "<cmd>Telescope oldfiles<cr>", "Recent Files" },
+	p = { "<cmd>Telescope projects<cr>", "Open Project" },
 	w = { "<cmd>w<cr>", "Write File" },
 	b = { "<cmd>Telescope buffers<cr>", "Buffer Pick" },
 	f = {

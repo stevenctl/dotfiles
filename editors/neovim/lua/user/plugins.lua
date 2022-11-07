@@ -129,7 +129,14 @@ return packer.startup(function(use)
 	-- Help with keymaps
 	use("folke/which-key.nvim")
 
+	-- highlight current word
 	use("RRethy/vim-illuminate")
+
+	-- dashboard
+	use("goolord/alpha-nvim")
+
+	-- projects
+	use("ahmedkhalf/project.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
