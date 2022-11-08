@@ -33,8 +33,9 @@ local function setopts()
 	-- vim.cmd "set iskeyword+=-					-- this would make "-" get skipped with w/b motions as if it's part of the keyword
 	vim.cmd("set formatoptions-=o") -- some plugin is messing this up :(
 	vim.cmd("au TextYankPost * silent! lua vim.highlight.on_yank({ timeout = 200 })")
-	-- vim.opt.foldmethod = "expr"
-	-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+	vim.opt.foldlevel = 20
+	vim.opt.foldmethod = "expr"
+	vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 end
 setopts()
 return { set_user_opts = setopts }

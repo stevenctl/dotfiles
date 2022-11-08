@@ -65,11 +65,20 @@ return packer.startup(function(use)
 	use("neovim/nvim-lspconfig") -- enable LSP
 	use("williamboman/mason.nvim") -- easy install lsp
 	use("williamboman/mason-lspconfig.nvim") -- easy install lsp
+	use({
+		"j-hui/fidget.nvim",
+		config = function()
+			require("fidget").setup({})
+		end,
+	})
 
 	-- formatting and linting (also uses mason)
 	use("jose-elias-alvarez/null-ls.nvim") -- LSP for lint & format
 	use("jayp0521/mason-null-ls.nvim") -- allow mason to manage linters & formatters
 	use("jayp0521/mason-nvim-dap.nvim") -- allow mason to manage DAP
+
+	-- DAP
+	use("mfussenegger/nvim-dap")
 
 	-- Telescope to search the stars...
 	use({ "nvim-telescope/telescope.nvim", requires = {
@@ -138,8 +147,14 @@ return packer.startup(function(use)
 
 	-- projects
 	use("ahmedkhalf/project.nvim")
-	-- DAP
-	use("mfussenegger/nvim-dap")
+
+	-- test runner
+	use({
+		"klen/nvim-test",
+		config = function()
+			require("nvim-test").setup()
+		end,
+	})
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

@@ -15,10 +15,10 @@ local function button(key, text, cmd)
 end
 
 dashboard.section.buttons.val = {
-	button("e", " New file", "<cmd>ene <CR>"),
-	button("SPC o", " Open file"),
+	button("SPC p", " Open project"),
 	button("SPC O", " Open recent file"),
-	button("SPC p", "ﮛ Open project"),
+	button("SPC o", " Open file"),
+	button("e", " New file", "<cmd>ene <CR>"),
 	button("SPC f f", " Find text"),
 	-- button("SPC f r", "  Frecency/MRU"),
 	-- button("SPC f m", "  Jump to bookmarks"),

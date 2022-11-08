@@ -5,4 +5,16 @@ end
 
 projects.setup({
 	silent_chdir = false,
+	patterns = {
+		"Cargo.toml",
+		"go.mod",
+		"requirements.txt",
+		".git",
+		"_darcs",
+		".hg",
+		".bzr",
+		".svn",
+		"Makefile",
+		"package.json",
+	},
 })
