@@ -151,11 +151,24 @@ return packer.startup(function(use)
 	-- test runner
 	use({
 		"klen/nvim-test",
+		requires = "akinsho/toggleterm.nvim",
 		config = function()
-			require("nvim-test").setup()
+			require("nvim-test").setup({ term = "toggleterm" })
 		end,
 	})
 
+	-- toggleterm
+	use({
+		"akinsho/toggleterm.nvim",
+		tag = "*",
+		config = function()
+			require("toggleterm").setup({
+				-- TODO this must be in sync with keymaps file for which-key to be accurate
+				terminal_mappings = true,
+				open_mapping = "<M-`>",
+			})
+		end,
+	})
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if PACKER_BOOTSTRAP then

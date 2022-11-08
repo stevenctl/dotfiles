@@ -15,6 +15,8 @@ for _, mode in ipairs({ "n", "i", "v" }) do
 		keymap(mode, key, "<ESC>", opts)
 	end
 end
+-- Easy Exit Term
+keymap("t", "<S-ESC>", "<C-\\><C-N>", opts)
 
 -- Normal --
 -- Jetbrains-like formatting
@@ -88,8 +90,16 @@ wk.register({
 		c = { "<cmd>Telescope commands", "Commands" },
 		t = { "<cmd>Telescope<cr>", "Telescope" },
 	},
-	t = { "<cmd>TroubleToggle<cr>", "Trouble" },
-	-- n create files/scratch files
+	t = {
+		name = "Test...",
+		r = { ":TestNearest<cr>", "Run" },
+		f = { ":TestFile<cr>", "File" },
+		s = { ":TestSuite<cr>", "Suite" },
+		l = { ":TestLast<cr>", "Last" },
+		g = { ":TestVisit<cr>", "Goto last" },
+	},
+	d = { "<cmd>TroubleToggle<cr>", "Trouble" },
+	-- TODO n create files/scratch files
 	s = {
 		name = "Split...",
 		h = { "<C-w>s", "Horizontal" },
@@ -103,4 +113,5 @@ wk.register({
 		l = { "<cmd>Telescope git_commits<cr>", "Log (commits)" },
 	},
 	h = { "<cmd>nohl<cr>", "which_key_ignore" },
+	["<CR>"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "" },
 }, { prefix = "<leader>" })
