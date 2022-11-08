@@ -69,6 +69,7 @@ return packer.startup(function(use)
 	-- formatting and linting (also uses mason)
 	use("jose-elias-alvarez/null-ls.nvim") -- LSP for lint & format
 	use("jayp0521/mason-null-ls.nvim") -- allow mason to manage linters & formatters
+	use("jayp0521/mason-nvim-dap.nvim") -- allow mason to manage DAP
 
 	-- Telescope to search the stars...
 	use({ "nvim-telescope/telescope.nvim", requires = {
@@ -137,6 +138,8 @@ return packer.startup(function(use)
 
 	-- projects
 	use("ahmedkhalf/project.nvim")
+	-- DAP
+	use("mfussenegger/nvim-dap")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins

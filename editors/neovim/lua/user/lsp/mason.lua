@@ -32,6 +32,12 @@ local null_ls_tools = {
 	},
 }
 
+-- DAP
+local daps = {
+	"lldb", -- Rust, probably others
+	"delve", -- Go
+}
+
 -- General Mason Settings
 local settings = {
 	ui = {
@@ -137,3 +143,16 @@ local function formatters_and_linters()
 	null_ls.setup(config)
 end
 formatters_and_linters()
+
+local function setup_daps()
+	local ok, mason_daps = pcall(require, "mason-nvim-dap")
+	if not ok then
+		return
+	end
+	mason_daps.setup({
+		ensure_installed = daps,
+		automatic_installation = true,
+		automatic_setup = true,
+	})
+end
+setup_daps()
