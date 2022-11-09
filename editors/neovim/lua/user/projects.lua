@@ -5,6 +5,7 @@ end
 
 projects.setup({
 	silent_chdir = false,
+	detection_methods = { "pattern" }, -- lsp is annoying with multiple langs
 	patterns = {
 		"Cargo.toml",
 		"go.mod",

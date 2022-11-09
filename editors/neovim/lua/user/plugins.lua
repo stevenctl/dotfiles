@@ -75,10 +75,11 @@ return packer.startup(function(use)
 	-- formatting and linting (also uses mason)
 	use("jose-elias-alvarez/null-ls.nvim") -- LSP for lint & format
 	use("jayp0521/mason-null-ls.nvim") -- allow mason to manage linters & formatters
-	use("jayp0521/mason-nvim-dap.nvim") -- allow mason to manage DAP
 
 	-- DAP
 	use("mfussenegger/nvim-dap")
+	use("jayp0521/mason-nvim-dap.nvim") -- allow mason to manage DAP
+	use({ "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } })
 
 	-- Telescope to search the stars...
 	use({ "nvim-telescope/telescope.nvim", requires = {

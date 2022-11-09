@@ -36,6 +36,8 @@ local function setopts()
 	vim.opt.foldlevel = 20
 	vim.opt.foldmethod = "expr"
 	vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+	vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "Number", linehl = "", numhl = "" })
+	vim.fn.sign_define("DapBreakpointRejected", { text = "", texthl = "Error", linehl = "", numhl = "" })
 end
 setopts()
 return { set_user_opts = setopts }

@@ -154,5 +154,6 @@ local function setup_daps()
 		automatic_installation = true,
 		automatic_setup = true,
 	})
+	mason_daps.setup_handlers()
 end
 setup_daps()

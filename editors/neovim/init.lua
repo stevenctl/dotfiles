@@ -13,6 +13,7 @@ require("user.lualine")
 require("user.dressing")
 require("user.dashboard")
 require("user.projects")
+require("user.dap")
 local opts = require("user.options")
 
 ---@diagnostic disable-next-line: lowercase-global

@@ -21,7 +21,7 @@ keymap("t", "<S-ESC>", "<C-\\><C-N>", opts)
 -- Normal --
 -- Jetbrains-like formatting
 keymap("n", "<M-C-L>", ":doautocmd BufWritePre<cr>", opts)
-keymap("n", "<C-S-O>", ":echoerr 'This is not Jetbrains (try <leader>o)'<cr>", opts) -- old habits..
+keymap("n", "<C-S-O>", ":echoerr 'This is not Jetbrains (try SPC o)'<cr>", opts) -- old habits..
 -- Better Redo
 keymap("n", "U", "<C-r>", opts)
 
@@ -92,13 +92,27 @@ wk.register({
 	},
 	t = {
 		name = "Test...",
-		r = { ":TestNearest<cr>", "Run" },
-		f = { ":TestFile<cr>", "File" },
-		s = { ":TestSuite<cr>", "Suite" },
-		l = { ":TestLast<cr>", "Last" },
-		g = { ":TestVisit<cr>", "Goto last" },
+		t = { ":TestNearest<cr>", "Run" },
+		f = { ":TestFile<cr>", "Run File" },
+		s = { ":TestSuite<cr>", "Run Suite" },
 	},
-	d = { "<cmd>TroubleToggle<cr>", "Trouble" },
+	d = {
+		name = "Debug...",
+		b = { ":lua require('dap').toggle_breakpoint()<cr>", "Breakpoint" },
+		c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+		C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
+		D = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
+		g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
+		i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
+		o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
+		u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
+		p = { "<cmd>lua require'dap'.pause()<cr>", "Pause" },
+		r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
+		s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
+		q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
+		U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
+	},
+	q = { "<cmd>TroubleToggle<cr>", "Trouble" },
 	-- TODO n create files/scratch files
 	s = {
 		name = "Split...",
