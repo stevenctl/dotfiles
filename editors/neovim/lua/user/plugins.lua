@@ -166,7 +166,7 @@ return packer.startup(function(use)
 			require("toggleterm").setup({
 				-- TODO this must be in sync with keymaps file for which-key to be accurate
 				terminal_mappings = true,
-				open_mapping = "<M-`>",
+				open_mapping = "<leader>`",
 			})
 		end,
 	})
