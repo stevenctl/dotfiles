@@ -11,3 +11,11 @@ function download_istio_bin() {
 	popd
 }
 
+function istioctl_install() {
+	if [ "$(pwd)" != "$ISTIO" ]; then
+		echo "Must run from $ISTIO"
+		return 1
+	fi
+	go run ./istioctl/cmd/istioctl install -y --manifests manifests --set hub=$HUB --set tag=$TAG $@
+}
+
