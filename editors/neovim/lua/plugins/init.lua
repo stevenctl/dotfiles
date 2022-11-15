@@ -193,7 +193,7 @@ local plugins = {
   -- Only load whichkey after all the gui
   ["folke/which-key.nvim"] = {
     module = "which-key",
-    keys = { "<leader>", '"', "'", "`" },
+    keys = { "<leader>", '"', "'", "`", "g" },
     config = function()
       require "plugins.configs.whichkey"
     end,

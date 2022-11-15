@@ -18,6 +18,14 @@ return {
         },
       }
     },
+    ["williamboman/mason-lspconfig.nvim"] = {
+    },
+    ["neovim/nvim-lspconfig"] = {
+      config = function()
+        require "plugins.configs.lspconfig"
+        require "custom.lspconfig"
+      end,
+    },
     ["nvim-treesitter/nvim-treesitter"] = {
       override_options = {
         ensure_installed = {
