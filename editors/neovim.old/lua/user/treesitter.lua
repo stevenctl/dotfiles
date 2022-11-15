@@ -45,6 +45,6 @@ treesitter.setup({
 	auto_install = true,
 	sync_install = false,
 	auto_update = true,
-	ensure_installed = "all",
+	ensure_installed = specific_grammars,
 	additional_vim_regex_highlighting = true,
 })

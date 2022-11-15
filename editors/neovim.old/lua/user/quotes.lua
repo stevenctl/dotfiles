@@ -107,7 +107,6 @@ local quotes = {
 		"Anonymous #16",
 	},
 	{
-		'"It\'s impossible." said pride.\n"It\'s risky." said experience.\n"It\'s pointless." said reason.\n"Give it a try." whispered the heart.\n...\n"What the hell was that?!?!?!?!?!" shouted the anus two minutes later.',
 		"",
 		"Anonymous #22",
 	},
@@ -145,11 +144,6 @@ local quotes = {
 		'Sometimes when I\'m writing Javascript I want to throw up my hands and say "this is bullshit!"\nbut I can never remember what "this" refers to.',
 		"",
 		"Anonymous #46",
-	},
-	{
-		"If you were born in Israel, you'd probably be Jewish.\nIf you were born in Saudi Arabia, you'd probably be Muslim.\nIf you were born in India, you'd probably be Hindu.\nBut because you were born in North America, you're Christian.\nYour faith is not inspired by some divine, constant truth.\nIt's simply geography.",
-		"",
-		"Anonymous #48",
 	},
 	{
 		"There are 2 types of people in this world:\nPeople who say they pee in the shower, and the dirty fucking liars.",
@@ -243,11 +237,6 @@ local quotes = {
 		"Anonymous #97",
 	},
 	{
-		"It's always sad when a man and his dick share only one brain...\nand it turns out to be the dick's.",
-		"",
-		"Anonymous #101",
-	},
-	{
 		"If IE is brave enough to ask you to set it as your default browser,\ndon't tell me you dare not ask a girl out.",
 		"",
 		"Anonymous #102",
@@ -302,11 +291,6 @@ local quotes = {
 		"Theory is when you know something, but it doesn't work.\nPractice is when something works, but you don't know why.\nProgrammers combine theory and practice: nothing works and they don't know why.",
 		"",
 		"Anonymous #135",
-	},
-	{
-		"Documentation is like sex:\nwhen it's good, it's very, very good;\nwhen it's bad, it's better than nothing.",
-		"",
-		"Anonymous #136",
 	},
 	{
 		"Chinese food to go: $16\nGas to go get the food: $2\nDrove home just to realize they forgot one of your containers: RICELESS",
@@ -438,7 +422,6 @@ local quotes = {
 	{ "Going to McDonald's for a salad is like going to a whore for a hug.", "", "Anonymous #6" },
 	{ "I need a six month holiday, TWICE A YEAR!", "", "Anonymous #7" },
 	{ "Everything is a knife if you're strong enough.", "", "Anonymous #8" },
-	{ "I'M A FUCKING ANIMAL IN BED.\nMore specifically a koala.", "", "Anonymous #9" },
 	{ "Etc.\n\n(Abb.) End of Thinking Capacity.\n", "", "Anonymous #10" },
 	{ "We stopped checking for monsters under our bed, when we realized they were inside us.", "", "Anonymous #11" },
 	{ "I would rather check my facebook than face my checkbook.", "", "Anonymous #12" },

@@ -1,2 +1,5 @@
-temp/
-plugin/
+plugin
+spell
+ftplugin
+coc-settings.json
+.luarc.json
