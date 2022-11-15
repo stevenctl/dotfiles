@@ -16,14 +16,25 @@ return {
           "rust-analyzer",
           "rustfmt",
         },
-      }
+      },
     },
     ["williamboman/mason-lspconfig.nvim"] = {
+      after = "mason.nvim",
     },
     ["neovim/nvim-lspconfig"] = {
+      after = "mason-lspconfig.nvim",
       config = function()
         require "plugins.configs.lspconfig"
         require "custom.lspconfig"
+      end,
+    },
+    ["jose-elias-alvarez/null-ls.nvim"] = {
+      after = "nvim-lspconfig",
+    },
+    ["jayp0521/mason-null-ls.nvim"] = {
+      after = "null-ls.nvim",
+      config = function()
+        require "custom.null-ls"
       end,
     },
     ["nvim-treesitter/nvim-treesitter"] = {
@@ -61,7 +72,7 @@ return {
           "wgsl",
           "glsl",
         },
-      }
-    }
-  }
+      },
+    },
+  },
 }

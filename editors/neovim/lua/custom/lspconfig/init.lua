@@ -13,7 +13,8 @@ for _, package_name in ipairs(mason_items) do
       on_attach = on_attach,
       capabilities = capabilities,
     }
-    local settings_ok, settings = pcall(require, "custom.lspconfig"..lsp)
+    local cfg_path = "custom.lspconfig."..lsp
+    local settings_ok, settings = pcall(require, cfg_path)
     if settings_ok then
       cfg.settings = settings
     end
