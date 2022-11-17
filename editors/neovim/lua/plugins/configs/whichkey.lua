@@ -4,6 +4,7 @@ if not present then
   return
 end
 
+
 require("base46").load_highlight "whichkey"
 
 local options = {
@@ -38,9 +39,4 @@ local options = {
 
 options = require("core.utils").load_override(options, "folke/which-key.nvim")
 wk.setup(options)
-wk.register({
-  f = {name="find"},
-  v = {name="vcs"},
-  g = {name="goto"},
-}, {prefix="<leader>"})
 

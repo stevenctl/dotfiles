@@ -43,6 +43,10 @@ M.general = {
     -- IDE/Config management
     ["<leader>um"] = {":MasonInstallAll<CR>", "Mason"},
     ["<leader>up"] = {":PackerSync<CR>", "Packer"},
+
+    -- Splits
+    ["<leader>sv"] = {":vsplit<cr>", "Vertical Split"},
+    ["<leader>sh"] = {":split<cr>", "Vertical Split"},
   },
 
   t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
