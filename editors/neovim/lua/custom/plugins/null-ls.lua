@@ -2,7 +2,8 @@ local present, null_ls = pcall(require, "null-ls")
 if not present then
    return
 end
-local b = null_ls.builtins
+
+-- Enables anything null-ls related that was installed via mason
 local mason_items = require("core.utils").load_override({}, "williamboman/mason.nvim").ensure_installed
 local mapping = require("mason-null-ls.mappings.source").package_to_null_ls;
 local source_types = {"formatting", "diagnostics", "hover", "completion", "code_actions"}

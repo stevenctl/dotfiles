@@ -4,7 +4,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # Golang
 GO_BIN_PATH="/usr/local/go/bin"
-WEBI_GO="$(ls $HOME/.local/opt/ | grep go-v)"
+WEBI_GO="$([ -d $HOME/.local/opt/ ] && ls $HOME/.local/opt/ | grep go-v)"
 [ -n "${WEBI_GO}" ] && GO_BIN_PATH="$HOME/.local/opt/${WEBI_GO}/bin"
 export PATH="$PATH:$GO_BIN_PATH"
 export PATH="$PATH:$HOME/go/bin"
