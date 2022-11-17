@@ -1,4 +1,5 @@
 export ISTIO=$HOME/go/src/istio.io/istio
+export ZTUNNEL=$ISTIO/../ztunnel
 export ISTIO_VERSION=1.15.1
 export ISTIO_DIR="$HOME/istio-${ISTIO_VERSION}"
 export PATH="$PATH:${ISTIO_DIR}/bin"

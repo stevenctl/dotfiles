@@ -1,7 +1,18 @@
 -- For MAPPINGS and whichkey I modified `core`. Need to fix that and get back on main chad.
 
 return {
+  ui = { theme = "doomchad" },
   plugins = {
+    ["nvim-telescope/telescope.nvim"] = {
+      requires = {
+        "nvim-telescope/telescope-live-grep-args.nvim",
+      },
+      config = function()
+        require "plugins.configs.telescope"
+        ---@diagnostic disable-next-line: different-requires
+        require("telescope").load_extension "live_grep_args"
+      end,
+    },
     ["williamboman/mason.nvim"] = {
       override_options = {
         ensure_installed = {

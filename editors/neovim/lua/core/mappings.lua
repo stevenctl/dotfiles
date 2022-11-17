@@ -23,7 +23,7 @@ M.general = {
     ["<ESC>"] = { "<cmd> noh <CR>", "no highlight" },
 
     -- sane redu
-    ["U"] = {"R"},
+    ["U"] = {"<C-R>", "redo"},
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "window left" },
     ["<C-l>"] = { "<C-w>l", "window right" },
@@ -254,7 +254,7 @@ M.telescope = {
     ["<leader>O"] = { "<cmd> Telescope oldfiles <CR>", "recent file" },
 
     -- find
-    ["<leader>ff"] = { "<cmd> Telescope live_grep <CR>", "live grep" },
+    ["<leader>ff"] = { "<cmd> Telescope live_grep_args <CR>", "live grep" },
     ["<leader>fb"] = { "<cmd> Telescope buffers <CR>", "buffers" },
     ["<leader>fh"] = { "<cmd> Telescope help_tags <CR>", "help pages" },
     ["<leader>fa"] = { "<cmd> Telescope find_files follow=true no_ignore=true hidden=true <CR>", "all files" },
