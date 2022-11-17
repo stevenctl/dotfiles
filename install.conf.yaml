@@ -28,7 +28,8 @@
   - ["curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path -c rust-analyzer -c clippy", "Installing rust"]
 
 # Go
-
+- shell:
+  - ["curl -fsS https://webinstall.dev/golang@1.19 | bash", "Installing go"]
 
 # gcloud
 - shell:

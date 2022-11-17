@@ -5,7 +5,7 @@ elif which brew; then
 	brew install zsh
 elif which apt-get; then
 	sudo apt-get update
-	sudo apt-get -y install zsh
+	sudo apt-get -y install zsh unzip
 else
 	echo "Either brew or apt-get must be available".
 	exit 1

@@ -1,11 +1,14 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
-
+print("3")
 local lspconfig = require("lspconfig")
 
+print("4")
 local mason_items = require("core.utils").load_override({}, "williamboman/mason.nvim").ensure_installed
-local mapping = require("mason-lspconfig.mappings.server").package_to_lspconfig;
+print("5")
+local mapping = require("custom.lspconfig.mapping").package_to_lspconfig;
 
+print("6")
 for _, package_name in ipairs(mason_items) do
   local lsp = mapping[package_name]
   if lsp then
