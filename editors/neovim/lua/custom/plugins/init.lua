@@ -1,4 +1,5 @@
 return {
+  -- Quality of Life
   ["folke/which-key.nvim"] = {
     module = "which-key",
     keys = { "<leader>", '"', "'", "`", "g" },
@@ -20,8 +21,14 @@ return {
       require("telescope").load_extension "live_grep_args"
     end,
   },
+  -- LSP, DAP, Lint, Format
+  ["simrat39/rust-tools.nvim" ] = {
+    config = function ()
+    end
+  },
   ["williamboman/mason.nvim"] = {
     override_options = require "custom.plugins.mason",
+    after = "rust-tools.nvim",
   },
   ["williamboman/mason-lspconfig.nvim"] = {
     after = "mason.nvim",
