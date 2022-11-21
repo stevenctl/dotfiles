@@ -1,6 +1,6 @@
 -- For MAPPINGS and whichkey I modified `core`. Need to fix that and get back on main chad.
 
 return {
-  ui = { theme = "kanagawa" },
+  ui = { theme = "decay" },
   plugins = require("custom.plugins"),
 }

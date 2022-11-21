@@ -20,7 +20,6 @@ for _, package_name in ipairs(mason_items) do
     end
 
     if lsp == "rust_analyzer" then
-      print("setup rust tools!!")
       require("rust-tools").setup({
         server = cfg
       })

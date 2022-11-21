@@ -21,7 +21,7 @@ return {
       require("telescope").load_extension "live_grep_args"
     end,
   },
-  -- LSP, DAP, Lint, Format
+  -- LSP, Lint, Format
   ["simrat39/rust-tools.nvim" ] = {
     config = function ()
     end
@@ -51,5 +51,22 @@ return {
   },
   ["nvim-treesitter/nvim-treesitter"] = {
     override_options = require "custom.plugins.treesitter",
+  },
+  -- DAP
+  ["mfussenegger/nvim-dap"] = {
+    after="mason-null-ls.nvim",
+    config = function ()
+    end
+  },
+  ["rcarriga/nvim-dap-ui"] = {
+    after="nvim-dap",
+    config = function ()
+    end
+  },
+  ["ravenxrz/DAPInstall.nvim"] = {
+    after="nvim-dap-ui",
+    config = function ()
+      require "custom.plugins.dap"
+    end
   },
 }
