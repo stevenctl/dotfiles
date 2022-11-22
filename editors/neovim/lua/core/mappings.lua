@@ -270,6 +270,8 @@ M.telescope = {
     ["<leader>vb"] = { "<cmd> Telescope git_branches <CR>", "git branches" },
     ["<leader>vl"] = { "<cmd> Telescope git_commits <CR>", "git commits" },
     ["<leader>vs"] = { "<cmd> Telescope git_status <CR>", "git status" },
+    ["<leader>vd"] = { "<cmd> DiffviewOpen <CR>", "git diff" },
+    ["<leader>vh"] = { "<cmd> DiffviewFileHistory <CR>", "git history" },
   },
 }
 

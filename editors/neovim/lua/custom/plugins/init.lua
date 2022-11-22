@@ -21,10 +21,11 @@ return {
       require("telescope").load_extension "live_grep_args"
     end,
   },
+  -- Git
+  ["sindrets/diffview.nvim"] = {},
   -- LSP, Lint, Format
-  ["simrat39/rust-tools.nvim" ] = {
-    config = function ()
-    end
+  ["simrat39/rust-tools.nvim"] = {
+    config = function() end,
   },
   ["williamboman/mason.nvim"] = {
     override_options = require "custom.plugins.mason",
@@ -54,19 +55,17 @@ return {
   },
   -- DAP
   ["mfussenegger/nvim-dap"] = {
-    after="mason-null-ls.nvim",
-    config = function ()
-    end
+    after = "mason-null-ls.nvim",
+    config = function() end,
   },
   ["rcarriga/nvim-dap-ui"] = {
-    after="nvim-dap",
-    config = function ()
-    end
+    after = "nvim-dap",
+    config = function() end,
   },
   ["ravenxrz/DAPInstall.nvim"] = {
-    after="nvim-dap-ui",
-    config = function ()
+    after = "nvim-dap-ui",
+    config = function()
       require "custom.plugins.dap"
-    end
+    end,
   },
 }
