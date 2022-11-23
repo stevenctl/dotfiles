@@ -53,6 +53,22 @@ return {
   ["nvim-treesitter/nvim-treesitter"] = {
     override_options = require "custom.plugins.treesitter",
   },
+  -- testing
+  ["andythigpen/nvim-coverage"] = {},
+  ["nvim-neotest/neotest"] = {
+    config = function()
+      require "custom.plugins.neotest"
+    end,
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      "vim-test/vim-test",
+      "nvim-neotest/neotest-vim-test",
+      "rouge8/neotest-rust",
+      "nvim-neotest/neotest-go",
+    },
+  },
   -- DAP
   ["mfussenegger/nvim-dap"] = {
     after = "mason-null-ls.nvim",

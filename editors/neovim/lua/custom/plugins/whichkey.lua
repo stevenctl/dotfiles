@@ -10,4 +10,5 @@ wk.register({
   g = {name="goto"},
   u = {name="update"},
   s = {name="split"},
+  t = {name="test"},
 }, {prefix="<leader>"})

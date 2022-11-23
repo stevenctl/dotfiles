@@ -42,11 +42,20 @@ M.general = {
 
     -- IDE/Config management
     ["<leader>um"] = {":MasonInstallAll<CR>", "Mason"},
-    ["<leader>up"] = {":PackerSync<CR>", "Packer"},
+    ["<leader>up"] = {":PackerCompile<CR>:PackerSync<CR>", "Packer"},
 
     -- Splits
     ["<leader>sv"] = {":vsplit<cr>", "Vertical Split"},
     ["<leader>sh"] = {":split<cr>", "Vertical Split"},
+
+    -- Testing
+    ["<leader>tr"] = {":lua require('neotest').run.run()<cr>", "Run Nearest"},
+    ["<leader>tf"] = {":lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run File"},
+    ["<leader>tl"] = {":lua require('neotest').summary.toggle()<cr>", "Toggle Summary"},
+    ["<leader>to"] = {":lua require('neotest').output_panel.toggle()<cr>", "Toggle Output"},
+    ["<leader>tn"] = {":lua require('neotest').jump.next()<cr>", "Jump Next"},
+    ["<leader>tN"] = {":lua require('neotest').jump.prev()<cr>", "Jump Prev"},
+
   },
 
   t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
