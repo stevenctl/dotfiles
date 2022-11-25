@@ -5,9 +5,9 @@ end
 
 neotest.setup({
   adapters = {
-    require("neotest-vim-test"),
-    -- require("neotest-rust"),
-    -- require("neotest-go"),
+    -- require("neotest-vim-test"),
+    require("neotest-rust"),
+    require("neotest-go"),
   },
 })
 

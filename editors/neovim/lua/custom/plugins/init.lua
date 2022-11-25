@@ -54,7 +54,6 @@ return {
     override_options = require "custom.plugins.treesitter",
   },
   -- testing
-  ["andythigpen/nvim-coverage"] = {},
   ["nvim-neotest/neotest"] = {
     config = function()
       require "custom.plugins.neotest"
@@ -65,9 +64,14 @@ return {
       "antoinemadec/FixCursorHold.nvim",
       "vim-test/vim-test",
       "nvim-neotest/neotest-vim-test",
-      "rouge8/neotest-rust",
+      "stevenctl/neotest-rust",
       "nvim-neotest/neotest-go",
     },
+  },
+  ["andythigpen/nvim-coverage"] = {
+    config = function() 
+      require "custom.plugins.coverage"
+    end,
   },
   -- DAP
   ["mfussenegger/nvim-dap"] = {
