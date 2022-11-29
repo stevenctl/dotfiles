@@ -7,8 +7,8 @@ coverage.setup {
   commands = true, -- create commands
   highlights = {
     -- customize highlight groups created by the plugin
-    covered = { fg = "#6F8" }, -- supports style, fg, bg, sp (see :h highlight-gui)
-    uncovered = { fg = "#fC0" },
+    covered = { fg = "#66FF88" }, -- supports style, fg, bg, sp (see :h highlight-gui)
+    uncovered = { fg = "#FFCC00" },
   },
   signs = {
     -- use your own highlight groups or text markers
@@ -21,5 +21,8 @@ coverage.setup {
   },
   lang = {
     -- customize language specific settings
+    rust={
+            coverage_command = "grcov ${cwd}/out/rust/llvm-cov-target -s ${cwd} --binary-path ./out/rust/llvm-cov-target/debug -t coveralls --branch --ignore-not-existing --token NO_TOKEN",
+    }
   },
 }

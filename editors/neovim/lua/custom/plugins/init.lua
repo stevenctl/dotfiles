@@ -69,7 +69,7 @@ return {
     },
   },
   ["andythigpen/nvim-coverage"] = {
-    config = function() 
+    config = function()
       require "custom.plugins.coverage"
     end,
   },
