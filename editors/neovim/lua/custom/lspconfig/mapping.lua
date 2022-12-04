@@ -1,5 +1,3 @@
-local _ = require "mason-core.functional"
-
 local M = {}
 
 ---Maps lspconfig server config name to its corresponding package name.
@@ -134,6 +132,14 @@ M.lspconfig_to_package = {
     ["zls"] = "zls",
 }
 
-M.package_to_lspconfig = _.invert(M.lspconfig_to_package)
+function invert(t)
+  local T = {}
+  for k, v in pairs(t) do
+    T[v] = k
+  end
+  return T
+end
+
+M.package_to_lspconfig = invert(M.lspconfig_to_package)
 
 return M
