@@ -56,6 +56,16 @@ M.general = {
     ["<leader>tn"] = {":lua require('neotest').jump.next()<cr>", "Jump Next"},
     ["<leader>tN"] = {":lua require('neotest').jump.prev()<cr>", "Jump Prev"},
 
+    -- DAP
+    ["<leader>db"] = {"<cmd>lua require'dap'.toggle_breakpoint()<cr>", "toggle_breakpoint"},
+    ["<leader>dc"] = {"<cmd>lua require'dap'.continue()<cr>", "continue"},
+    ["<leader>di"] = {"<cmd>lua require'dap'.step_into()<cr>", "step_into"},
+    ["<leader>do"] = {"<cmd>lua require'dap'.step_over()<cr>", "step_over"},
+    ["<leader>dO"] = {"<cmd>lua require'dap'.step_out()<cr>", "step_out"},
+    ["<leader>dr"] = {"<cmd>lua require'dap'.repl.toggle()<cr>", "repl"},
+    ["<leader>dl"] = {"<cmd>lua require'dap'.run_last()<cr>", "run_last"},
+    ["<leader>du"] = {"<cmd>lua require'dapui'.toggle()<cr>", "toggle"},
+    ["<leader>dt"] = {"<cmd>lua require'dap'.terminate()<cr>", "terminate"},
   },
 
   t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },

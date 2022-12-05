@@ -10,5 +10,9 @@ return {
 
     "rust-analyzer",
     "rustfmt",
+
+    "python-lsp-server",
+    "debugpy",
+    "black",
   },
 }

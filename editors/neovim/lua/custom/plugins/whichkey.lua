@@ -6,6 +6,7 @@ end
 
 wk.register({
   f = {name="find"},
+  d = {name="debug"},
   v = {name="vcs"},
   g = {name="goto"},
   u = {name="update"},

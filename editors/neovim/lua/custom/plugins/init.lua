@@ -80,10 +80,6 @@ return {
   },
   ["rcarriga/nvim-dap-ui"] = {
     after = "nvim-dap",
-    config = function() end,
-  },
-  ["ravenxrz/DAPInstall.nvim"] = {
-    after = "nvim-dap-ui",
     config = function()
       require "custom.plugins.dap"
     end,
