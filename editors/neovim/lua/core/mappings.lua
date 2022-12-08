@@ -23,7 +23,7 @@ M.general = {
     ["<ESC>"] = { "<cmd> noh <CR>", "no highlight" },
 
     -- sane redu
-    ["U"] = {"<C-R>", "redo"},
+    ["U"] = { "<C-R>", "redo" },
     -- switch between windows
     ["<C-h>"] = { "<C-w>h", "window left" },
     ["<C-l>"] = { "<C-w>l", "window right" },
@@ -41,31 +41,31 @@ M.general = {
     ["<Down>"] = { 'v:count || mode(1)[0:1] == "no" ? "j" : "gj"', opts = { expr = true } },
 
     -- IDE/Config management
-    ["<leader>um"] = {":MasonInstallAll<CR>", "Mason"},
-    ["<leader>up"] = {":PackerCompile<CR>:PackerSync<CR>", "Packer"},
+    ["<leader>um"] = { ":MasonInstallAll<CR>", "Mason" },
+    ["<leader>up"] = { ":PackerCompile<CR>:PackerSync<CR>", "Packer" },
 
     -- Splits
-    ["<leader>sv"] = {":vsplit<cr>", "Vertical Split"},
-    ["<leader>sh"] = {":split<cr>", "Vertical Split"},
+    ["<leader>sv"] = { ":vsplit<cr>", "Vertical Split" },
+    ["<leader>sh"] = { ":split<cr>", "Vertical Split" },
 
     -- Testing
-    ["<leader>tr"] = {":lua require('neotest').run.run()<cr>", "Run Nearest"},
-    ["<leader>tf"] = {":lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run File"},
-    ["<leader>tl"] = {":lua require('neotest').summary.toggle()<cr>", "Toggle Summary"},
-    ["<leader>to"] = {":lua require('neotest').output_panel.toggle()<cr>", "Toggle Output"},
-    ["<leader>tn"] = {":lua require('neotest').jump.next()<cr>", "Jump Next"},
-    ["<leader>tN"] = {":lua require('neotest').jump.prev()<cr>", "Jump Prev"},
+    ["<leader>tr"] = { ":lua require('neotest').run.run()<cr>", "Run Nearest" },
+    ["<leader>tf"] = { ":lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run File" },
+    ["<leader>tl"] = { ":lua require('neotest').summary.toggle()<cr>", "Toggle Summary" },
+    ["<leader>to"] = { ":lua require('neotest').output_panel.toggle()<cr>", "Toggle Output" },
+    ["<leader>tn"] = { ":lua require('neotest').jump.next()<cr>", "Jump Next" },
+    ["<leader>tN"] = { ":lua require('neotest').jump.prev()<cr>", "Jump Prev" },
 
     -- DAP
-    ["<leader>db"] = {"<cmd>lua require'dap'.toggle_breakpoint()<cr>", "toggle_breakpoint"},
-    ["<leader>dc"] = {"<cmd>lua require'dap'.continue()<cr>", "continue"},
-    ["<leader>di"] = {"<cmd>lua require'dap'.step_into()<cr>", "step_into"},
-    ["<leader>do"] = {"<cmd>lua require'dap'.step_over()<cr>", "step_over"},
-    ["<leader>dO"] = {"<cmd>lua require'dap'.step_out()<cr>", "step_out"},
-    ["<leader>dr"] = {"<cmd>lua require'dap'.repl.toggle()<cr>", "repl"},
-    ["<leader>dl"] = {"<cmd>lua require'dap'.run_last()<cr>", "run_last"},
-    ["<leader>du"] = {"<cmd>lua require'dapui'.toggle()<cr>", "toggle"},
-    ["<leader>dt"] = {"<cmd>lua require'dap'.terminate()<cr>", "terminate"},
+    ["<leader>db"] = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "toggle_breakpoint" },
+    ["<leader>dc"] = { "<cmd>lua require'dap'.continue()<cr>", "continue" },
+    ["<leader>di"] = { "<cmd>lua require'dap'.step_into()<cr>", "step_into" },
+    ["<leader>do"] = { "<cmd>lua require'dap'.step_over()<cr>", "step_over" },
+    ["<leader>dO"] = { "<cmd>lua require'dap'.step_out()<cr>", "step_out" },
+    ["<leader>dr"] = { "<cmd>lua require'dap'.repl.toggle()<cr>", "repl" },
+    ["<leader>dl"] = { "<cmd>lua require'dap'.run_last()<cr>", "run_last" },
+    ["<leader>du"] = { "<cmd>lua require'dapui'.toggle()<cr>", "toggle" },
+    ["<leader>dt"] = { "<cmd>lua require'dap'.terminate()<cr>", "terminate" },
   },
 
   t = { ["<C-x>"] = { termcodes "<C-\\><C-N>", "escape terminal mode" } },
@@ -218,7 +218,6 @@ M.lspconfig = {
       "lsp code_action",
     },
 
-
     ["<leader>d"] = {
       function()
         vim.diagnostic.open_float()
@@ -253,7 +252,6 @@ M.lspconfig = {
       end,
       "lsp formatting",
     },
-
   },
 }
 
@@ -284,6 +282,7 @@ M.telescope = {
     ["<leader>fk"] = { "<cmd> Telescope keymaps <CR>", "find key mappings" },
     ["<leader>ft"] = { "<cmd> Telescope terms <CR>", "find terminal" },
     ["<leader>fT"] = { "<cmd> Telescope themes <CR>", "nvchad themes" },
+    ["<leader>fl"] = { "<cmd> Telescope resume <CR>", "last picker" },
 
     -- git
     ["<leader>vb"] = { "<cmd> Telescope git_branches <CR>", "git branches" },
@@ -381,7 +380,7 @@ M.gitsigns = {
 }
 
 M.whichkey = {
-  plugin = true
+  plugin = true,
 }
 
 return M
