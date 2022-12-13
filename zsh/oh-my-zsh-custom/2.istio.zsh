@@ -20,3 +20,10 @@ function istioctl_install() {
 	go run ./istioctl/cmd/istioctl install -y --manifests manifests --set hub=$HUB --set tag=$TAG $@
 }
 
+function split_bug_report() {
+  for n in nsdumps_cr nsdumps; do
+    rm -rf $n; mkdir $n
+  done
+  cat crs | yq '.items | groupby(.metadata.namespace) | .[]' -s '"nsdumps_cr/" + .[0].metadata.namespace + ".ns.yaml"'
+  cat k8s-resources | yq '.items | groupby(.metadata.namespace) | .[]' -s '"nsdumps/" + .[0].metadata.namespace + ".ns.yaml"'
+}
