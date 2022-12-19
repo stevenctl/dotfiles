@@ -14,5 +14,7 @@ return {
     "python-lsp-server",
     "debugpy",
     "black",
+
+    "markdownlint",
   },
 }
