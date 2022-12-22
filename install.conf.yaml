@@ -44,6 +44,7 @@
   - [./setup-neovim.sh, Installing neovim]
 - link:
     ~/.config/nvim: editors/neovim
+    ~/.config/lvim: editors/lvim
     ~/.vimrc: editors/.vimrc
 
 # ZSH
