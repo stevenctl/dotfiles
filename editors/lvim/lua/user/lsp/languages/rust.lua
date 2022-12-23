@@ -1,3 +1,7 @@
+--------------------------------------------------------
+-- If you're looking for keymaps, they're in ftplugin --
+--------------------------------------------------------
+
 ---@diagnostic disable-next-line: missing-parameter
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "rust_analyzer" })
 ---@diagnostic disable-next-line: missing-parameter
@@ -53,8 +57,34 @@ pcall(function()
     server = {
       on_attach = function(client, bufnr)
         require("lvim.lsp").common_on_attach(client, bufnr)
+        local _, _ = pcall(vim.lsp.codelens.refresh)
+        local map = function(mode, lhs, rhs, desc)
+          if desc then
+            desc = desc
+          end
+
+          vim.keymap.set(mode, lhs, rhs, { silent = true, desc = desc, buffer = bufnr, noremap = true })
+        end
         local rt = require "rust-tools"
-        vim.keymap.set("n", "K", rt.hover_actions.hover_actions, { buffer = bufnr })
+        map("n", "K", rt.hover_actions.hover_actions, "Hover Actions")
+        map("n", "<leader>cr", "<cmd>RustRunnables<Cr>", "Runnables")
+        map("n", "<leader>ct", "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test")
+        map("n", "<leader>cm", "<cmd>RustExpandMacro<Cr>", "Expand Macro")
+        map("n", "<leader>cc", "<cmd>RustOpenCargo<Cr>", "Open Cargo")
+        map("n", "<leader>cp", "<cmd>RustParentModule<Cr>", "Parent Module")
+        map("n", "<leader>cd", "<cmd>RustDebuggables<Cr>", "Debuggables")
+        map("n", "<leader>cv", "<cmd>RustViewCrateGraph<Cr>", "View Crate Graph")
+        map("n",
+          "<leader>cR",
+          "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
+          "Reload Workspace"
+        )
+        map("n", "<leader>co", "<cmd>RustOpenExternalDocs<Cr>", "Open External Docs")
+        map("n", "<leader>cy", "<cmd>lua require'crates'.open_repository()<cr>", "[crates] open repository")
+        map("n", "<leader>cP", "<cmd>lua require'crates'.show_popup()<cr>", "[crates] show popup")
+        map("n", "<leader>ci", "<cmd>lua require'crates'.show_crate_popup()<cr>", "[crates] show info")
+        map("n", "<leader>cf", "<cmd>lua require'crates'.show_features_popup()<cr>", "[crates] show features")
+        map("n", "<leader>cD", "<cmd>lua require'crates'.show_dependencies_popup()<cr>", "[crates] show dependencies")
       end,
 
       capabilities = require("lvim.lsp").common_capabilities(),
@@ -81,6 +111,7 @@ lvim.builtin.dap.on_config_done = function(dap)
       type = "codelldb",
       request = "launch",
       program = function()
+        ---@diagnostic disable-next-line
         return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
       end,
       cwd = "${workspaceFolder}",
@@ -91,26 +122,26 @@ end
 
 vim.api.nvim_set_keymap("n", "<m-d>", "<cmd>RustOpenExternalDocs<Cr>", { noremap = true, silent = true })
 
-lvim.builtin.which_key.mappings["c"] = {
-  name = "Rust",
-  r = { "<cmd>RustRunnables<Cr>", "Runnables" },
-  t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
-  m = { "<cmd>RustExpandMacro<Cr>", "Expand Macro" },
-  c = { "<cmd>RustOpenCargo<Cr>", "Open Cargo" },
-  p = { "<cmd>RustParentModule<Cr>", "Parent Module" },
-  d = { "<cmd>RustDebuggables<Cr>", "Debuggables" },
-  v = { "<cmd>RustViewCrateGraph<Cr>", "View Crate Graph" },
-  R = {
-    "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
-    "Reload Workspace",
-  },
-  o = { "<cmd>RustOpenExternalDocs<Cr>", "Open External Docs" },
-  y = { "<cmd>lua require'crates'.open_repository()<cr>", "[crates] open repository" },
-  P = { "<cmd>lua require'crates'.show_popup()<cr>", "[crates] show popup" },
-  i = { "<cmd>lua require'crates'.show_crate_popup()<cr>", "[crates] show info" },
-  f = { "<cmd>lua require'crates'.show_features_popup()<cr>", "[crates] show features" },
-  D = { "<cmd>lua require'crates'.show_dependencies_popup()<cr>", "[crates] show dependencies" },
-}
+-- lvim.builtin.which_key.mappings["c"] = {
+--   name = "Rust",
+--   r = { "<cmd>RustRunnables<Cr>", "Runnables" },
+--   t = { "<cmd>lua _CARGO_TEST()<cr>", "Cargo Test" },
+--   m = { "<cmd>RustExpandMacro<Cr>", "Expand Macro" },
+--   c = { "<cmd>RustOpenCargo<Cr>", "Open Cargo" },
+--   p = { "<cmd>RustParentModule<Cr>", "Parent Module" },
+--   d = { "<cmd>RustDebuggables<Cr>", "Debuggables" },
+--   v = { "<cmd>RustViewCrateGraph<Cr>", "View Crate Graph" },
+--   R = {
+--     "<cmd>lua require('rust-tools/workspace_refresh')._reload_workspace_from_cargo_toml()<Cr>",
+--     "Reload Workspace",
+--   },
+--   o = { "<cmd>RustOpenExternalDocs<Cr>", "Open External Docs" },
+--   y = { "<cmd>lua require'crates'.open_repository()<cr>", "[crates] open repository" },
+--   P = { "<cmd>lua require'crates'.show_popup()<cr>", "[crates] show popup" },
+--   i = { "<cmd>lua require'crates'.show_crate_popup()<cr>", "[crates] show info" },
+--   f = { "<cmd>lua require'crates'.show_features_popup()<cr>", "[crates] show features" },
+--   D = { "<cmd>lua require'crates'.show_dependencies_popup()<cr>", "[crates] show dependencies" },
+-- }
 
 local rust_plugins = {
   "simrat39/rust-tools.nvim",

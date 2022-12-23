@@ -10,3 +10,4 @@ local options = {
     v = { "j", "k" },
   },
 }
+lvim.builtin.which_key.setup = options

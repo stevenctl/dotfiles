@@ -1,4 +1,5 @@
 require("user.lsp.languages.rust")
+require("user.lsp.languages.go")
 
 -- make sure server will always be installed even if the server is in skipped_servers list
 ---@diagnostic disable-next-line: missing-parameter

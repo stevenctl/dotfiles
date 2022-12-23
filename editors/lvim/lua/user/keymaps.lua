@@ -89,18 +89,20 @@ lvim.builtin.which_key.mappings = {
     C = { "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run To Cursor" },
     i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
     o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
-    u = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
+    O = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
     p = { "<cmd>lua require'dap'.pause()<cr>", "Pause" },
 
     -- UI
     r = { "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl" },
-    U = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
+    u = { "<cmd>lua require'dapui'.toggle()<cr>", "Toggle UI" },
 
     -- lifecycle
-    s = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
+    d = { "<cmd>lua require'dap'.continue()<cr>", "Start" },
     q = { "<cmd>lua require'dap'.close()<cr>", "Quit" },
     t = { "<cmd>lua require'dap'.terminate()<cr>", "Terminate" },
-    d = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
+    D = { "<cmd>lua require'dap'.disconnect()<cr>", "Disconnect" },
     g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
   },
+
+  c = { name = "Code" }
 }
