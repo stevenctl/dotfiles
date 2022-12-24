@@ -35,6 +35,10 @@
 - shell:
   - [./setup-gcloud.sh, Installing gcloud]
 
+# gcloud
+- shell:
+  - [./setup-lazygit.sh, Installing lazygit]
+
 # Utils
 - shell:
   - [./aptbrew.sh ripgrep, Installing ripgrep]
