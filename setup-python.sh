@@ -13,3 +13,4 @@ else
 	echo "$(uname) was not Linux or Darwin."
 fi
 
+pip3 install -r requirements.txt

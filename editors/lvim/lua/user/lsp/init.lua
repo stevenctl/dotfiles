@@ -1,13 +1,12 @@
 require("user.lsp.languages.rust")
 require("user.lsp.languages.go")
+require("user.lsp.languages.python")
 
 -- make sure server will always be installed even if the server is in skipped_servers list
 ---@diagnostic disable-next-line: missing-parameter
 vim.list_extend(lvim.lsp.installer.setup.ensure_installed, {
   "sumneko_lua",
   "jsonls",
-  "gopls",
-  "pylsp",
 })
 
 -- change UI setting of `LspInstallInfo`

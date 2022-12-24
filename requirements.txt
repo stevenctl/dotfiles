@@ -1,0 +1,9 @@
+jupyterlab
+pynvim
+jupyter_client
+kitty
+Pillow
+cairosvg
+pnglatex
+plotly
+kaleido
