@@ -5,6 +5,15 @@ local user_plugins = {
       require("fidget").setup()
     end,
   },
+  {
+    "tpope/vim-surround",
+  },
+  {
+    'simrat39/symbols-outline.nvim',
+    config = function()
+      require('symbols-outline').setup()
+    end
+  },
 }
 
 ---@diagnostic disable-next-line: missing-parameter
