@@ -1,5 +1,5 @@
-export EDITOR=nvim
-export VISUAL=nvim
-alias vi=nvim
-alias vim=nvim
+export EDITOR=lvim
+export VISUAL=lvim
+alias vi=lvim
+alias vim=lvim
 
