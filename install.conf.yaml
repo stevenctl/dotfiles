@@ -17,6 +17,13 @@
 - shell:
   - [./setup-python.sh, Setting up pip]
 
+# Window manager
+- link:
+    ~/.yabairc: wm/yabairc.sh
+    ~/.skhdrc: wm/skhdrc
+- shell:
+  - [./setup-window-manager.sh, Setting up window manager]
+
 # Node (nvm)
 - shell:
   - [curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash, Installing nvm for node]
@@ -28,8 +35,9 @@
   - ["curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path -c rust-analyzer -c clippy", "Installing rust"]
 
 # Go
-- shell:
-  - ["curl -fsS https://webinstall.dev/golang@1.19 | bash", "Installing go"]
+# FIXME - I don't trust this thing and I think it may have wiped my $GOPATH/src
+# - shell:
+#   - ["curl -fsS https://webinstall.dev/golang@1.19 | bash", "Installing go"]
 
 # gcloud
 - shell:
@@ -47,8 +55,12 @@
 - shell:
   - [./setup-neovim.sh, Installing neovim]
 - link:
-    ~/.config/lvim: editors/lvim
-    ~/.vimrc: editors/.vimrc
+    ~/.config/lvim: 
+      force: true
+      path: editors/lvim
+    ~/.vimrc: 
+      force: true
+      path: editors/.vimrc
 
 # ZSH
 - clean: ['~', '~/.oh-my-zsh/custom/', '~/.oh-my-zsh/custom/plugins/']
