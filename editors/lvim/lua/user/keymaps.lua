@@ -29,6 +29,7 @@ lvim.builtin.which_key.mappings = {
   -- preserved built-in
   L = lvim.builtin.which_key.mappings.L, -- ide management
   l = lvim.builtin.which_key.mappings.l, -- lsp
+  b = lvim.builtin.which_key.mappings.b, -- buffers 
 
   -- frequent
   o = { "<cmd> Telescope find_files <CR>", "open file" },

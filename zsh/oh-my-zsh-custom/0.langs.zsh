@@ -10,3 +10,4 @@ export PATH="$PATH:$GO_BIN_PATH"
 export PATH="$PATH:$HOME/go/bin"
 export GOPATH="$HOME/go"
 
+# export LD_LIBRARY_PATH="/home/landow/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib:${LD_LIBRARY_PATH}"
