@@ -18,8 +18,8 @@
 
 
 # global settings
-yabai -m config mouse_follows_focus          off
-yabai -m config focus_follows_mouse          autofocus
+# yabai -m config mouse_follows_focus          off
+# yabai -m config focus_follows_mouse          off 
 
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               off
@@ -49,6 +49,7 @@ yabai -m config window_gap                   20
 # float system preferences
 yabai -m rule --add app='^System Information$' manage=off
 yabai -m rule --add app='^System Preferences$' manage=off
+yabai -m rule --add app='^System Settings$' manage=off
 yabai -m rule --add title='Preferences$' manage=off
 
 # float settings windows

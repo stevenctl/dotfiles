@@ -4,5 +4,6 @@ vim.list_extend(lvim.plugins, {
   {"gbprod/nord.nvim"},
   -- {""},
 })
+vim.g.edge_transparent_background  = 1
 lvim.colorscheme = "edge"
 
