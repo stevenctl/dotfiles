@@ -29,7 +29,7 @@ lvim.builtin.which_key.mappings = {
   -- preserved built-in
   L = lvim.builtin.which_key.mappings.L, -- ide management
   l = lvim.builtin.which_key.mappings.l, -- lsp
-  b = lvim.builtin.which_key.mappings.b, -- buffers 
+  b = lvim.builtin.which_key.mappings.b, -- buffers
 
   -- frequent
   o = { "<cmd> Telescope find_files <CR>", "open file" },
@@ -105,5 +105,9 @@ lvim.builtin.which_key.mappings = {
     g = { "<cmd>lua require'dap'.session()<cr>", "Get Session" },
   },
 
-  c = { name = "Code" }
+  -- Code (mostly customized per-LSP)
+  c = {
+    name = "Code",
+    s = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" },
+  }
 }
