@@ -4,53 +4,66 @@ stov's dotfiles
 This repo aims to setup _my_ dev environment on Linux (ubuntu) and Mac OSX.
 It is most likely not going to work well for others without removing/modifying things.
 
-## Usage
+Some of the things this will set up:
+
+* homebrew for mac
+* some utilities like: `yq`, `jq`, `ripgrep`, `fzf`.
+* Window Management
+  * For mac: [yabai](https://github.com/koekeishiya/yabai) + [skhd](https://github.com/koekeishiya/skhd)
+  * For linux: i3 at some point with wayland and other cool stuff
+* neovim (actually [LunarVim](https://github.com/LunarVim/LunarVim)) with heavy customization
+  - An initial `PackerSync` is required.
+  - Some (not all) `:mason` stuff needs to be manually installed for now.
+  - Support works well for Rust, Go and Python. Other languages are untested.
+* zsh (this will be the default shell) with oh-my-zsh
+  - including a `~/.oh-my-zsh/custom/` with several scripts that set envs, paths, and util functions
+  - The files under `/.oh-my-zsh/custom` are separated into stages by prefixing them with a number
+    (ex. `0.setup.zsh`). Each one does things like adding dirs to `PATH`, exposing util `functions`
+    and some (ba|z)sh `VARIABLE`s I find useful.
+
+## Running the Installer
+
+```shell
+./install
+```
 
 This is not well tested yet for either OS. 
 
-Linux must have:
+Prerequisites:
 
 * git
 * sudo
-* apt-get
-* python (TODO, make the python automatic install work)
-
-Macs must have:
-
-* git 
-* probably some other stuff.. not sure (TODO!)
+* apt-get (on Linux)
+* python3 (the scripts will install pip)
 
 ## Outline
 
-### Software Installation
+```
+dotfiles/
+├─ dotbot/ # dotbot repo as git submodule
+├─ editors/ # LunarVim config and fallback .vimrc
+├─ wm/ # Config for window management (i3 or yabai)
+├─ zsh/ # base .zshrc, Powerlevel10k theme
+   ├─ oh-my-zsh-custom/ # several util scripts sourced like .zshrc
+├─ requirements.txt # some global python packages
+├─ setup-*.sh # setup scripts for non-oneliners
+├─ aptbrew.sh # one liner for both mac and linux
+├─ install.conf.yaml # dotbot config; triggers scripts and symlinks
+├─ install # script that actually triggers setup
+├─ README.md
+```
 
-* homebrew for mac
-* utils like: `yq`, `jq`, `ripgrep`.
-* gcloud + kubectl
-* neovim
-* zsh (this will be the default shell)
+## Notes
 
-### Programming Languages & Toolchains
+Homebrew is set up inside of `install` instead of `install.conf.yaml` so that
+it's properly loaded/sourced when those commands run.
 
-* Python3 (including pip3)
-* Go/Golang (TODO)
-* Rust via rustup
+At one point, I had to run the script once, then again after restarting the shell
+to get things to work. This should be fixed, but I haven't tested it. 
 
-### zsh with ohmyzsh
+At some point, I want to get a decent test setup using docker for both OSes.
 
-* Theme: Powerlevel10k
-* Configuration: As little as I can in vimrc. Most is in separate files under ~/.oh-my-zsh/custom.
-
-The files under `/.oh-my-zsh/custom` are separated into stages by prefixing them with a number
-(ex. `0.setup.zsh`). Each one does things like adding dirs to `PATH`, exposing util `functions`
-and some (ba|z)sh `VARIABLE`s I find useful.
-
-### NeoVim
-
-The neovim setup is customized towards being an IDE. It's probably going to be an indefinite WIP.
-
-
-License
+License (from dotbot)
 -------
 
 This software is hereby released into the public domain. That means you can do

@@ -12,16 +12,16 @@ else
 fi
 
 # Check if oh-my-zsh is installed
-echo 'Installing oh-my-zsh'
-rm -rf $HOME/.oh-my-zsh
-/bin/sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-rm -rf $HOME/.oh-my-zsh/custom
+if [ ! -d $HOME/.oh-my-zsh/ ]; then
+  echo 'Installing oh-my-zsh'
+  rm -rf $HOME/.oh-my-zsh
+  /bin/sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  rm -rf $HOME/.oh-my-zsh/custom
+fi
 
 # Change default shell
-if [ ! $0 = "-zsh" ]; then
-  echo 'Changing default shell to zsh'
-  sudo chsh -s /bin/zsh
-else
-  echo 'Already using zsh'
+echo 'Changing default shell to zsh'
+if [ "${SHELL}" != "zsh" ]; then
+  sudo chsh -u $USER -s /bin/zsh
 fi
 

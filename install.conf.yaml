@@ -9,47 +9,20 @@
 - shell: 
   - [git submodule update --recursive -f, Updating submodules...]
 
-# Ensure we have homebrew on Mac
-- shell: 
-  - [./setup-zsh.sh, Setting up zsh]
-
-# Python
+# Languages 
 - shell:
-  - [./setup-python.sh, Setting up pip]
+  - [./setup-python.sh, Setting up python and pip]
+  - [./setup-node.sh, Setting up node (javascript)]
+  - ["curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path -c rust-analyzer -c clippy", "Setting up rust"]
+  # FIXME - I don't trust this thing and I think it may have wiped my $GOPATH/src
+  # - ["curl -fsS https://webinstall.dev/golang@1.19 | bash", "Installing go"]
 
-# Window manager
-- link:
-    ~/.yabairc: wm/yabairc.sh
-    ~/.skhdrc: wm/skhdrc
+# Utils & Software
 - shell:
-  - [./setup-window-manager.sh, Setting up window manager]
-
-# Node (nvm)
-- shell:
-  - [curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash, Installing nvm for node]
-  - [source $HOME/.nvm/nvm.sh; nvm install node, Init nvm]
-  - [source $HOME/.nvm/nvm.sh; node || nvm use node ]
-
-# Rust
-- shell:
-  - ["curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path -c rust-analyzer -c clippy", "Installing rust"]
-
-# Go
-# FIXME - I don't trust this thing and I think it may have wiped my $GOPATH/src
-# - shell:
-#   - ["curl -fsS https://webinstall.dev/golang@1.19 | bash", "Installing go"]
-
-# gcloud
-- shell:
-  - [./setup-gcloud.sh, Installing gcloud]
-
-# gcloud
-- shell:
+  - [./setup-shell-utils.sh, Installing shell utils ]
   - [./setup-lazygit.sh, Installing lazygit]
-
-# Utils
-- shell:
-  - [./aptbrew.sh ripgrep, Installing ripgrep]
+  - [./setup-github.sh, Installing github]
+  - [./setup-gcloud.sh, Installing gcloud]
 
 # vim/neovim
 - shell:
@@ -63,7 +36,10 @@
       path: editors/.vimrc
 
 # ZSH
+- shell: 
+  - [./setup-zsh.sh, Setting up zsh]
 - clean: ['~', '~/.oh-my-zsh/custom/', '~/.oh-my-zsh/custom/plugins/']
+# TODO should probably throw all this in setup-zsh.sh 
 - shell:
   - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom forlders]
   - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins forlders]
@@ -79,3 +55,9 @@
       path: zsh/oh-my-zsh-custom
     ~/.p10k.zsh: zsh/.p10k.zsh
 
+# Window manager
+- link:
+    ~/.yabairc: wm/yabairc.sh
+    ~/.skhdrc: wm/skhdrc
+- shell:
+  - [./setup-window-manager.sh, Setting up window manager]
