@@ -1,7 +1,14 @@
 require("user.lsp.languages.rust")
 require("user.lsp.languages.go")
 require("user.lsp.languages.python")
+require("user.lsp.languages.csharp")
+require("user.lsp.languages.wgsl")
 
+require('lspconfig').gdscript.setup {
+  flags = {
+    debounce_text_changes = 150,
+  }
+}
 -- make sure server will always be installed even if the server is in skipped_servers list
 ---@diagnostic disable-next-line: missing-parameter
 vim.list_extend(lvim.lsp.installer.setup.ensure_installed, {

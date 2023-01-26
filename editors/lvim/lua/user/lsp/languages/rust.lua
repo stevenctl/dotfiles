@@ -22,7 +22,7 @@ local codelldb_adapter = {
 pcall(function()
   require("rust-tools").setup {
     tools = {
-      executor = require("rust-tools/executors").termopen, -- can be quickfix or termopen
+      executor = require("rust-tools/executors").quickfix, -- can be quickfix or termopen
       reload_workspace_from_cargo_toml = true,
       runnables = {
         use_telescope = true,
@@ -120,7 +120,6 @@ lvim.builtin.dap.on_config_done = function(dap)
   }
 end
 
-vim.api.nvim_set_keymap("n", "<m-d>", "<cmd>RustOpenExternalDocs<Cr>", { noremap = true, silent = true })
 
 -- lvim.builtin.which_key.mappings["c"] = {
 --   name = "Rust",

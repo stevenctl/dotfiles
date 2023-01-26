@@ -12,7 +12,7 @@ source $ZSH/oh-my-zsh.sh
 bindkey -e
 
 # Fuzzy Finder
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.fzf.zsh
 
 # History
 HISTFILE=~/.histfile
@@ -32,3 +32,4 @@ compinit
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export PATH="/usr/local/opt/llvm/bin:$PATH"

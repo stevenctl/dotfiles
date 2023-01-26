@@ -13,6 +13,7 @@ lvim.builtin.treesitter.ensure_installed = {
   "java",
   "c",
   "go",
+  "wgsl",
 
   "yaml",
   "json",

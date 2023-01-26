@@ -11,3 +11,11 @@ lvim.builtin.alpha.mode = "dashboard"
 lvim.builtin.terminal.active = true
 lvim.builtin.nvimtree.setup.view.side = "left"
 lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+
+-- Folds
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.api.nvim_create_autocmd("BufReadPost,FileReadPost", {
+  pattern = { "*.json", "*.jsonc" },
+  command = "zR",
+})
