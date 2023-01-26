@@ -1,0 +1,82 @@
+# set relativenumber
+let mapleader = " "
+
+set number
+set clipboard+=unnamed
+set clipboard+=ideaput
+
+" Reload config
+map <Leader>C :action IdeaVim.ReloadVimRc.reload<CR>
+
+" Text Editing
+map dd d_
+map U :redo<CR>
+map <M-A-L> <Action>(ReformatCode)
+map <Leader>/ <Action>(CommentByLineComment)
+
+" Actions
+map <Leader><CR> <Action>(ShowIntentionActions)
+map <Leader>cs <Action>(FileStructurePopup)
+map <M-\> <Action>(ActivateTerminalToolWindow)
+map <Leader>cR <Action>(Run)
+map <Leader>cr <Action>(RunTargetAction)
+
+"Tabs
+map <Leader>x <Action>(CloseEditor)
+map <Tab> <Action>(NextTab)
+map <S-Tab> <Action>(PreviousTab)
+
+"Files
+map <Leader>o <Action>(GotoFile)
+map <Leader>e :NERDTreeToggle<CR>
+map <Leader>n <Action>(NewFile)
+map <Leader>N <Action>(NewScratchFile)
+
+"Find 
+map <Leader>f <Action>(Find)
+map <Leader>F <Action>(FindInPath)
+
+"Refactoring
+map <Leader>r <Action>(RenameElement)
+map <Leader>R <Action>(Refactorings.QuickListPopupAction)
+
+" Jumping
+map gi <Action>(GotoImplementation)
+map gr <Action>(FindUsages)
+map <A-n> <Action>(FindNext)
+map <A-p> <Action>(FindPrevious)
+# Windows
+# map <M-h> <Action>(VimWindowLeft)
+# map <M-l> <Action>(VimWindowRight)
+# map <M-j> <Action>(VimWindowDown)
+# map <M-k> <Action>(VimWindowUp)
+# Diagnostics (jump, show)
+map <Leader>d <Action>(ShowErrorDescription)
+map d] <Action>(GotoNextError)
+map [d <Action>(GotoPreviousError)
+# In and Out
+map <M-i> <Action>(Forward)
+map <M-o> <Action>(Back)
+# Changes
+map g; <Action>(JumpToLastChange)
+map g, <Action>(JumpToNextChange)
+# Code blocks
+map <A-[> <Action>(EditorCodeBlockStart)
+map <A-]> <Action>(EditorCodeBlockEnd)
+
+" Plugins
+" https://github.com/JetBrains/ideavim/blob/master/doc/emulated-plugins.md
+set surround
+set highlightedyank
+set ideajoin
+set commentary
+set NERDTree
+# set exchange
+
+" Text Object Stuff
+# dia daa cia caa
+set argtextobj
+# die dae cie cae
+set textobj-entire
+# https://github.com/JetBrains/ideavim/wiki/Emulated-plugins#vim-indent-object
+set textobj-indent

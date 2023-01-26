@@ -55,7 +55,9 @@ yabai -m rule --add title='Preferences$' manage=off
 # float settings windows
 yabai -m rule --add title='Settings$' manage=off
 
-# # Some Goland settings, in case you are using it. float Goland Preference panes
+# Exclusions
+# yabai -m rule --add app='Godot' title='^$' manage=off
+yabai -m rule --add app="^Godot$" manage=off
 # yabai -m rule --add app='Goland IDEA' title='^$' manage=off
 # yabai -m rule --add app='Goland IDEA' title='Project Structure' manage=off
 # yabai -m rule --add app='Goland IDEA' title='Preferences' manage=off
