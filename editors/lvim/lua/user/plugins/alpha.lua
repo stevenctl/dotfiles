@@ -1,9 +1,11 @@
-lvim.builtin.alpha.dashboard.section.header.val = {
-  -- "Shall we play a game?",
-  "░█▀▀▀█ █  █ █▀▀█ █   █   　 █   █ █▀▀ 　 █▀▀█ █   █▀▀█ █  █ 　 █▀▀█ 　 █▀▀▀ █▀▀█ █▀▄▀█ █▀▀ ▀█ ",
-  " ▀▀▀▄▄ █▀▀█ █▄▄█ █   █   　 █▄█▄█ █▀▀ 　 █  █ █   █▄▄█ █▄▄█ 　 █▄▄█ 　 █ ▀█ █▄▄█ █ ▀ █ █▀▀ █▀ ",
-  "░█▄▄▄█ ▀  ▀ ▀  ▀ ▀▀▀ ▀▀▀ 　  ▀ ▀  ▀▀▀ 　 █▀▀▀ ▀▀▀ ▀  ▀ ▄▄▄█ 　 ▀  ▀ 　 ▀▀▀▀ ▀  ▀ ▀   ▀ ▀▀▀ ▄  ",
-}
+lvim.builtin.alpha.dashboard.section.header.val = "Shall we play a game?"
+
+-- lvim.builtin.alpha.dashboard.section.header.val = {
+--   -- "Shall we play a game?",
+--   "░█▀▀▀█ █  █ █▀▀█ █   █   　 █   █ █▀▀ 　 █▀▀█ █   █▀▀█ █  █ 　 █▀▀█ 　 █▀▀▀ █▀▀█ █▀▄▀█ █▀▀ ▀█ ",
+--   " ▀▀▀▄▄ █▀▀█ █▄▄█ █   █   　 █▄█▄█ █▀▀ 　 █  █ █   █▄▄█ █▄▄█ 　 █▄▄█ 　 █ ▀█ █▄▄█ █ ▀ █ █▀▀ █▀ ",
+--   "░█▄▄▄█ ▀  ▀ ▀  ▀ ▀▀▀ ▀▀▀ 　  ▀ ▀  ▀▀▀ 　 █▀▀▀ ▀▀▀ ▀  ▀ ▄▄▄█ 　 ▀  ▀ 　 ▀▀▀▀ ▀  ▀ ▀   ▀ ▀▀▀ ▄  ",
+-- }
 
 local status_ok, dashboard = pcall(require, "alpha.themes.dashboard")
 if not status_ok then
