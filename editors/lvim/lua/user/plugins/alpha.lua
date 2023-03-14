@@ -1,4 +1,13 @@
-lvim.builtin.alpha.dashboard.section.header.val = "Shall we play a game?"
+lvim.builtin.alpha.dashboard.section.header.val = {
+  "Shall we play a game?",
+  "                     ",
+  "        x┃x┃o        ",
+  "       ━━╋━╋━━       ",
+  "        o┃x┃         ",
+  "       ━━╋━╋━━       ",
+  "        x┃o┃o        ",
+  "                     ",
+}
 
 -- lvim.builtin.alpha.dashboard.section.header.val = {
 --   -- "Shall we play a game?",

@@ -14,6 +14,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-KIND_CONFIG="${KIND_CONFIG:-$HOME/kind-util/kind-cluster.yaml}"
+KIND_CONFIG="${KIND_CONFIG:-$HOME/dotfiles/kind-util/kind-cluster.yaml}"
 kind delete cluster --name istio-localdev || true
 kind create cluster --config "${KIND_CONFIG}"

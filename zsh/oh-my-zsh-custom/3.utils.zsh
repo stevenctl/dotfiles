@@ -13,4 +13,9 @@ ufw-stop () {
         sudo update-alternatives --set ip6tables /usr/sbin/ip6tables-legacy
 }
 
+docker_cleanup() {
+  docker ps -a | grep Exited | tr -s ' ' | cut -d ' ' -f1 | xargs -n1 docker rm -f
+  docker ps -a | grep Created | tr -s ' ' | cut -d ' ' -f1 | xargs -n1 docker rm -f
+  docker images | grep 'none' | tr -s ' ' | cut -d' ' -f3 | xargs -n1 docker image rm
+}
 
