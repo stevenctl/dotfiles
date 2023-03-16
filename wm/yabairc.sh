@@ -56,8 +56,9 @@ yabai -m rule --add title='Preferences$' manage=off
 yabai -m rule --add title='Settings$' manage=off
 
 # Exclusions
-# yabai -m rule --add app='Godot' title='^$' manage=off
-yabai -m rule --add app="^Godot$" manage=off
+yabai -m rule --add app='Godot' title='^$' manage=off
+yabai -m rule --add app='Godot' title='^Short.*$' manage=off
+# yabai -m rule --add app="^Godot$" manage=off
 # yabai -m rule --add app='Goland IDEA' title='^$' manage=off
 # yabai -m rule --add app='Goland IDEA' title='Project Structure' manage=off
 # yabai -m rule --add app='Goland IDEA' title='Preferences' manage=off
