@@ -6,7 +6,7 @@ set clipboard+=unnamed
 set clipboard+=ideaput
 
 " Reload config
-map <Leader>C :action IdeaVim.ReloadVimRc.reload<CR>
+map <Leader>C :source ~/.ideavimrc<CR>
 
 " Text Editing
 map dd d_
@@ -28,7 +28,7 @@ map <S-Tab> <Action>(PreviousTab)
 
 "Files
 map <Leader>o <Action>(GotoFile)
-map <Leader>e :NERDTreeToggle<CR>
+map <Leader>e :NERDTreeFocus<CR>
 map <Leader>n <Action>(NewFile)
 map <Leader>N <Action>(NewScratchFile)
 
