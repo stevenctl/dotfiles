@@ -2,8 +2,15 @@
 let mapleader = " "
 
 set number
+set relativenumber
+
+set scrolloff=999
+
 set clipboard+=unnamed
 set clipboard+=ideaput
+
+" pasting over shouldn't yank
+xnoremap p P
 
 " Reload config
 map <Leader>C :source ~/.ideavimrc<CR>

@@ -47,10 +47,23 @@ alt - p : yabai -m window --focus stack.next || yabai -m window --focus south
 alt - n : yabai -m window --focus stack.prev || yabai -m window --focus north
 
 # fix unwanted hide
-cmd - h: skhd -k "left"  
-cmd - l: skhd -k "right"  
-cmd - k: skhd -k "up"  
-cmd - j: skhd -k "down"  
+cmd - h [ 
+ "google chrome" ~
+ * : skhd -k "left"  
+]
+cmd - l [ 
+ "google chrome" ~
+ * : skhd -k "right"  
+]
+cmd - k [ 
+ "google chrome" ~
+ * : skhd -k "up"  
+]
+cmd - j [ 
+ "google chrome" ~
+ * : skhd -k "down"  
+]
+
 
 # go back to previous workspace (kind of like back_and_forth in i3)
 alt - b : yabai -m space --focus recent
