@@ -18,8 +18,6 @@
 
 
 # global settings
-# yabai -m config mouse_follows_focus          off
-# yabai -m config focus_follows_mouse          off 
 
 yabai -m config window_placement             second_child
 yabai -m config window_topmost               off
@@ -34,7 +32,9 @@ yabai -m config split_ratio                  0.50
 yabai -m config auto_balance                 off
 
 # Mouse support
-yabai -m config mouse_modifier               alt
+yabai -m config mouse_follows_focus          off
+yabai -m config focus_follows_mouse          off 
+yabai -m config mouse_modifier               fn
 yabai -m config mouse_action1                move
 yabai -m config mouse_action2                resize
 
@@ -50,14 +50,15 @@ yabai -m config window_gap                   20
 yabai -m rule --add app='^System Information$' manage=off
 yabai -m rule --add app='^System Preferences$' manage=off
 yabai -m rule --add app='^System Settings$' manage=off
-yabai -m rule --add title='Preferences$' manage=off
 
-# float settings windows
-yabai -m rule --add title='Settings$' manage=off
+yabai -m rule --add title='Preferences' manage=off
+yabai -m rule --add title='Settings' manage=off
 
 # Exclusions
-yabai -m rule --add app='Godot' title='^$' manage=off
-yabai -m rule --add app='Godot' title='^Short.*$' manage=off
+yabai -m rule --add app='Godot' manage=on
+
+yabai -m rule --add title='\(DEBUG\)' manage=off
+# yabai -m rule --add app='Godot' title='^Short.*$' manage=off
 # yabai -m rule --add app="^Godot$" manage=off
 # yabai -m rule --add app='Goland IDEA' title='^$' manage=off
 # yabai -m rule --add app='Goland IDEA' title='Project Structure' manage=off

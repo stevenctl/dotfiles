@@ -24,6 +24,8 @@ zstyle :compinstall filename '/home/landow/.zshrc'
 autoload -Uz compinit
 compinit
 
+# MAN
+export MANPAGER="lvim -c 'Man!' -o -"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
