@@ -13,6 +13,9 @@ lvim.keys.normal_mode["<C-l>"] = { "<C-w>l", }
 lvim.keys.normal_mode["<C-j>"] = { "<C-w>j", }
 lvim.keys.normal_mode["<C-k>"] = { "<C-w>k", }
 
+-- tree
+lvim.keys.normal_mode["<leader>e"] = { "<cmd> NvimTreeFocus<CR>" }
+
 -- cycle through buffers
 lvim.keys.normal_mode["<TAB>"] = { ":BufferLineCycleNext<CR>" }
 lvim.keys.normal_mode["<S-TAB>"] = { ":BufferLineCyclePrev<CR>" }

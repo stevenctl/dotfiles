@@ -1,10 +1,11 @@
 local user_plugins = {
-  {
-    "j-hui/fidget.nvim",
-    config = function()
-      require("fidget").setup()
-    end,
-  },
+  -- {
+  --   "j-hui/fidget.nvim",
+  --   version = "legacy",
+  --   config = function()
+  --     require("fidget").setup()
+  --   end,
+  -- },
   {
     "echasnovski/mini.surround",
     config = function()

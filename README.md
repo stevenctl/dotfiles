@@ -12,7 +12,7 @@ Some of the things this will set up:
   * For mac: [yabai](https://github.com/koekeishiya/yabai) + [skhd](https://github.com/koekeishiya/skhd)
   * For linux: i3 at some point with wayland and other cool stuff
 * neovim (actually [LunarVim](https://github.com/LunarVim/LunarVim)) with heavy customization
-  - An initial `PackerSync` is required.
+  - An initial `Lazy sync` is required.
   - Some (not all) `:mason` stuff needs to be manually installed for now.
   - Support works well for Rust, Go and Python. Other languages are untested.
 * zsh (this will be the default shell) with oh-my-zsh

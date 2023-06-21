@@ -77,6 +77,7 @@ set surround
 set highlightedyank
 set ideajoin
 set commentary
+set easymotion
 set NERDTree
 # set exchange
 

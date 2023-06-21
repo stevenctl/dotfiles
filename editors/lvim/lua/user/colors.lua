@@ -3,11 +3,18 @@ vim.list_extend(lvim.plugins, {
   { "sainnhe/edge" },
   { "gbprod/nord.nvim" },
   { "rmehri01/onenord.nvim" },
-  { "catppuccin/nvim", as = "catppuccin" }
+  { "sainnhe/everforest", name = "everforest" },
+  { "catppuccin/nvim", name = "catppuccin" }
 })
 lvim.transparent_window = true
+
+-- lvim.colorscheme = "edge"
 -- vim.g.edge_transparent_background = 1
-lvim.colorscheme        = "catppuccin"
+
+vim.g.everforest_transparent_background = 1
+vim.g.everforest_background = "hard"
+lvim.colorscheme        = "everforest"
+
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",

@@ -12,7 +12,7 @@ require('lspconfig').gdscript.setup {
 -- make sure server will always be installed even if the server is in skipped_servers list
 ---@diagnostic disable-next-line: missing-parameter
 vim.list_extend(lvim.lsp.installer.setup.ensure_installed, {
-  "sumneko_lua",
+  "lua_ls",
   "jsonls",
 })
 

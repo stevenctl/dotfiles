@@ -107,7 +107,5 @@ vim.list_extend(lvim.plugins,
         }
       end,
     },
-    -- You can run blocks of code like jupyter notebook.
-    { "dccsillag/magma-nvim", run = ":UpdateRemotePlugins" },
   }
 )
