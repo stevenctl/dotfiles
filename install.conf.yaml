@@ -13,9 +13,8 @@
 - shell:
   - [./setup-python.sh, Setting up python and pip]
   - [./setup-node.sh, Setting up node (javascript)]
+  - [./setup-go.sh, Setting up go]
   - ["curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path -c rust-analyzer -c clippy", "Setting up rust"]
-  # FIXME - I don't trust this thing and I think it may have wiped my $GOPATH/src
-  # - ["curl -fsS https://webinstall.dev/golang@1.19 | bash", "Installing go"]
 
 # Utils & Software
 - shell:

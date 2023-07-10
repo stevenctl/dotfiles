@@ -19,9 +19,10 @@ if [ ! -d $HOME/.oh-my-zsh/ ]; then
   rm -rf $HOME/.oh-my-zsh/custom
 fi
 
-# Change default shell
+# Change default shell 
+# TODO i think it's different on mac)
 echo 'Changing default shell to zsh'
 if [ "${SHELL}" != "zsh" ]; then
-  sudo chsh -u $USER -s /bin/zsh
+  sudo chsh -s /bin/zsh $USER
 fi
 

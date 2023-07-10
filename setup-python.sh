@@ -3,7 +3,7 @@
 if which pip3; then exit 0; fi
 
 if [ "$(uname)" = "Linux" ]; then
-	sudo apt-get update && sudo apt-get install -y python3-pip
+	sudo apt-get update && sudo apt-get install -y python3-full
 elif [ "$(uname)" = "Darwin" ]; then
 	if ! which python3; then
 		brew install python3

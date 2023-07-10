@@ -13,5 +13,4 @@ which jq || ./aptbrew.sh jq
 # cool rust powered stuff
 cargo install bottom # top
 cargo install bat # cat
-cargo install inlyne # markdown viewer
 
