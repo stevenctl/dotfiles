@@ -14,3 +14,6 @@ which jq || ./aptbrew.sh jq
 cargo install bottom # top
 cargo install bat # cat
 
+# things i'm trying out for now
+go install github.com/jesseduffield/lazydocker@latest
+

@@ -8,16 +8,22 @@ alt + shift - f : yabai -m window --toggle native-fullscreen
 alt - w : yabai -m window --close
 
 # change focus
-alt - h : yabai -m window --focus west
-alt - j : yabai -m window --focus south
-alt - k : yabai -m window --focus north
-alt - l : yabai -m window --focus east
-
-# shift window in current workspace
-alt + shift - h : yabai -m window --swap west || $(yabai -m window --display west; yabai -m display --focus west)
-alt + shift - j : yabai -m window --swap south || $(yabai -m window --display south; yabai -m display --focus south)
-alt + shift - k : yabai -m window --swap north || $(yabai -m window --display north; yabai -m display --focus north)
-alt + shift - l : yabai -m window --swap east || $(yabai -m window --display east; yabai -m display --focus east)
+alt - h [ 
+ "blender" ~
+ * : yabai -m window --focus west
+]
+alt - l [ 
+ "blender" ~
+ * : yabai -m window --focus south
+]
+alt - k [ 
+ "blender" ~
+ * : yabai -m window --focus north 
+]
+alt - j [ 
+ "blender" ~
+ * : yabai -m window --focus east
+]
 
 # move focused window to numbered workspace
 alt + shift - 1 : yabai -m window --space 1
@@ -49,18 +55,22 @@ alt - n : yabai -m window --focus stack.prev || yabai -m window --focus north
 # fix unwanted hide
 cmd - h [ 
  "google chrome" ~
+ "blender" ~
  * : skhd -k "left"  
 ]
 cmd - l [ 
  "google chrome" ~
+ "blender" ~
  * : skhd -k "right"  
 ]
 cmd - k [ 
  "google chrome" ~
+ "blender" ~
  * : skhd -k "up"  
 ]
 cmd - j [ 
  "google chrome" ~
+ "blender" ~
  * : skhd -k "down"  
 ]
 
