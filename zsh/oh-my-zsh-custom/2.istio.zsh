@@ -1,3 +1,4 @@
+alias k=kubectl
 export ISTIO=$HOME/go/src/istio.io/istio
 export ZTUNNEL=$ISTIO/../ztunnel
 export ISTIO_VERSION=1.17.1
