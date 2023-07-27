@@ -5,6 +5,8 @@ if which apt-get; then
 elif which brew; then
   CMD="brew install "
   export NONINTERACTIVE=1
+elif which dnf; then
+  CMD="dnf install -y "
 else
   echo "No brew or apt-get!"
 fi

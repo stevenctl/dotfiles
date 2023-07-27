@@ -14,7 +14,8 @@ git submodule update --init --recursive
 
 # Pre-reqs, do them before dotbot
 . "${BASEDIR}"/setup-homebrew.sh
-[ "$(uname)" == "Linux" ] && sudo apt-get update -y
+[ "$(uname)" == "Linux" ] && command -v apt-get && sudo apt-get update -y
+[ "$(uname)" == "Linux" ] && command -v dnf && sudo dnf update -y
 [ "$(uname)" == "Darwin" ] && brew update
 [ "$(uname)" == "Darwin" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 ./setup-python.sh

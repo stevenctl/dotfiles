@@ -15,6 +15,7 @@
   - [./setup-node.sh, Setting up node (javascript)]
   - [./setup-go.sh, Setting up go]
   - ["curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path -c rust-analyzer -c clippy", "Setting up rust"]
+  - [./setup-protobuf.sh, Setting up proto]
 
 # Utils & Software
 - shell:
@@ -22,6 +23,7 @@
   - [./setup-lazygit.sh, Installing lazygit]
   - [./setup-github.sh, Installing github]
   - [./setup-gcloud.sh, Installing gcloud]
+  - [./setup-k8s.sh, Installing kubectl and kind]
 
 # vim/neovim
 - shell:

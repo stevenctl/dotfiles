@@ -2,19 +2,27 @@
 
 function setup_gcp() {
 	if uname | grep -i linux; then
-		sudo apt-get install -y apt-transport-https ca-certificates gnupg
-
-		echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-		curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo tee /usr/share/keyrings/cloud.google.gpg
-	
-	
-		sudo apt-get update && sudo apt-get install -y google-cloud-cli kubectl
-		gcloud init
+    VERSION=440.0.0
+    ARCH="$(uname -m)"
+    if [ "$ARCH" == "aarch64" ] || [ "$ARCH" == "arm64" ]; then
+      ARCH="arm"
+    fi
+    if [ "$ARCH" == "amd64" ]; then
+      ARCH="x86_64"
+    fi
+    FILE="google-cloud-cli-$VERSION-linux-$ARCH.tar.gz"
+    pushd $HOME
+    curl -O "https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/$FILE"
+    tar -xf "$FILE"    
+    ./google-cloud-sdk/install.sh
+    popd
 	elif uname | grep -i darwin; then
 		brew install --cask google-cloud-sdk	
 	else
 		echo "Can't setup gcloud. Unknown $(uname -a). Must contain 'Darwin' or 'Linux'."
 	fi
+  source $HOME/.oh-my-zsh/custom/1.gcp.zsh
+  gcloud init
 }
 
 if ! which gcloud > /dev/null ; then
