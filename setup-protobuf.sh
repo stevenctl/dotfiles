@@ -1,9 +1,7 @@
 #!/usr/bin/env bash
 
-if which dnf; then
-  sudo dnf install -y protobuf-compiler
-elif which apt-get; then
-  sudo apt-get install -y protobuf-compiler
-elif which brew; then
-  brew install protobuf
-fi
+PACKAGE=protobuf-compiler
+if which brew > /dev/null 2>&1 || which pacman > /dev/null 2>&1; then
+  PACKAGE=protobuf
+fi  
+./aptbrew.sh $PACKAGE

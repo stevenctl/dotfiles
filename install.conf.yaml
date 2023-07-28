@@ -14,7 +14,7 @@
   - [./setup-python.sh, Setting up python and pip]
   - [./setup-node.sh, Setting up node (javascript)]
   - [./setup-go.sh, Setting up go]
-  - ["curl https://sh.rustup.rs -sSf | sh -s -- -y --no-modify-path -c rust-analyzer -c clippy", "Setting up rust"]
+  - [./setup-rust.sh, "Setting up rust"]
   - [./setup-protobuf.sh, Setting up proto]
 
 # Utils & Software
@@ -63,5 +63,6 @@
 - link:
     ~/.yabairc: wm/yabairc.sh
     ~/.skhdrc: wm/skhdrc
+    ~/.config/foot/foot.ini: linux/foot.ini
 - shell:
   - [./setup-window-manager.sh, Setting up window manager]

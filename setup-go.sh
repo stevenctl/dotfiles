@@ -1,12 +1,19 @@
 #!/bin/bash
 
 function install_go() {
+  GO_VERSION=1.20.6
+  if which go > /dev/null 2>&1; then
+    INSTALLED_VERSION=$(go version | grep -ohE '[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}')
+    if [ "$GO_VERSION" == "$INSTALLED_VERSION" ]; then
+      return 0
+    fi
+  fi
+
   if [ "$(uname)" == "Darwin" ]; then
     echo "Use package from https://go.dev/doc/install"
     exit 0
   fi
 
-  GO_VERSION=1.20.6
   OS=linux
   ARCH="$(uname -m)"
   if [ "$ARCH" == "aarch64" ]; then

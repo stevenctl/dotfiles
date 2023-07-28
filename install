@@ -2,6 +2,9 @@
 
 set -e
 
+# get password prompt out of the way early
+sudo echo Ready to go...
+
 CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
 
