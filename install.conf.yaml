@@ -58,11 +58,17 @@
       force: true
       path: zsh/oh-my-zsh-custom
     ~/.p10k.zsh: zsh/.p10k.zsh
-
+# Terminal Emulator
+- link:
+    ~/.config/foot/foot.ini: linux/foot.ini
+    ~/.config/alacritty/alacritty.yml: linux/alacritty.yml
 # Window manager
 - link:
     ~/.yabairc: wm/yabairc.sh
     ~/.skhdrc: wm/skhdrc
-    ~/.config/foot/foot.ini: linux/foot.ini
+    ~/.i3/config: 
+      force: true
+      path: wm/i3.conf
+    
 - shell:
   - [./setup-window-manager.sh, Setting up window manager]
