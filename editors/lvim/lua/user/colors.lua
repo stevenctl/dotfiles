@@ -4,7 +4,8 @@ vim.list_extend(lvim.plugins, {
   { "gbprod/nord.nvim" },
   { "rmehri01/onenord.nvim" },
   { "sainnhe/everforest", name = "everforest" },
-  { "catppuccin/nvim", name = "catppuccin" }
+  { "catppuccin/nvim", name = "catppuccin" },
+  { "dylanaraps/wal.vim", name = "wal" }
 })
 lvim.transparent_window = true
 
