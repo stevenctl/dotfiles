@@ -1,6 +1,9 @@
 # set relativenumber
 let mapleader = " "
 
+set incsearch
+set ignorecase
+set smartcase
 set number
 set relativenumber
 
@@ -77,7 +80,6 @@ set surround
 set highlightedyank
 set ideajoin
 set commentary
-set easymotion
 set NERDTree
 # set exchange
 

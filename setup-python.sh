@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -n "${SKIP_SETUP_SCRIPTS}" ]; then
+  exit 0
+fi
+
 if ! which pip3 > /dev/null 2>&1; then
   if which apt-get > /dev/null 2>&1; then
     sudo apt-get update && sudo apt-get install -y python3-full

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -n "${SKIP_SETUP_SCRIPTS}" ]; then
+  exit 0
+fi
+
 function install_go() {
   GO_VERSION=1.20.6
   if which go > /dev/null 2>&1; then

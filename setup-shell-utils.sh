@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -n "${SKIP_SETUP_SCRIPTS}" ]; then
+  exit 0
+fi
+
 # fzf
 if [ ! -d $HOME/.fzf ]; then
   git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf

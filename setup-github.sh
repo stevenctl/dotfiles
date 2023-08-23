@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -n "${SKIP_SETUP_SCRIPTS}" ]; then
+  exit 0
+fi
+
 function setup_github() {
   if which pacman > /dev/null 2>&1; then
     ./aptbrew.sh github-cli

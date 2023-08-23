@@ -1,5 +1,12 @@
+live_config_reload: true
+cursor:
+  style:
+    shape: Block
+    bliking: On
 window:
   opacity: .8
+  decorations: full
+  dynamic_title: true
 shell:
   program: /bin/zsh
 font:

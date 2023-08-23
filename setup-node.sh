@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -n "${SKIP_SETUP_SCRIPTS}" ]; then
+  exit 0
+fi
+
 function setup_node() {
   if [ ! -f $HOME/.nvm/nvm.sh ]; then
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.2/install.sh | bash

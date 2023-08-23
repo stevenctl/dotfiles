@@ -62,6 +62,7 @@
 - link:
     ~/.config/foot/foot.ini: linux/foot.ini
     ~/.config/alacritty/alacritty.yml: linux/alacritty.yml
+    ~/.config/kitty/kitty.conf: linux/kitty.conf
 # Window manager
 - link:
     ~/.yabairc: wm/yabairc.sh
@@ -69,6 +70,9 @@
     ~/.i3/config: 
       force: true
       path: wm/i3.conf
-    
+    ~/.config/rofi/config.rasi: linux/rofi.rasi
+    ~/.config/polybar/config: wm/polybar.ini
+    ~/.i3/polybar.sh: wm/polybar.sh
+    ~/.i3/nvidia-smi-polybar.sh: wm/nvidia-smi-polybar.sh
 - shell:
   - [./setup-window-manager.sh, Setting up window manager]

@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [ -n "${SKIP_SETUP_SCRIPTS}" ]; then
+  exit 0
+fi
+
 function setup_yabai() {
 	if [ "$(uname)" != "Darwin" ]; then
 		return 0

@@ -5,7 +5,7 @@ vim.list_extend(lvim.plugins, {
   { "rmehri01/onenord.nvim" },
   { "sainnhe/everforest", name = "everforest" },
   { "catppuccin/nvim", name = "catppuccin" },
-  { "dylanaraps/wal.vim", name = "wal" }
+  { 'AlphaTechnolog/pywal.nvim', name = 'wal' }
 })
 lvim.transparent_window = true
 
@@ -15,6 +15,9 @@ lvim.transparent_window = true
 vim.g.everforest_transparent_background = 1
 vim.g.everforest_background = "hard"
 lvim.colorscheme        = "everforest"
+
+-- lvim.colorscheme = "wal"
+-- vim.opt.termguicolors = false
 
 
 vim.api.nvim_create_autocmd("FileType", {

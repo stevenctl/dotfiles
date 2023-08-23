@@ -1,4 +1,9 @@
 # Download zsh
+
+if [ -n "${SKIP_SETUP_SCRIPTS}" ]; then
+  exit 0
+fi
+
 if which zsh > /dev/null 2>&1; then
 	echo "zsh already installed"
 elif which brew > /dev/null 2>&1; then

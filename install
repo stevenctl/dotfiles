@@ -21,7 +21,7 @@ git submodule update --init --recursive
 [ "$(uname)" == "Linux" ] && command -v dnf && sudo dnf update -y
 [ "$(uname)" == "Darwin" ] && brew update
 [ "$(uname)" == "Darwin" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
-./setup-python.sh
+# ./setup-python.sh
 
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
 
