@@ -12,10 +12,10 @@ formatters.setup {
 }
 
 -- Set a linter.
-local linters = require "lvim.lsp.null-ls.linters"
-linters.setup {
-  { command = "flake8", filetypes = { "python" } },
-}
+-- local linters = require "lvim.lsp.null-ls.linters"
+-- linters.setup {
+--   { command = "flake8", filetypes = { "python" } },
+-- }
 
 -- TODO: debugpy installed by default
 -- Setup dap for python
