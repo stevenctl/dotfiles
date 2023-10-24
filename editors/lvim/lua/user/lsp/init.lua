@@ -16,6 +16,10 @@ vim.list_extend(lvim.lsp.installer.setup.ensure_installed, {
   "jsonls",
 })
 
+-- require("lvim.lsp.null-ls.linters").setup({
+--   { command = "codespell", filtypes = "markdown" }
+-- })
+
 -- change UI setting of `LspInstallInfo`
 -- see <https://github.com/williamboman/nvim-lsp-installer#default-configuration>
 -- lvim.lsp.installer.setup.ui.check_outdated_servers_on_open = false

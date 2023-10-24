@@ -9,11 +9,13 @@ set relativenumber
 
 set scrolloff=999
 
-set clipboard+=unnamed
+set clipboard^=unnamedplus
 set clipboard+=ideaput
 
 " pasting over shouldn't yank
 xnoremap p P
+" visual select shouldn't yank
+set clipboard-=autoselect
 
 " Reload config
 map <Leader>C :source ~/.ideavimrc<CR>
@@ -27,7 +29,7 @@ map <Leader>/ <Action>(CommentByLineComment)
 " Actions
 map <Leader><CR> <Action>(ShowIntentionActions)
 map <Leader>cs <Action>(FileStructurePopup)
-map <M-\> <Action>(ActivateTerminalToolWindow)
+map <C-\> <Action>(ActivateTerminalToolWindow)
 map <Leader>cR <Action>(Run)
 map <Leader>cr <Action>(RunTargetAction)
 
@@ -42,7 +44,7 @@ map <Leader>e :NERDTreeFocus<CR>
 map <Leader>n <Action>(NewFile)
 map <Leader>N <Action>(NewScratchFile)
 
-"Find 
+"Find
 map <Leader>f <Action>(Find)
 map <Leader>F <Action>(FindInPath)
 
