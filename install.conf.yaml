@@ -72,6 +72,7 @@
       path: wm/i3.conf
     ~/.config/rofi/config.rasi: linux/rofi.rasi
     ~/.config/polybar/config: wm/polybar.ini
+    ~/.config/sway/config.d/user.conf: wm/sway.user.conf
     ~/.i3/polybar.sh: wm/polybar.sh
     ~/.i3/nvidia-smi-polybar.sh: wm/nvidia-smi-polybar.sh
 - shell:
