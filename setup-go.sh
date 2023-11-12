@@ -5,7 +5,7 @@ if [ -n "${SKIP_SETUP_SCRIPTS}" ]; then
 fi
 
 function install_go() {
-  GO_VERSION=1.20.6
+  GO_VERSION=1.21.3
   if which go > /dev/null 2>&1; then
     INSTALLED_VERSION=$(go version | grep -ohE '[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}')
     if [ "$GO_VERSION" == "$INSTALLED_VERSION" ]; then

@@ -1,5 +1,9 @@
 #!/bin/bash
 
+if [ -n "${SKIP_SETUP_SCRIPTS}" ]; then
+  exit 0
+fi
+
 function setup_brew() {
 	if [ "$(uname)" != "Darwin" ]; then
 		echo "not a mac" && return 0
