@@ -9,6 +9,7 @@ function install_go() {
   if which go > /dev/null 2>&1; then
     INSTALLED_VERSION=$(go version | grep -ohE '[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}')
     if [ "$GO_VERSION" == "$INSTALLED_VERSION" ]; then
+      echo "Already Installed"
       return 0
     fi
   fi
@@ -35,6 +36,7 @@ function install_go() {
   fi
   sudo rm -rf /usr/local/go 
   sudo tar -C /usr/local -xzf "${FILE}"
+  echo "Installed."
 }
 
 function install_utils() {

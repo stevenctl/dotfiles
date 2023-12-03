@@ -15,7 +15,7 @@ if ! which pip3 > /dev/null 2>&1; then
   elif which dnf > /dev/null 2>&1; then
     dnf install python3 
   elif which pacman > /dev/null 2>&1; then
-    sudo pacman -Sy python-pip
+    sudo pacman --noconfirm -Sy python-pip
   else
     echo "No supported package manager"
   fi

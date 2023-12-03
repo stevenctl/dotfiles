@@ -76,3 +76,4 @@
     ~/.i3/nvidia-smi-polybar.sh: wm/nvidia-smi-polybar.sh
 - shell:
   - [./setup-window-manager.sh, Setting up window manager]
+  - [./setup-window-manager.sh, Ricing wm on arch ]
