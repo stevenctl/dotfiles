@@ -28,7 +28,6 @@ lvim.lsp.buffer_mappings.normal_mode["<leader>d"] = { vim.diagnostic.open_float,
 lvim.lsp.buffer_mappings.normal_mode["[d"] = { vim.diagnostic.goto_prev, "diagnostic prev" }
 lvim.lsp.buffer_mappings.normal_mode["d]"] = { vim.diagnostic.goto_next, "diagnostic next" }
 lvim.lsp.buffer_mappings.normal_mode["<leader>q"] = { vim.diagnostic.setloclist, "diagnostic loclist" }
-lvim.lsp.buffer_mappings.normal_mode["K"] = { vim.lsp.buf.hover, "LSP Hover" }
 
 lvim.builtin.which_key.mappings = {
   -- preserved built-in

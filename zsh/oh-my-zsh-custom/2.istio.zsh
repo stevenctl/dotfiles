@@ -44,3 +44,9 @@ function split_bug_report() {
   cat crs | yq '.items | groupby(.metadata.namespace) | .[]' -s '"nsdumps_cr/" + .[0].metadata.namespace + ".ns.yaml"'
   cat k8s-resources | yq '.items | groupby(.metadata.namespace) | .[]' -s '"nsdumps/" + .[0].metadata.namespace + ".ns.yaml"'
 }
+
+function proxy_build() {
+  DEFAULT_PROXY_DIR=$(realpath $ISTIO/../proxy)
+  PROXY_DIR="${PROXY_DIR:-$DEFAULT_PROXY_DIR}"
+  docker start istio-proxy-build && docker attach istio-proxy-build || docker run --name istio-proxy-build -it -w /work -v $PROXY_DIR:/work gcr.io/istio-testing/build-tools-proxy:master-latest bash
+}
