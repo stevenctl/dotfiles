@@ -1,5 +1,4 @@
--- require('lspconfig').gdscript.setup {
---   -- If things get laggy, uncomment:
+-- require('lspconfig').gdscript.setup { -- If things get laggy, uncomment:
 --   -- flags = {
 --   --   debounce_text_changes = 150,
 --   -- },
@@ -20,8 +19,10 @@
 local lsp_manager = require "lvim.lsp.manager"
 lsp_manager.setup("gdscript", {
   on_attach = function(client, bufnr)
+    -- TODO this breaks anything but the first buffer getting attached
     -- pipe lets Godot editor trigger files in nvim
-    vim.api.nvim_command('echo serverstart("/tmp/godot.pipe")')
+    -- vim.api.nvim_command('echo serverstart("/tmp/godot.pipe")')
+    
     -- tabs/spaces must not be mixed
     vim.o.expandtab = false
 
