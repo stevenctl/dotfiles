@@ -17,6 +17,7 @@
 -- }
 
 local lsp_manager = require "lvim.lsp.manager"
+local util = require 'lspconfig.util'
 lsp_manager.setup("gdscript", {
   on_attach = function(client, bufnr)
     -- TODO this breaks anything but the first buffer getting attached
@@ -40,6 +41,7 @@ lsp_manager.setup("gdscript", {
   end,
   on_init = require("lvim.lsp").common_on_init,
   capabilities = require("lvim.lsp").common_capabilities(),
+  root_dir = util.root_pattern('project.godot', '.git'),
 })
 
 -- TODO debugger
