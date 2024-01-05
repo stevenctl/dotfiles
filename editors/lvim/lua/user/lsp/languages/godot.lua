@@ -15,10 +15,11 @@
 
 --   end
 -- }
-
+local cmd = {'ncat', '127.0.0.1', '6005'}
 local lsp_manager = require "lvim.lsp.manager"
 local util = require 'lspconfig.util'
 lsp_manager.setup("gdscript", {
+  cmd = cmd,
   on_attach = function(client, bufnr)
     -- TODO this breaks anything but the first buffer getting attached
     -- pipe lets Godot editor trigger files in nvim
@@ -41,7 +42,10 @@ lsp_manager.setup("gdscript", {
   end,
   on_init = require("lvim.lsp").common_on_init,
   capabilities = require("lvim.lsp").common_capabilities(),
-  root_dir = util.root_pattern('project.godot', '.git'),
+  -- root_dir = util.root_pattern('project.godot', '.git'),
+  root_dir = function ()
+   return "C:/Users/Steven/gamedev/short-dungeon/godot"
+  end
 })
 
 -- TODO debugger

@@ -19,6 +19,7 @@ lvim.colorscheme        = "everforest"
 -- lvim.colorscheme = "wal"
 -- vim.opt.termguicolors = false
 
+print("COME ON")
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",

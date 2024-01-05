@@ -1,10 +1,3 @@
----@diagnostic disable-next-line: missing-parameter
-vim.list_extend(lvim.builtin.treesitter.ensure_installed, {
-  {
-    "python",
-  }
-})
-
 -- Set a formatter.
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
@@ -48,8 +41,6 @@ vim.g.magma_save_path = vim.fn.stdpath "data" .. "/magma"
 ------------------------
 ---@diagnostic disable-next-line: missing-parameter
 vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "pylsp" })
----@diagnostic disable-next-line: missing-parameter
-vim.list_extend(lvim.lsp.installer.setup.ensure_installed, { "pylsp" })
 
 local lsp_manager = require "lvim.lsp.manager"
 
