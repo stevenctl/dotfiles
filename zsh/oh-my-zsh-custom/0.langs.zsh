@@ -21,3 +21,5 @@ if [ $(uname) = "Darwin" ]; then
   export LDFLAGS="-L/opt/homebrew/opt/llvm/lib"
   export CPPFLAGS="-I/opt/homebrew/opt/llvm/include"
 fi
+
+export PATH="$PATH:$HOME/.godot/"
