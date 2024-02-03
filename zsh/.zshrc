@@ -2,7 +2,7 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
-export ZSH_THEME="powerlevel10k/powerlevel10k"
+export ZSH_THEME="alanpeabody"
 export ZSH="$HOME/.oh-my-zsh"
 plugins=(git kubectl)
 source $ZSH/oh-my-zsh.sh

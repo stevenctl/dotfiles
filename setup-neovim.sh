@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [ -n "${SKIP_SETUP_SCRIPTS}" ]; then
+if [ -n "${SKIP_SETUP_SCRIPTS}" ] || which lvim; then
   exit 0
 fi
 rm -rf $HOME/.local/share/lunarvim.old/

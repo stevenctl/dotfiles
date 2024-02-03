@@ -1,0 +1,182 @@
+@import url("/home/landow/.cache/wal/colors-waybar.css");
+
+* {
+    font-family: "JetBrains Mono NF", "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    border: none;
+    border-radius: 0px;
+}
+
+window#waybar {
+    background-color: transparent;
+    border-bottom: 0px solid #ffffff;
+    transition-property: background-color;
+    transition-duration: .5s;
+}
+
+.modules-left , .modules-right, .modules-center {
+    background-color: alpha(@background, .6);
+    border-radius: 16px;
+}
+
+#window, #battery, #group, #system, #workspaces, #pulseaudio, #bluetooth, #network, #window {
+  padding: 2px 8px;
+  color: @foreground;
+}
+
+.modules-left {
+    margin-left: 4px;
+}
+
+.modules-right {
+    margin-right: 4px;
+}
+
+
+/* -----------------------------------------------------
+ * Workspaces 
+ * ----------------------------------------------------- */
+
+#workspaces {
+    border: 0px;
+    padding: 0px;
+    font-weight: bold;
+    font-style: normal;
+}
+
+#workspaces button {
+    padding: 0px 3px;
+    border-radius: 16px;
+    border: 0px;
+    color: @color1;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.4;
+}
+
+#workspaces button.active {
+    color: @color2;
+    background: alpha(shade(@color2, 1.25), .5);
+    transition: all 0.3s ease-in-out;
+    opacity:1.0;
+}
+
+#workspaces button:hover {
+    color: @color1;
+    background: @foreground;
+    opacity:0.7;
+}
+
+/* -----------------------------------------------------
+ * Tooltips
+ * ----------------------------------------------------- */
+
+tooltip {
+    border-radius: 10px;
+    background-color: @background;
+    opacity:0.8;
+    padding:20px;
+}
+
+tooltip label {
+    color: @color2;
+}
+
+/* -----------------------------------------------------
+ * Window
+ * ----------------------------------------------------- */
+
+#window {
+    border-radius: 12px;
+    font-weight:normal;
+}
+
+window#waybar.empty #window {
+    background-color: transparent;
+}
+
+/* -----------------------------------------------------
+ * Taskbar
+ * ----------------------------------------------------- */
+
+#taskbar {
+    padding:0px;
+    border-radius: 10px;
+    font-weight: normal;
+    font-style: normal;
+    border: 3px solid @color0;
+}
+
+#taskbar button {
+    border-radius: 10px;
+    padding: 0px 5px 0px 5px;
+}
+
+/* -----------------------------------------------------
+ * Idle Inhibator
+ * ----------------------------------------------------- */
+
+#idle_inhibitor {
+    font-weight: bold;
+    color: @iconcolor;
+}
+
+#idle_inhibitor.activated {
+    font-weight: bold;
+    color: #dc2f2f;
+}
+
+/* hardware */
+#disk,#memory,#cpu,#language {
+    color:@iconcolor;
+}
+
+#language {
+    margin-right:10px;
+}
+
+#clock {
+    color: @foreground;
+    padding: 1px 10px 0px 10px;
+    border-radius: 16px;
+    border:1px solid @color1;   
+}
+
+#pulseaudio.muted {
+    color: @color3;
+}
+
+#bluetooth.off {
+  color: @color3;
+  opacity: 0.4;
+}
+
+@keyframes blink {
+    to {
+        background-color: @color0;
+        color: @color2;
+    }
+}
+
+#battery.critical:not(.charging) {
+    background-color: #f53c3c;
+    color: @color3;
+    animation-name: blink;
+    animation-duration: 0.5s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+}
+
+#tray {
+    padding: 0px 10px 0px 0px;
+}
+
+#tray > .passive {
+    -gtk-icon-effect: dim;
+}
+
+#tray > .needs-attention {
+    -gtk-icon-effect: highlight;
+}
+
+

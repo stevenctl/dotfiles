@@ -65,16 +65,23 @@
     ~/.config/kitty/kitty.conf: linux/kitty.conf
 # Window manager
 - link:
-    ~/.yabairc: wm/yabairc.sh
-    ~/.skhdrc: wm/skhdrc
+    # i3/sway
     ~/.i3/config: 
       force: true
       path: wm/i3.conf
     ~/.config/rofi/config.rasi: linux/rofi.rasi
-    ~/.config/polybar/config: wm/polybar.ini
     ~/.config/sway/config.d/user.conf: wm/sway.user.conf
+    # polybar
+    ~/.config/polybar/config: wm/polybar.ini
     ~/.i3/polybar.sh: wm/polybar.sh
     ~/.i3/nvidia-smi-polybar.sh: wm/nvidia-smi-polybar.sh
+    # hypr
+    ~/.config/hypr/hyprland.conf: 
+      force: true
+      path: ./wm/hyprland.conf
+    # waybar
+    ~/.config/waybar/config.jsonc: ./wm/waybar/config.jsonc
+    ~/.config/waybar/style.css: ./wm/waybar/style.css
 - shell:
   - [./setup-window-manager.sh, Setting up window manager]
   - [./setup-window-manager.sh, Ricing wm on arch ]
