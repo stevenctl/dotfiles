@@ -23,3 +23,4 @@ if [ $(uname) = "Darwin" ]; then
 fi
 
 export PATH="$PATH:$HOME/.godot/"
+export PATH="$PATH:/usr/share/dotnet"
