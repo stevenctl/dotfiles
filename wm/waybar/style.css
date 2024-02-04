@@ -146,7 +146,7 @@ window#waybar.empty #window {
 }
 
 #bluetooth.off {
-  color: @color3;
+  color: shade(@color2, 1.5);
   opacity: 0.4;
 }
 
@@ -159,7 +159,7 @@ window#waybar.empty #window {
 
 #battery.critical:not(.charging) {
     background-color: #f53c3c;
-    color: @color3;
+    color: shade(@color2, 1.5);
     animation-name: blink;
     animation-duration: 0.5s;
     animation-timing-function: linear;

@@ -136,7 +136,7 @@
         "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
         "tooltip-format-disconnected": "Disconnected",
         "max-length": 50,
-        "on-click": "nmtui"
+        "on-click": "kitty --class float-dialogue -e nmtui"
     },
 
     // Battery
@@ -153,6 +153,11 @@
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
         "format-icons": [" ", " ", " ", " ", " "]
+    },
+
+    "backlight": {
+      "format": "{icon} {percent}%",
+      "format-icons": ["󰃜", "󰃛", "󰃞", "󰃟", "󰃠"]
     },
 
     // Pulseaudio
@@ -182,7 +187,7 @@
         "format-disabled": "󰂲",
         "format-off": "󰂲",
         "interval": 30,
-        "on-click": "blueman-manager"
+        "on-click": "kitty --class float-dialogue -e bluetoothctl"
     },
 
     // Other
