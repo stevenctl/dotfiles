@@ -1,9 +1,10 @@
 alias k=kubectl
 export ISTIO=$HOME/go/src/istio.io/istio
 export ZTUNNEL=$ISTIO/../ztunnel
-export ISTIO_VERSION=1.17.1
+export ISTIO_VERSION=1.20.1
 export ISTIO_DIR="$HOME/istio-${ISTIO_VERSION}"
-export PATH="$PATH:${ISTIO_DIR}/bin"
+export PATH="${ISTIO_DIR}/bin:$PATH"
+export PATH="$HOME/.gloo-mesh/bin:$PATH"
 export ENVOY_DOCKER_OPTIONS="-v $GCP_CREDENTIALS:$GCP_CREDENTIALS"
 
 function download_istio_bin() {
@@ -49,4 +50,17 @@ function proxy_build() {
   DEFAULT_PROXY_DIR=$(realpath $ISTIO/../proxy)
   PROXY_DIR="${PROXY_DIR:-$DEFAULT_PROXY_DIR}"
   docker start istio-proxy-build && docker attach istio-proxy-build || docker run --name istio-proxy-build -it -w /work -v $PROXY_DIR:/work gcr.io/istio-testing/build-tools-proxy:master-latest bash
+}
+
+function kfp() {
+  LABEL=$1
+  shift 1
+  kubectl get po -lapp=${LABEL} $@ -ojsonpath='{.items[0].metadata.name}'
+}
+
+function kefp() {
+  LABEL=$1
+  shift 1
+  POD=$(kubectl get po -lapp=${LABEL} $@ -ojsonpath='{.items[0].metadata.name}')
+  kubectl exec -it $@ $POD -- sh
 }

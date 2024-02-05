@@ -54,9 +54,6 @@
     ~/.zshrc:
       force: true
       path: zsh/.zshrc
-    ~/.oh-my-zsh/custom:
-      force: true
-      path: zsh/oh-my-zsh-custom
     ~/.p10k.zsh: zsh/.p10k.zsh
 # Terminal Emulator
 - link:
