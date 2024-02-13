@@ -1,6 +1,6 @@
 require("user.lsp.languages.rust")
 require("user.lsp.languages.go")
--- require("user.lsp.languages.python")
+require("user.lsp.languages.python")
 require("user.lsp.languages.csharp")
 require("user.lsp.languages.wgsl")
 require("user.lsp.languages.godot")
