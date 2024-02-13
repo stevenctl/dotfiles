@@ -115,7 +115,7 @@
         "drawer": {
             "transition-duration": 300,
             "children-class": "not-memory",
-            "transition-left-to-right": false
+            "transition-left-to-right": true
         },        
         "modules": [
             "custom/system",
@@ -187,7 +187,7 @@
         "format-disabled": "󰂲",
         "format-off": "󰂲",
         "interval": 30,
-        "on-click": "kitty --class float-dialogue -e bluetoothctl"
+        "on-click": "kitty --class float-dialogue -e bluetuith"
     },
 
     // Other

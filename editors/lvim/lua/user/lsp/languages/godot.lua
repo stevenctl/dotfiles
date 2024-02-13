@@ -18,6 +18,11 @@
 local cmd = {'ncat', '127.0.0.1', '6005'}
 local lsp_manager = require "lvim.lsp.manager"
 local util = require 'lspconfig.util'
+
+if vim.fn.has('macunix') then
+  cmd = nil
+end
+
 lsp_manager.setup("gdscript", {
   cmd = cmd,
   on_attach = function(client, bufnr)

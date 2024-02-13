@@ -5,6 +5,7 @@ export ISTIO_VERSION=1.20.1
 export ISTIO_DIR="$HOME/istio-${ISTIO_VERSION}"
 export PATH="${ISTIO_DIR}/bin:$PATH"
 export PATH="$HOME/.gloo-mesh/bin:$PATH"
+export PATH=$HOME/.gloo/bin:$PATH
 export ENVOY_DOCKER_OPTIONS="-v $GCP_CREDENTIALS:$GCP_CREDENTIALS"
 
 function download_istio_bin() {

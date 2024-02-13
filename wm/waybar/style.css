@@ -125,9 +125,13 @@ window#waybar.empty #window {
     color: #dc2f2f;
 }
 
+#hardware {
+  margin-right: 20px;
+}
+
 /* hardware */
 #disk,#memory,#cpu,#language {
-    color:@iconcolor;
+    color: @iconcolor;
 }
 
 #language {
