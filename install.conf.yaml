@@ -79,6 +79,7 @@
     # waybar
     ~/.config/waybar/config.jsonc: ./wm/waybar/config.jsonc
     ~/.config/waybar/style.css: ./wm/waybar/style.css
+    # wal
+    ~/.config/wal/templates/colors-hyprland.conf: ./wm/wal/colors-hyprland.conf
 - shell:
-  - [./setup-window-manager.sh, Setting up window manager]
   - [./setup-window-manager.sh, Ricing wm on arch ]

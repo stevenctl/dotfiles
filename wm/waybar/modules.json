@@ -81,18 +81,20 @@
 
     // System
     "custom/system": {
-        "format": "",
+        "format": " ",
         "tooltip": false
     },
 
     // CPU
     "cpu": {
+        "interval": 1,
         "format": "/ C {usage}% ",
         "on-click": "kitty -e htop"
     },
 
     // Memory
     "memory": {
+        "interval": 10,
         "format": "/ M {}% ",
         "on-click": "kitty -e htop"
     },
@@ -105,16 +107,12 @@
         "on-click": "kitty -e htop"
     }, 
 
-    "hyprland/language": {
-        "format": "/ K {short}"
-    },
-
     // Group Hardware
     "group/hardware": {
         "orientation": "inherit",
         "drawer": {
             "transition-duration": 300,
-            "children-class": "not-memory",
+            "children-class": "hardware-element",
             "transition-left-to-right": true
         },        
         "modules": [

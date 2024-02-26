@@ -22,5 +22,5 @@ function setup_skhd() {
 
 setup_yabai
 setup_skhd
-# TODO i3?
+# TODO i3, hyprland, sway?
 
