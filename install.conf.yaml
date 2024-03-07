@@ -32,6 +32,9 @@
     ~/.config/lvim: 
       force: true
       path: editors/lvim
+    ~/.config/nvim: 
+      force: true
+      path: editors/nvim
     ~/.vimrc: 
       force: true
       path: editors/.vimrc

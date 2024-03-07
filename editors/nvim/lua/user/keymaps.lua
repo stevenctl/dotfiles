@@ -1,7 +1,7 @@
 local map = require("user.util").map
 
 -- QoL
-map.n("U", "<C-R>", {})    -- sane redo
+map.n("U", "<C-R>", {}) -- sane redo
 map.n("<ESC>", ":noh<CR>", {})
 
 -- Don't copy the replaced text after pasting in visual mode
@@ -16,31 +16,59 @@ map.n("<C-F>", ":FindIn<CR>", {})
 -- cycle through buffers
 map.n("<TAB>", ":BufferLineCycleNext<CR>", {})
 map.n("<S-TAB>", ":BufferLineCyclePrev<CR>", {})
+map.n("<leader><TAB>", ":Telescope buffers<CR>", {})
+
+-- window nav
+map.n("<C-h>", "<C-w>h", {})
+map.n("<C-j>", "<C-w>j", {})
+map.n("<C-k>", "<C-w>k", {})
+map.n("<C-l>", "<C-w>l", {})
 
 -- Comments
 map.n("<leader>/", "<Plug>(comment_toggle_linewise_current)", {})
 map.v("<leader>/", "<Plug>(comment_toggle_linewise_current)", {})
 
--- LSP related
-map.n("<M-C-L>", vim.lsp.buf.format, {})
-map.n("<leader><CR>", vim.lsp.buf.code_action, {})
-map.n("[d", vim.diagnostic.goto_prev, {})
-map.n("d]", vim.diagnostic.goto_next, {})
-map.n("<leader>q", vim.diagnostic.setloclist, {})
-
-
--- Register this later with the plugin
+-- Referenced later
 local M = {}
 
+-- LSP related
+vim.api.nvim_create_autocmd('LspAttach', {
+	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+	callback = function(ev)
+		-- Enable completion triggered by <c-x><c-o>
+		vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
+
+
+    local opts = { buffer = ev.buf }
+		map.n("<M-C-L>", vim.lsp.buf.format, opts)
+		map.n("<leader><CR>", ":Lspsaga code_action<CR>", opts)
+		map.n("[d", vim.diagnostic.goto_prev, opts)
+		map.n("d]", vim.diagnostic.goto_next, opts)
+		map.n("<leader>d", vim.diagnostic.open_float, opts)
+		map.n("K", vim.lsp.buf.hover, opts)
+		map.n("gd", vim.lsp.buf.definition, opts)
+		map.n("gt", vim.lsp.buf.type_definition, opts)
+		map.n("gD", vim.lsp.buf.declaration, opts)
+		map.n("gI", vim.lsp.buf.implementation, opts)
+	end
+})
+
+-- Help
 M.which_keys = {
 	-- preserved built-in
-	-- l = lvim.builtin.which_key.mappings.l, -- lsp
+	l = {
+		name = "LSP",
+		r = { ":Lspsaga rename<CR>", "Rename" },
+		R = { ":Lspsaga project_replace<CR>", "Rename" },
+		s = { ":Lspsaga outline<CR>", "Symbols" },
+	},
 	-- b = lvim.builtin.which_key.mappings.b, -- buffers
 
 	-- frequent
 	o = { "<cmd> Telescope find_files <CR>", "open file" },
 	O = { "<cmd> Telescope oldfiles <CR>", "recent file" },
 	x = { ":BufferKill<CR>", "buffer kill" },
+	q = { vim.diagnostic.setloclist, "loclist open" },
 	["/"] = { "<Plug>(comment_toggle_linewise_current)", "Comment toggle" },
 
 	-- splits

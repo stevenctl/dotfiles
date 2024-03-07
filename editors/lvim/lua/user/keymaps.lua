@@ -18,6 +18,7 @@ lvim.keys.normal_mode["<leader>e"] = { "<cmd> NvimTreeFocus<CR>" }
 lvim.keys.normal_mode["<C-F>"] = { "<cmd> FindIn<CR>" }
 
 -- cycle through buffers
+lvim.keys.normal_mode["<leader><TAB>"] = { ":Telescope buffers<CR>" }
 lvim.keys.normal_mode["<TAB>"] = { ":BufferLineCycleNext<CR>" }
 lvim.keys.normal_mode["<S-TAB>"] = { ":BufferLineCyclePrev<CR>" }
 

@@ -3,6 +3,7 @@ vim.opt.scrolloff = 12
 vim.opt.number = true
 vim.opt.tabstop = 2
 vim.opt.undofile = true
+vim.opt.signcolumn = "yes:1"
 
 -- TODO install treesitter for folds?
 vim.opt.foldmethod = "expr"
