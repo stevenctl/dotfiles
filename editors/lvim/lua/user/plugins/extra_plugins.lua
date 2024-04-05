@@ -12,6 +12,7 @@ local user_plugins = {
       require("mini.surround").setup()
     end,
   },
+  { "sindrets/diffview.nvim" }
 }
 
 ---@diagnostic disable-next-line: missing-parameter
