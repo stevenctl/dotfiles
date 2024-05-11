@@ -114,5 +114,6 @@ lvim.builtin.which_key.mappings = {
   c = {
     name = "Code",
     s = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" },
+    n = { ":redir @+<cr>:echo expand('%:p')':'line('.')<cr>:redir END<cr>", "print line number" }
   }
 }

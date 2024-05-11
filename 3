@@ -2,12 +2,12 @@
 @import url("/home/landow/dotfiles/wm/waybar/colors-everforest.css");
 
 * {
+    font-family: "JetBrains Mono NF", "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif;
     font-size: 14px;
 }
 
 * {
   border-radius: 0;
-  /* font-family: "JetBrains Mono NF", "Fira Sans Semibold", FontAwesome, Roboto, Helvetica, Arial, sans-serif; */
   font-family: "Mononoki Nerd Font";
   font-size: 11pt;
   min-height: 0;
@@ -38,25 +38,23 @@ tooltip {
 #workspaces button.urgent { color: @base12; }
 #workspaces button:hover { color: @base16; }
 
-#disk, #clock, #custom-date, #custom-weather, #memory, #battery, #custom-net, #network, #pulseaudio, #workspaces, #temperature, #custom-gpu_usage, #custom-gpu_temp, #cpu {
+#clock, #custom-date, #custom-weather, #memory, #battery, #custom-net, #network
+#pulseaudio, #workspaces, #custom-cpu_temp {
   padding: 2px 6px;
   background: @base02;
   margin-top: 5px;
 }
 
-/* Right Side, left endcap */
-#custom-net, #network {
+#custom-net {
   color: @base15;
   padding-left: 12px;
   border-radius: 15px 0px 0px 15px;
 }
 
-#disk, #cpu, #temperature { color: @base16; }
-#custom-gpu_usage, #custom-gpu_temp { color: @base17; }
-#battery { color: @base13; }
+#custom-cpu_temp { color: @base14; }
+#pulseaudio { color: @base13; }
 
-/* Right Side, right endcap */
-#pulseaudio {
+#battery {
   color: @base12;
   padding-right: 12px;
   margin-right: 5px;
@@ -71,7 +69,7 @@ tooltip {
 }
 
 #custom-date { color: @base13; }
-#custom-weather { color: @base14; padding-top: 8px; }
+#custom-weather { color: @base14; }
 
 #memory {
   color: @base15; 

@@ -9,45 +9,116 @@
 // ----------------------------------------------------- 
 //
 {
-    // General Settings
-
-    // Position TOP
-    "layer": "top",
-    "margin-top": 14,
-    "margin-bottom": 0,
-
-    // Position BOTTOM
-    // "position": "bottom",
-    // "margin-top": 0,
-    // "margin-bottom": 14,
-    
-    "layer": "top",
-    "margin-left": 0,
-    "margin-right": 0,    
-    "spacing": 0,
-
-    // Load Modules
-    "include": ["~/dotfiles/wm/waybar/modules.json"],
-
-    // Modules Left
-    "modules-left": [
-        "hyprland/workspaces"
-    ],
-
-    // Modules Center
-    "modules-center": [
-        "hyprland/window",
-    ],
-
-    // Modules Right    
-    "modules-right": [
-        "backlight",
-        "pulseaudio",
-        "battery", 
-        "network",
-        "bluetooth",
-        "group/hardware",
-        "tray",
-        "clock"
-    ]
+  "position": "top",
+  "layer": "top",
+  "modules-left": ["clock", "custom/date", "custom/weather", "disk", "memory"],
+  "modules-center": ["hyprland/workspaces"],
+  "modules-right": ["network", "cpu", "temperature", "custom/gpu_usage","custom/gpu_temp", "battery", "pulseaudio"],
+  // "mode": "invisible",
+  
+  "hyprland/workspaces": {
+    "on-click": "activate",
+    "active-only": false,
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{icon}",
+    "format-icons": {
+      "default": "",
+      "active": "",
+    }
+  },
+  "clock": {
+    "format": " {:%H:%M}",
+    "tooltip-format": "<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "mode-mon-col": 3,
+      // "weeks-pos": "right",
+      "on-scroll": 1,
+      "on-click-right": "mode",
+      "format": {
+        "months": "<span color='#D3C6AA'><b>{}</b></span>",
+        "days": "<span color='#7FBBB3'><b>{}</b></span>",
+        "weeks": "<span color='#A7C080'><b>W{}</b></span>",
+        "weekdays": "<span color='#DBBC7F'><b>{}</b></span>",
+        "today": "<span color='#E67E80'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions":  {
+      "on-click-right": "mode",
+      "on-click-forward": "tz_up",
+      "on-click-backward": "tz_down",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  },
+  "custom/date": {
+    "format": "  {}",
+    "interval": 60,
+    "exec": "date +\"%a %d\""
+  },
+  "custom/weather": {
+    "format": "{}°F",
+    "tooltip": true,
+    "interval": 1800,
+    "exec": "wttrbar --fahrenheit --hide-conditions",
+    "return-type": "json"
+  },
+  "memory": {
+    "interval": 30,
+    "format": " {}%"
+  },
+  "disk": {
+    "interval": 30,
+    "format": " {percentage_used}%"
+  },
+  "battery": {
+    "states": {
+      "warning": 20,
+      "critical": 10
+    },
+    "format": "{icon}  {capacity}%",
+    "format-charging": " {capacity}%",
+    "format-plugged": " {capacity}%",
+    "format-alt": "{time} {icon}",
+    "format-icons": ["", "", "", "", ""]
+  },
+  "network": {
+    "interval": ".1",
+    "format-wifi": "  {frequency} ",
+    "format-ethernet": " {ifname}",
+    "format-disconnected": "󱚼",
+    "tooltip-format": " {ifname} via {gwaddri}",
+    "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\nUp: {bandwidthUpBits} Down: {bandwidthDownBits}",
+    "tooltip-format-ethernet": " {ifname}\nIP: {ipaddr}\n up: {bandwidthUpBits} down: {bandwidthDownBits}",
+    "tooltip-format-disconnected": "Disconnected",
+    "max-length": 50,
+    "on-click": "kitty --class float-dialogue -e nmtui"
+  },
+  "pulseaudio": {
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "format": "{icon} {volume}%",
+    "format-muted": " muted",
+      "format-icons": {
+        "headphone": "",
+        "default": ["", ""]
+      },
+  },
+  "temperature": {
+    "interval": "5",
+    "format": " {}°C"
+  },
+  "custom/gpu_temp": {
+    "interval": "5",
+    "format": " {}°C",
+    "exec": "/home/landow/dotfiles/wm/nvidia-smi-polybar.sh temperature"
+  },
+  "cpu": {
+    "format": "   {usage}%",
+  },
+  "custom/gpu_usage": {
+    "interval": "5",
+    "format": "󰢮 {}%",
+    "exec": "/home/landow/dotfiles/wm/nvidia-smi-polybar.sh utilization"
+  },
 }

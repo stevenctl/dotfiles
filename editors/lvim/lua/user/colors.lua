@@ -5,7 +5,8 @@ vim.list_extend(lvim.plugins, {
   { "rmehri01/onenord.nvim" },
   { "sainnhe/everforest", name = "everforest" },
   { "catppuccin/nvim", name = "catppuccin" },
-  { 'AlphaTechnolog/pywal.nvim', name = 'wal' }
+  { 'AlphaTechnolog/pywal.nvim', name = 'wal' },
+  { "rose-pine/neovim", name = "rose-pine" }
 })
 lvim.transparent_window = true
 
@@ -18,8 +19,6 @@ lvim.colorscheme        = "everforest"
 
 -- lvim.colorscheme = "wal"
 -- vim.opt.termguicolors = false
-
-print("COME ON")
 
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
