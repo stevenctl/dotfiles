@@ -5,6 +5,25 @@ local handlers = {
 			capabilities = capabilities,
 		}
 	end,
+	["gopls"] = function()
+		local capabilities = require('cmp_nvim_lsp').default_capabilities()
+		require("lspconfig")["gopls"].setup {
+			capabilities = capabilities,
+			settings = {
+				gopls = {
+					env = { GOFLAGS = "-tags=integ" },
+					usePlaceholders = true,
+					gofumpt = true,
+					codelenses = {
+						generate = false,
+						gc_details = true,
+						test = true,
+						tidy = true,
+					},
+				},
+			},
+		}
+	end
 }
 
 return flatten_plugin_list {

@@ -14,8 +14,8 @@ map.n("<leader>e", ":NvimTreeFocus<CR>", {})
 map.n("<C-F>", ":FindIn<CR>", {})
 
 -- cycle through buffers
-map.n("<TAB>", ":BufferLineCycleNext<CR>", {})
-map.n("<S-TAB>", ":BufferLineCyclePrev<CR>", {})
+map.n("<TAB>", ":bnext<CR>", {})
+map.n("<S-TAB>", ":bprev<CR>", {})
 map.n("<leader><TAB>", ":Telescope buffers<CR>", {})
 
 -- window nav
@@ -47,6 +47,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		map.n("<leader>d", vim.diagnostic.open_float, opts)
 		map.n("K", vim.lsp.buf.hover, opts)
 		map.n("gd", vim.lsp.buf.definition, opts)
+		map.n("gr", vim.lsp.buf.references, opts)
 		map.n("gt", vim.lsp.buf.type_definition, opts)
 		map.n("gD", vim.lsp.buf.declaration, opts)
 		map.n("gI", vim.lsp.buf.implementation, opts)
