@@ -6,6 +6,8 @@ if not ok then
 	return
 end
 
+local jnhl = { delay = { highlight = 100000 } }
+
 -- Install plugins
 lazy.setup(flatten_plugin_list(
 	{
@@ -13,12 +15,19 @@ lazy.setup(flatten_plugin_list(
 		require("user.plugins.todo"),
 		require("user.plugins.bqf"),
 		require("user.plugins.comment"),
-		{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
+		{ "lukas-reineke/indent-blankline.nvim", main = "ibl",  opts = {} },
+
+		-- Mini QoL
+		{ 'echasnovski/mini.ai',                 version = '*', config = true }, -- extra text objects
+		{ 'echasnovski/mini.surround',           version = '*', config = true }, -- edit surrounding area
+		{ 'echasnovski/mini.pairs',              version = '*', config = true }, -- autopairs
+		{ 'echasnovski/mini.jump',               version = '*', config = jnhl }, -- make f/F better
+		{ 'echasnovski/mini.move',               version = '*', config = true }, -- use alt-hjkl to move text
 
 		-- Keymapping
-		require("user.plugins.whichkey"),
+		require("user.plugins.clue"),
 
-		-- Colorschemes
+		-- Colorschemes and beautification
 		require("user.colors"),
 
 		-- File navigation
@@ -30,6 +39,6 @@ lazy.setup(flatten_plugin_list(
 		require("user.lsp"),
 
 		-- Gitsigns
-		{ "lewis6991/gitsigns.nvim",             config = true },
+		{ "lewis6991/gitsigns.nvim", config = true },
 	}
 ))
