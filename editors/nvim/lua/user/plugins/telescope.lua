@@ -22,7 +22,7 @@ function _G.find_in_hovered()
 	end
 end
 
-vim.api.nvim_command("command! FindIn lua find_in()")
+vim.api.nvim_command("command! FindIn lua find_in_hovered()")
 
 return {
 	"nvim-telescope/telescope.nvim",

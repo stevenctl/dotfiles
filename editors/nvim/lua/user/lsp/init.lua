@@ -26,11 +26,21 @@ local handlers = {
 	end
 }
 
+local navbuddy =
+{
+	"SmiteshP/nvim-navbuddy",
+	dependencies = {
+		"SmiteshP/nvim-navic",
+		"MunifTanjim/nui.nvim"
+	},
+	opts = { lsp = { auto_attach = true } }
+}
+
 return flatten_plugin_list {
 	require("user.lsp.treesitter"),
 	{ "folke/neodev.nvim",                 config = true,                 priority = 100, },
 	{ "williamboman/mason.nvim",           config = true },
 	{ "williamboman/mason-lspconfig.nvim", opts = { handlers = handlers } },
-	{ "neovim/nvim-lspconfig" },
+	{ "neovim/nvim-lspconfig",             dependencies = { navbuddy } },
 	require("user.lsp.lspsaga"),
 }

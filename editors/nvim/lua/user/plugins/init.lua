@@ -9,7 +9,11 @@ end
 -- Install plugins
 lazy.setup(flatten_plugin_list(
 	{
+		-- General Editing
+		require("user.plugins.todo"),
+		require("user.plugins.bqf"),
 		require("user.plugins.comment"),
+		{ "lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} },
 
 		-- Keymapping
 		require("user.plugins.whichkey"),
@@ -26,6 +30,6 @@ lazy.setup(flatten_plugin_list(
 		require("user.lsp"),
 
 		-- Gitsigns
-		{ "lewis6991/gitsigns.nvim", config = true },
+		{ "lewis6991/gitsigns.nvim",             config = true },
 	}
 ))

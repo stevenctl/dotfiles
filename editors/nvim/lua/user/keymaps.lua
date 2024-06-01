@@ -27,7 +27,7 @@ map.n("<C-l>", "<C-w>l", {})
 -- Comments
 map.n("<leader>/", "<Plug>(comment_toggle_linewise_current)", {})
 map.v("<leader>/", "<Plug>(comment_toggle_linewise_current)", {})
-
+map.x("<leader>/", "<Plug>(comment_toggle_linewise_current)", {})
 -- Referenced later
 local M = {}
 
@@ -142,7 +142,7 @@ M.which_keys = {
 	-- Code (mostly customized per-LSP)
 	c = {
 		name = "Code",
-		s = { "<cmd>SymbolsOutline<cr>", "Symbols Outline" },
+		n = { "<cmd>Navbuddy<cr>", "Navbudy" },
 	}
 }
 

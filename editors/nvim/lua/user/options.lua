@@ -4,6 +4,8 @@ vim.opt.number = true
 vim.opt.tabstop = 2
 vim.opt.undofile = true
 vim.opt.signcolumn = "yes:1"
+vim.opt.clipboard="unnamedplus"
+vim.opt.conceallevel = 0
 
 -- TODO install treesitter for folds?
 vim.opt.foldmethod = "expr"
