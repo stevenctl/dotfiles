@@ -29,6 +29,7 @@ lazy.setup(flatten_plugin_list(
 
 		-- Colorschemes and beautification
 		require("user.colors"),
+		require("user.plugins.lualine"),
 
 		-- File navigation
 		require("user.plugins.nvimtree"),

@@ -3,8 +3,17 @@ local map = require("user.util").map
 
 -- QoL
 map.n("U", "<C-R>", "Undo")
+map.n("<ESC>", ":noh<cr>", "No Highlight")
 map.n("<leader>cn", ":Navbuddy<CR>", "Navbuddy")
-map.n("<leaderq", vim.diagnostic.setloclist, "diagnostic loclist")
+map.n("<C-k>", vim.diagnostic.open_float, "Diangostic float")
+
+-- Quickfix
+map.n("<leader>q", ":copen<cr>", "Quickfix toggle")
+map.n("<leader>Q", vim.diagnostic.setloclist, "Diagnostic loclist")
+
+-- Terminal
+map.n("<C-\\>", ":terminal<CR>", "Terminal")
+map.t("<C-\\>", "<C-\\><C-n>", "Terminal normal mode")
 
 -- Don't copy the replaced text after pasting in visual mode
 -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste

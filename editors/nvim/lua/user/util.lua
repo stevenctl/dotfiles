@@ -51,6 +51,9 @@ return {
 		n = function(k, a, d, o)
 			map("n", k, a, d, o)
 		end,
+		t = function(k, a, d, o)
+			map("t", k, a, d, o)
+		end,
 		v = function(k, a, d, o)
 			map("v", k, a, d, o)
 		end,
