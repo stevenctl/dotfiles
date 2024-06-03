@@ -1,7 +1,7 @@
 alias k=kubectl
 export ISTIO=$HOME/go/src/istio.io/istio
 export ZTUNNEL=$ISTIO/../ztunnel
-export ISTIO_VERSION=1.22.0-beta.1
+export ISTIO_VERSION=1.22.0-rc.0
 export ISTIO_DIR="$HOME/istio-${ISTIO_VERSION}"
 export PATH="${ISTIO_DIR}/bin:$PATH"
 export PATH="$HOME/.gloo-mesh/bin:$PATH"
@@ -62,6 +62,7 @@ function kfp() {
 function kefp() {
   LABEL=$1
   shift 1
+  echo kubectl get po -lapp=${LABEL} $@ -ojsonpath='{.items[0].metadata.name}'
   POD=$(kubectl get po -lapp=${LABEL} $@ -ojsonpath='{.items[0].metadata.name}')
   kubectl exec -it $@ $POD -- sh
 }
