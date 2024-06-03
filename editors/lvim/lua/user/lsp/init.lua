@@ -4,6 +4,7 @@ require("user.lsp.languages.python")
 require("user.lsp.languages.csharp")
 require("user.lsp.languages.wgsl")
 require("user.lsp.languages.godot")
+require("user.lsp.languages.dap")
 require('lspconfig').bufls.setup {}
 
 -- require("lvim.lsp.null-ls.linters").setup({

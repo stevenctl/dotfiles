@@ -103,24 +103,6 @@ pcall(function()
   }
 end)
 
-lvim.builtin.dap.on_config_done = function(dap)
-  dap.adapters.codelldb = codelldb_adapter
-  dap.configurations.rust = {
-    {
-      name = "Launch file",
-      type = "codelldb",
-      request = "launch",
-      program = function()
-        ---@diagnostic disable-next-line
-        return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-      end,
-      cwd = "${workspaceFolder}",
-      stopOnEntry = false,
-    },
-  }
-end
-
-
 -- lvim.builtin.which_key.mappings["c"] = {
 --   name = "Rust",
 --   r = { "<cmd>RustRunnables<Cr>", "Runnables" },

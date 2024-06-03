@@ -33,7 +33,23 @@ if not dap_ok then
   return
 end
 
-dapgo.setup()
+dapgo.setup({
+  delve = {  
+       port= 40000,
+  },
+  dap_configurations = {
+      {
+        type = "go",
+        name = "Attach remote 40000",
+        mode = "remote",
+        request = "attach",
+        connect = {
+          host = "127.0.0.1",
+          port = "40000"
+        }
+      },
+    },
+})
 
 ------------------------
 -- LSP
