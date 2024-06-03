@@ -40,7 +40,7 @@ tooltip {
 
 #disk, #clock, #custom-date, #custom-weather, #memory, #battery, #custom-net, #network, #pulseaudio, #workspaces, #temperature, #custom-gpu_usage, #custom-gpu_temp, #cpu {
   padding: 2px 6px;
-  background: @base02;
+  background: @base01 10%;
   margin-top: 5px;
 }
 
