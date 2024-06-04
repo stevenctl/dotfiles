@@ -24,6 +24,10 @@ end
 
 vim.api.nvim_command("command! FindIn lua find_in_hovered()")
 
+local function del_buf(bufnr)
+	require('telescope.actions').delete_buffer(bufnr)
+end
+
 return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.5",
@@ -47,6 +51,14 @@ return {
 	opts = {
 		extensions = { live_grep_args = {}, smart_open = {} },
 		defaults = {
+			mappings = {
+				n = {
+					['<c-x>'] = del_buf
+				},
+				i = {
+					['<c-x>'] = del_buf
+				},
+			},
 			pickers = {
 				buffers = { previwer = false },
 			},

@@ -6,7 +6,8 @@ if not ok then
 	return
 end
 
-local jnhl = { delay = { highlight = 100000 } }
+-- local jnhl = { delay = { highlight = 100000 } }
+-- 		{ 'echasnovski/mini.jump',               version = '*', config = jnhl }, -- make f/F better
 
 -- Install plugins
 lazy.setup(flatten_plugin_list(
@@ -22,8 +23,9 @@ lazy.setup(flatten_plugin_list(
 		{ 'echasnovski/mini.ai',                 version = '*', config = true }, -- extra text objects
 		{ 'echasnovski/mini.surround',           version = '*', config = true }, -- edit surrounding area
 		{ 'echasnovski/mini.pairs',              version = '*', config = true }, -- autopairs
-		{ 'echasnovski/mini.jump',               version = '*', config = jnhl }, -- make f/F better
 		{ 'echasnovski/mini.move',               version = '*', config = true }, -- use alt-hjkl to move text
+		{ 'echasnovski/mini.splitjoin',          version = '*', config = true }, -- gS toggles arguments on one or separate line
+		{ 'echasnovski/mini.trailspace',         version = '*', config = true }, -- fix trailing spaces (keymapped with formatting)
 
 		-- Keymapping
 		require("user.plugins.clue"),

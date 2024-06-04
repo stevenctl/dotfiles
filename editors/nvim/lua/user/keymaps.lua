@@ -29,8 +29,9 @@ map.t("<C-\\>", "<C-\\><C-n>", "Terminal normal mode")
 -- cycle through buffers
 map.n("<TAB>", ":bnext<CR>", "Buffer next")
 map.n("<S-TAB>", ":bprev<CR>", "Buffer prev")
+map.n("<M-TAB>", ":b#<CR>", "Buffer last")
 map.n("<leader><TAB>", ":Telescope buffers<CR>", "Buffer pick")
-map.n("<leader>x", ":BufferKill<CR>", "Buffer kill")
+map.n("<leader>x", ":bd<CR>", "Buffer delete")
 
 -- window nav
 map.n("<C-h>", "<C-w>h", "Window left")
@@ -93,6 +94,18 @@ map.v("<leader>/", "<Plug>(comment_toggle_linewise_current)", "Comment toggle")
 map.x("<leader>/", "<Plug>(comment_toggle_linewise_current)", "Comment toggle")
 
 -- LSP related
+local function fix_trail()
+	local ts_ok, MiniTrailspace = pcall(require, "mini.trailspace")
+	if ts_ok then
+		MiniTrailspace.trim()
+		MiniTrailspace.trim_last_lines()
+	end
+end
+local function format()
+	fix_trail()
+	vim.lsp.buf.format()
+end
+map.n("<M-C-L>", fix_trail, "fix whitespace")
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
 	callback = function(ev)
@@ -101,7 +114,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 
 		local opts = { buffer = ev.buf, silent = false }
-		map.n("<M-C-L>", vim.lsp.buf.format, "Format code", opts)
+		map.n("<M-C-L>", format, "Format code", opts)
 		map.n("<leader><CR>", ":Lspsaga code_action<CR>", "Code action", opts)
 		map.n("[d", vim.diagnostic.goto_prev, "Diagnostic prev", opts)
 		map.n("d]", vim.diagnostic.goto_next, "Diagnostic next", opts)

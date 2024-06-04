@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.opt.scrolloff = 12
+vim.opt.scrolloff = 20
 vim.opt.number = true
 vim.opt.tabstop = 2
 vim.opt.undofile = true
@@ -12,6 +12,7 @@ vim.opt.smarttab = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.smartindent = true
+vim.opt.cmdheight = 0
 
 -- TODO install treesitter for folds?
 vim.opt.foldmethod = "expr"
