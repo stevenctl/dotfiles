@@ -43,4 +43,5 @@ return flatten_plugin_list {
 	{ "williamboman/mason-lspconfig.nvim", opts = { handlers = handlers } },
 	{ "neovim/nvim-lspconfig",             dependencies = { navbuddy } },
 	require("user.lsp.lspsaga"),
+	require("user.lsp.dap"),
 }
