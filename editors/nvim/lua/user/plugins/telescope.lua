@@ -29,10 +29,23 @@ return {
 	tag = "0.1.5",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		"nvim-telescope/telescope-live-grep-args.nvim"
+		"nvim-telescope/telescope-live-grep-args.nvim",
+		{
+			"danielfalk/smart-open.nvim",
+			branch = "0.2.x",
+			config = true,
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+				"kkharji/sqlite.lua",
+				-- Only required if using match_algorithm fzf
+				{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+				-- Optional.  If installed, native fzy will be used when match_algorithm is fzy
+				{ "nvim-telescope/telescope-fzy-native.nvim" },
+			},
+		}
 	},
 	opts = {
-		extensions = { live_grep_args = {} },
+		extensions = { live_grep_args = {}, smart_open = {} },
 		defaults = {
 			pickers = {
 				buffers = { previwer = false },

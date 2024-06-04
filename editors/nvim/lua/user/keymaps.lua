@@ -1,19 +1,15 @@
 local map = require("user.util").map
-
+local toggle_term = require("user.terminals")
 
 -- QoL
 map.n("U", "<C-R>", "Undo")
 map.n("<ESC>", ":noh<cr>", "No Highlight")
 map.n("<leader>cn", ":Navbuddy<CR>", "Navbuddy")
-map.n("<C-k>", vim.diagnostic.open_float, "Diangostic float")
+map.n("<M-K>", vim.diagnostic.open_float, "Diangostic float")
 
 -- Quickfix
 map.n("<leader>q", ":copen<cr>", "Quickfix toggle")
 map.n("<leader>Q", vim.diagnostic.setloclist, "Diagnostic loclist")
-
--- Terminal
-map.n("<C-\\>", ":terminal<CR>", "Terminal")
-map.t("<C-\\>", "<C-\\><C-n>", "Terminal normal mode")
 
 -- Don't copy the replaced text after pasting in visual mode
 -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
@@ -23,8 +19,12 @@ map.x("p", 'p:let @+=@0<CR>:let @"=@0<CR>', "paste (before)")
 -- File browsing
 map.n("<leader>e", ":NvimTreeFocus<CR>", "NVIMTree")
 map.n("<C-F>", ":FindIn<CR>", "Find in Tree")
-map.n("<leader>o", "<cmd> Telescope find_files <CR>", "Open file")
+map.n("<leader>o", "<cmd> Telescope smart_open <CR>", "Open file")
 map.n("<leader>O", "<cmd> Telescope oldfiles <CR>", "Open recent file")
+
+-- Terminal
+map.n("<C-\\>", toggle_term, "Terminal toggle")
+map.t("<C-\\>", "<C-\\><C-n>", "Terminal normal mode")
 
 -- cycle through buffers
 map.n("<TAB>", ":bnext<CR>", "Buffer next")
@@ -100,7 +100,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		vim.bo[ev.buf].omnifunc = 'v:lua.vim.lsp.omnifunc'
 
 
-		local opts = { buffer = ev.buf }
+		local opts = { buffer = ev.buf, silent = false }
 		map.n("<M-C-L>", vim.lsp.buf.format, "Format code", opts)
 		map.n("<leader><CR>", ":Lspsaga code_action<CR>", "Code action", opts)
 		map.n("[d", vim.diagnostic.goto_prev, "Diagnostic prev", opts)
@@ -112,8 +112,8 @@ vim.api.nvim_create_autocmd('LspAttach', {
 		map.n("gt", vim.lsp.buf.type_definition, "Goto type definition", opts)
 		map.n("gD", vim.lsp.buf.declaration, "Goto declaration", opts)
 		map.n("gI", vim.lsp.buf.implementation, "Goto implementation", opts)
-		map.n("lr", ":Lspsaga rename<CR>", "rename", opts)
-		map.n("lR", ":Lspsaga project_replace<CR>", "project replace", opts)
-		map.n("lo", ":Lspsaga outline<CR>", "outline code", opts)
+		map.n("<leader>lr", ":Lspsaga rename<CR>", "rename", opts)
+		map.n("<leader>lR", ":Lspsaga project_replace<CR>", "project replace", opts)
+		map.n("<leader>lo", ":Lspsaga outline<CR>", "outline code", opts)
 	end
 })

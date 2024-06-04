@@ -16,6 +16,7 @@ lazy.setup(flatten_plugin_list(
 		require("user.plugins.bqf"),
 		require("user.plugins.comment"),
 		{ "lukas-reineke/indent-blankline.nvim", main = "ibl",  opts = {} },
+		{ "nmac427/guess-indent.nvim",           config = true },
 
 		-- Mini QoL
 		{ 'echasnovski/mini.ai',                 version = '*', config = true }, -- extra text objects
@@ -30,6 +31,7 @@ lazy.setup(flatten_plugin_list(
 		-- Colorschemes and beautification
 		require("user.colors"),
 		require("user.plugins.lualine"),
+		{ 'rcarriga/nvim-notify',    config = true },
 
 		-- File navigation
 		require("user.plugins.nvimtree"),

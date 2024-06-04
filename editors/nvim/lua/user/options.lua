@@ -6,6 +6,12 @@ vim.opt.undofile = true
 vim.opt.signcolumn = "yes:1"
 vim.opt.clipboard="unnamedplus"
 vim.opt.conceallevel = 0
+vim.opt.wrap = false
+vim.opt.relativenumber = true
+vim.opt.smarttab = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.smartindent = true
 
 -- TODO install treesitter for folds?
 vim.opt.foldmethod = "expr"

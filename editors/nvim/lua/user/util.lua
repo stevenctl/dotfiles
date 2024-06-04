@@ -10,6 +10,15 @@ local function is_array(t)
 	return true
 end
 
+function _G.find_first_buf_of_type(buftype)
+	for _, bufnr in ipairs(vim.api.nvim_list_bufs()) do
+		if vim.api.nvim_buf_is_loaded(bufnr) and vim.bo[bufnr].buftype == buftype then
+			return bufnr
+		end
+	end
+	return nil -- Return nil if no terminal buffer is found
+end
+
 function _G.flatten_plugin_list(...)
 	local out = {}
 	for _, v in ipairs({ ... }) do
