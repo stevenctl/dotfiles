@@ -17,9 +17,16 @@ map.v("p", 'p:let @+=@0<CR>:let @"=@0<CR>', "paste")
 map.x("p", 'p:let @+=@0<CR>:let @"=@0<CR>', "paste (before)")
 
 -- File browsing
+local function open_file()
+	local ok, _ = pcall(vim.api.nvim_command, "Telescope smart_open")
+	if not ok then
+		vim.notify("smart-open failed.. fallback to Telescope git_files")
+		vim.api.nvim_command("Telescope git_files")
+	end
+end
 map.n("<leader>e", ":NvimTreeFocus<CR>", "NVIMTree")
 map.n("<C-F>", ":FindIn<CR>", "Find in Tree")
-map.n("<leader>o", "<cmd> Telescope smart_open <CR>", "Open file")
+map.n("<leader>o", open_file, "Open file")
 map.n("<leader>O", "<cmd> Telescope oldfiles <CR>", "Open recent file")
 
 -- Terminal
