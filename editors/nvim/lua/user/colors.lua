@@ -1,6 +1,6 @@
-local colorscheme = "everforest"
-local enable_transparency = true
-vim.o.termguicolors = true
+local colorscheme = "kanagawa-dragon"
+local enable_transparency = false
+vim.o.termguicolors = false
 
 -- Installed themes
 local themes = {
@@ -9,7 +9,8 @@ local themes = {
   { "rmehri01/onenord.nvim" },
   { "sainnhe/everforest",        name = "everforest" },
   { "catppuccin/nvim",           name = "catppuccin" },
-  { 'AlphaTechnolog/pywal.nvim', name = 'wal' }
+  { 'AlphaTechnolog/pywal.nvim', name = 'wal' },
+  { "rebelot/kanagawa.nvim" },
 }
 
 -- Everforest
@@ -68,20 +69,20 @@ end
 --
 
 
-local original_colorscheme = vim.g.colors_name
-
-vim.api.nvim_create_autocmd("CmdlineEnter", {
-  callback = function()
-    original_colorscheme = vim.g.colors_name
-  end
-})
-
-
-vim.api.nvim_create_autocmd("CmdlineLeave", {
-  callback = function()
-    vim.api.nvim_command("colorscheme " .. original_colorscheme)
-  end
-})
+-- local original_colorscheme = vim.g.colors_name
+--
+-- vim.api.nvim_create_autocmd("CmdlineEnter", {
+--   callback = function()
+--     original_colorscheme = vim.g.colors_name
+--   end
+-- })
+--
+--
+-- vim.api.nvim_create_autocmd("CmdlineLeave", {
+--   callback = function()
+--     vim.api.nvim_command("colorscheme " .. original_colorscheme)
+--   end
+-- })
 
 -- As the user changes their command, immediately show the colorscheme
 vim.api.nvim_create_autocmd("CmdlineChanged", {
