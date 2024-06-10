@@ -4,16 +4,16 @@ vim.o.termguicolors = true
 
 -- Installed themes
 local themes = {
-    "sainnhe/edge",
-    { "gbprod/nord.nvim" },
-    { "rmehri01/onenord.nvim" },
-    { "sainnhe/everforest",        name = "everforest" },
-    { "catppuccin/nvim",           name = "catppuccin" },
-    { 'AlphaTechnolog/pywal.nvim', name = 'wal' }
+  "sainnhe/edge",
+  { "gbprod/nord.nvim" },
+  { "rmehri01/onenord.nvim" },
+  { "sainnhe/everforest",        name = "everforest" },
+  { "catppuccin/nvim",           name = "catppuccin" },
+  { 'AlphaTechnolog/pywal.nvim', name = 'wal' }
 }
 
 -- Everforest
-vim.g.everforest_transparent_background = 1
+vim.g.everforest_transparent_background = enable_transparency and 1 or 0
 vim.g.everforest_background = "hard"
 
 -- Edge
@@ -49,6 +49,54 @@ if enable_transparency then
   })
   vim.opt.fillchars = "eob: "
 end
+
+-- Recover old scheme when leaving without confirmation
+-- vim.api.nvim_create_autocmd("CmdlineLeave", {
+--   callback = function()
+--     local cmd_type = vim.fn.getcmdtype()
+--     local cmdline = vim.fn.getcmdline()
+--
+--     if cmdline ~= nil and cmd_type == ":" and not cmdline:match("^colorscheme%s+") then
+--       -- If the command was not confirmed, rollback to the original colorscheme
+--       vim.cmd("colorscheme " .. original_colorscheme)
+--     else
+--       original_colorscheme = vim.g.colors_name
+--     end
+--   end,
+-- })
+--
+--
+
+
+local original_colorscheme = vim.g.colors_name
+
+vim.api.nvim_create_autocmd("CmdlineEnter", {
+  callback = function()
+    original_colorscheme = vim.g.colors_name
+  end
+})
+
+
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+  callback = function()
+    vim.api.nvim_command("colorscheme " .. original_colorscheme)
+  end
+})
+
+-- As the user changes their command, immediately show the colorscheme
+vim.api.nvim_create_autocmd("CmdlineChanged", {
+  callback = function()
+    local cmd_type = vim.fn.getcmdtype()
+    local cmdline = vim.fn.getcmdline()
+
+
+    if cmdline ~= nil and cmd_type == ":" and cmdline:match("^colorscheme%s+") then
+      pcall(vim.api.nvim_command, cmdline)
+    end
+  end
+})
+
+
 
 return {
   themes[1],
