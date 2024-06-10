@@ -37,6 +37,10 @@ local navbuddy =
 }
 
 return flatten_plugin_list {
+	{ "neovim/nvim-lspconfig", config = function()
+		local lspconfig = require("lspconfig")
+		lspconfig.gdscript.setup({})
+	end },
 	require("user.lsp.treesitter"),
 	{ "folke/neodev.nvim",                 config = true,                 priority = 100, },
 	{ "williamboman/mason.nvim",           config = true },
