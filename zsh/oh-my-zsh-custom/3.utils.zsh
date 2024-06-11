@@ -19,3 +19,6 @@ docker_cleanup() {
   docker images | grep 'none' | tr -s ' ' | cut -d' ' -f3 | xargs -n1 docker image rm
 }
 
+randstr() {
+        cat /dev/urandom | env LC_CTYPE=C tr -dc 'a-zA-Z0-9' | fold -w 32 | head -n 1
+}
