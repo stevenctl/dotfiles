@@ -15,7 +15,6 @@ lazy.setup(flatten_plugin_list(
 		-- General Editing
 		require("user.plugins.todo"),
 		require("user.plugins.bqf"),
-		require("user.plugins.comment"),
 		{ "lukas-reineke/indent-blankline.nvim", main = "ibl",  opts = {} },
 		{ "nmac427/guess-indent.nvim",           config = true },
 

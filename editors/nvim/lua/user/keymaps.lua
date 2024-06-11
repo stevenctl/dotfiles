@@ -96,9 +96,9 @@ map.n("<leader>dg", "<cmd>lua require'dap'.session()<cr>", "DAP session")
 
 
 -- Comments
-map.n("<leader>/", "<Plug>(comment_toggle_linewise_current)", "Comment toggle")
-map.v("<leader>/", "<Plug>(comment_toggle_linewise_current)", "Comment toggle")
-map.x("<leader>/", "<Plug>(comment_toggle_linewise_current)", "Comment toggle")
+map.n("<leader>/", "gcc", "Comment toggle", {noremap=false})
+map.v("<leader>/", "gc", "Comment toggle")
+map.x("<leader>/", "gc", "Comment toggle")
 
 -- LSP related
 local function fix_trail()
