@@ -112,7 +112,9 @@ local function format()
 	fix_trail()
 	vim.lsp.buf.format()
 end
+
 map.n("<M-C-L>", fix_trail, "fix whitespace")
+map.n("<leader>cd", vim.diagnostic.open_float, "Diagnostic float")
 vim.api.nvim_create_autocmd('LspAttach', {
 	group = vim.api.nvim_create_augroup('UserLspConfig', {}),
 	callback = function(ev)
@@ -122,7 +124,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 		local opts = { buffer = ev.buf, silent = false }
 		map.n("<M-C-L>", format, "Format code", opts)
-		map.n("<leader><CR>", ":Lspsaga code_action<CR>", "Code action", opts)
+		map.n("<leader>ca", ":Lspsaga code_action<CR>", "Code action", opts)
 		map.n("[d", vim.diagnostic.goto_prev, "Diagnostic prev", opts)
 		map.n("d]", vim.diagnostic.goto_next, "Diagnostic next", opts)
 		map.n("<leader>d", vim.diagnostic.open_float, "Diagnostic info", opts)
