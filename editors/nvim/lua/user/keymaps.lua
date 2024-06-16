@@ -37,7 +37,7 @@ map.t("<C-\\>", "<C-\\><C-n>", "Terminal normal mode")
 map.n("<TAB>", ":bnext<CR>", "Buffer next")
 map.n("<S-TAB>", ":bprev<CR>", "Buffer prev")
 map.n("<M-TAB>", ":b#<CR>", "Buffer last")
-map.n("<leader><TAB>", ":Telescope buffers<CR>", "Buffer pick")
+map.n("<leader><TAB>", ":Telescope buffers theme=get_cursor previewer=false initial_mode=normal<CR>", "Buffer pick")
 map.n("<leader>x", ":bd<CR>", "Buffer delete")
 
 -- window nav
@@ -111,6 +111,7 @@ end
 local function format()
 	fix_trail()
 	vim.lsp.buf.format()
+	vim.cmd("Format")
 end
 
 map.n("<M-C-L>", fix_trail, "fix whitespace")
