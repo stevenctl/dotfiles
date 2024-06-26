@@ -24,3 +24,9 @@ fi
 
 export PATH="$PATH:$HOME/.godot/"
 export PATH="$PATH:/usr/share/dotnet"
+
+# Flutter
+export PATH="$PATH:/usr/bin/flutter/bin"
+export PATH="$PATH":"$HOME/.pub-cache/bin"
+export PATH="$PATH:$HOME/Android/Sdk/cmdline-tools/latest/bin"
+export PATH="$PATH:$HOME/Android/Sdk/platform-tools"

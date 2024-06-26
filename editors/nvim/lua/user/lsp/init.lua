@@ -75,4 +75,5 @@ return flatten_plugin_list {
 	{ "neovim/nvim-lspconfig",             dependencies = { navbuddy } },
 	require("user.lsp.lspsaga"),
 	require("user.lsp.dap"),
+	{ 'akinsho/flutter-tools.nvim', config = true, dependencies = { 'nvim-lua/plenary.nvim', lazy=false } },
 }
