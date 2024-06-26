@@ -50,6 +50,10 @@ return {
 	},
 	opts = {
 		extensions = { live_grep_args = {}, smart_open = {} },
+		pickers = {
+			buffers = { sort_mru = true, ignore_current_buffer = true, theme = "cursor", previewer = false },
+			oldfiles = { cwd_only = true },
+		},
 		defaults = {
 			mappings = {
 				n = {
@@ -58,9 +62,6 @@ return {
 				i = {
 					['<c-x>'] = del_buf
 				},
-			},
-			pickers = {
-				buffers = { previwer = false },
 			},
 		},
 	},
