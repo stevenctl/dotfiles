@@ -7,6 +7,17 @@ map.n("<ESC>", ":noh<cr>", "No Highlight")
 map.n("<leader>cn", ":Navbuddy<CR>", "Navbuddy")
 map.n("<M-K>", vim.diagnostic.open_float, "Diangostic float")
 
+-- AI
+map.n("<leader>ac", ":GpChatToggle<cr>", "AI Chat Toggle")
+map.n("<leader>as", ":GpStop<cr>", "AI stop")
+map.n("<leader>ar", ":GpRewrite<cr>", "AI rewrite inplace")
+map.v("<leader>ar", ":GpRewrite<cr>", "AI rewrite inplace")
+map.n("<leader>aw", ":GpVnew<cr>", "AI rewrite in vsplit")
+map.v("<leader>aw", ":GpVnew<cr>", "AI rewrite in vsplit")
+map.n("<leader>ai", ":GpImplement<cr>", "AI implement based on comments")
+map.v("<leader>ai", ":GpImplement<cr>", "AI implement based on comments")
+map.n("<leader>aa", ":GpNextAgent<cr>", "AI next agent")
+
 -- Quickfix
 map.n("<leader>q", ":copen<cr>", "Quickfix toggle")
 map.n("<leader>Q", vim.diagnostic.setloclist, "Diagnostic loclist")
@@ -96,7 +107,7 @@ map.n("<leader>dg", "<cmd>lua require'dap'.session()<cr>", "DAP session")
 
 
 -- Comments
-map.n("<leader>/", "gcc", "Comment toggle", {noremap=false})
+map.n("<leader>/", "gcc", "Comment toggle", { noremap = false })
 map.v("<leader>/", "gc", "Comment toggle")
 map.x("<leader>/", "gc", "Comment toggle")
 

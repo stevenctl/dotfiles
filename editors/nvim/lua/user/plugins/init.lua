@@ -6,12 +6,13 @@ if not ok then
 	return
 end
 
--- local jnhl = { delay = { highlight = 100000 } }
--- 		{ 'echasnovski/mini.jump',               version = '*', config = jnhl }, -- make f/F better
 
 -- Install plugins
 lazy.setup(flatten_plugin_list(
 	{
+		-- AI
+		require("user.plugins.ai"),
+
 		-- General Editing
 		require("user.plugins.todo"),
 		require("user.plugins.bqf"),

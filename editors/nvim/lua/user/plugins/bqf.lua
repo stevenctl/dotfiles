@@ -18,7 +18,7 @@ vim.api.nvim_create_autocmd("FileType", {
 
 return {
 	"kevinhwang91/nvim-bqf",
-	event = { "BufRead", "BufNew" },
+	ft = "qf",
 	config = function()
 		require("bqf").setup({
 			magic_window = true,
