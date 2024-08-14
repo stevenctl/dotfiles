@@ -29,3 +29,4 @@ if string.find(vim.loop.os_uname().sysname, "Windows") then
   vim.opt.shellquote = ""
   vim.opt.shellxquote = ""
 end
+

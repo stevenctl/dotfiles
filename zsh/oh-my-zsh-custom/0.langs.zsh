@@ -26,7 +26,13 @@ export PATH="$PATH:$HOME/.godot/"
 export PATH="$PATH:/usr/share/dotnet"
 
 # Flutter
-export PATH="$PATH:/usr/bin/flutter/bin"
+export ANDROID_HOME=/usr/lib/android-sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+export CHROME_EXECUTABLE=google-chrome-stable
+export FLUTTER_HOME="$HOME/flutter"
+export PATH="$PATH:$FLUTTER_HOME/bin"
 export PATH="$PATH":"$HOME/.pub-cache/bin"
 export PATH="$PATH:$HOME/Android/Sdk/cmdline-tools/latest/bin"
 export PATH="$PATH:$HOME/Android/Sdk/platform-tools"
+export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
+export PATH="$PATH:$ANDROID_HOME/platform-tools"

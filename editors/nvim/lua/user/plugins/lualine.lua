@@ -9,7 +9,7 @@ return {
 			lualine_c = { 'filename', 'macro_recording' },
 			lualine_x = { 'filetype' },
 			lualine_y = { 'diagnostics' },
-			lualine_z = { 'location', },
+			lualine_z = { 'selectioncount', 'searchcount', 'location', },
 		},
 	}
 }
