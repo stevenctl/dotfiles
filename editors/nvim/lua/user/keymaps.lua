@@ -35,6 +35,7 @@ local function open_file()
 		vim.api.nvim_command("Telescope git_files")
 	end
 end
+
 map.n("<leader>e", ":NvimTreeFocus<CR>", "NVIMTree")
 map.n("<C-F>", ":FindIn<CR>", "Find in Tree")
 map.n("<leader>o", open_file, "Open file")

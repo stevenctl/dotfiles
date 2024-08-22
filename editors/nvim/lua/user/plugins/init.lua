@@ -16,16 +16,19 @@ lazy.setup(flatten_plugin_list(
 		-- General Editing
 		require("user.plugins.todo"),
 		require("user.plugins.bqf"),
-		{ "lukas-reineke/indent-blankline.nvim", main = "ibl",  opts = {} },
-		{ "nmac427/guess-indent.nvim",           config = true },
+		{ "lukas-reineke/indent-blankline.nvim",     main = "ibl",  opts = {} },
+		{ "nmac427/guess-indent.nvim",               config = true },
+		{ "nvim-treesitter/nvim-treesitter-context", config = true },
+		{ "LunarVim/bigfile.nvim",                   config = true },
+		{ "m4xshen/hardtime.nvim",                   config = true },
 
 		-- Mini QoL
-		{ 'echasnovski/mini.ai',                 version = '*', config = true }, -- extra text objects
-		{ 'echasnovski/mini.surround',           version = '*', config = true }, -- edit surrounding area
-		{ 'echasnovski/mini.pairs',              version = '*', config = true }, -- autopairs
-		{ 'echasnovski/mini.move',               version = '*', config = true }, -- use alt-hjkl to move text
-		{ 'echasnovski/mini.splitjoin',          version = '*', config = true }, -- gS toggles arguments on one or separate line
-		{ 'echasnovski/mini.trailspace',         version = '*', config = true }, -- fix trailing spaces (keymapped with formatting)
+		{ 'echasnovski/mini.ai',                     version = '*', config = true }, -- extra text objects
+		{ 'echasnovski/mini.surround',               version = '*', config = true }, -- edit surrounding area
+		{ 'echasnovski/mini.pairs',                  version = '*', config = true }, -- autopairs
+		{ 'echasnovski/mini.move',                   version = '*', config = true }, -- use alt-hjkl to move text
+		{ 'echasnovski/mini.splitjoin',              version = '*', config = true }, -- gS toggles arguments on one or separate line
+		{ 'echasnovski/mini.trailspace',             version = '*', config = true }, -- fix trailing spaces (keymapped with formatting)
 
 		-- Keymapping
 		require("user.plugins.clue"),

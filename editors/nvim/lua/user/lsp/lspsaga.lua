@@ -2,6 +2,7 @@ return {
 	"nvimdev/lspsaga.nvim",
 	config = true,
 	opts = {
+		symbol_in_winbar = { enable = false },
 		lightbulb = { sign = false },
 		ui = {
 			devicon = false,

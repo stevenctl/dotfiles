@@ -6,10 +6,10 @@
       stderr: true
 
 # We have a few submodules
-- shell: 
+- shell:
   - [git submodule update --recursive -f, Updating submodules...]
 
-# Languages 
+# Languages
 - shell:
   - [./setup-python.sh, Setting up python and pip]
   - [./setup-node.sh, Setting up node (javascript)]
@@ -29,13 +29,13 @@
 - shell:
   - [./setup-neovim.sh, Installing neovim]
 - link:
-    ~/.config/lvim: 
+    ~/.config/lvim:
       force: true
       path: editors/lvim
-    ~/.config/nvim: 
+    ~/.config/nvim:
       force: true
       path: editors/nvim
-    ~/.vimrc: 
+    ~/.vimrc:
       force: true
       path: editors/.vimrc
     ~/.ideavimrc:
@@ -43,10 +43,10 @@
       path: editors/.ideavimrc
 
 # ZSH
-- shell: 
+- shell:
   - [./setup-zsh.sh, Setting up zsh]
 - clean: ['~', '~/.oh-my-zsh/custom/', '~/.oh-my-zsh/custom/plugins/']
-# TODO should probably throw all this in setup-zsh.sh 
+# TODO should probably throw all this in setup-zsh.sh
 - shell:
   - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom forlders]
   - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins forlders]
@@ -65,8 +65,11 @@
     ~/.config/kitty/kitty.conf: linux/kitty.conf
 # Window manager
 - link:
+    ~/.config/picom.conf:
+      force: true
+      path: wm/picom.conf
     # i3/sway
-    ~/.i3/config: 
+    ~/.i3/config:
       force: true
       path: wm/i3.conf
     ~/.config/rofi/config.rasi: linux/rofi.rasi
@@ -76,7 +79,7 @@
     ~/.i3/polybar.sh: wm/polybar.sh
     ~/.i3/nvidia-smi-polybar.sh: wm/nvidia-smi-polybar.sh
     # hypr
-    ~/.config/hypr/hyprland.conf: 
+    ~/.config/hypr/hyprland.conf:
       force: true
       path: ./wm/hyprland.conf
     # waybar
