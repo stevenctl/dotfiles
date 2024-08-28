@@ -3,7 +3,7 @@ return {
 	config = true,
 	opts = {
 		symbol_in_winbar = { enable = false },
-		lightbulb = { sign = false },
+		lightbulb = { sign = false, enable = false},
 		ui = {
 			devicon = false,
 			code_action = "󱐋",

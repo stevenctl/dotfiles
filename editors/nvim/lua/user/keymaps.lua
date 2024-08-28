@@ -1,5 +1,7 @@
 local map = require("user.util").map
 local toggle_term = require("user.terminals")
+local gh_link = require("user.githublink")
+
 
 -- QoL
 map.n("U", "<C-R>", "Undo")
@@ -86,11 +88,13 @@ map.n("<leader>vB", "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Git blame")
 map.n("<leader>vh", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Git hunk")
 map.n("<leader>vr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Git revert hunk")
 map.n("<leader>vR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Git revert buffer")
+map.n("<leader>vA", "<cmd>:Gitsigns stage_hunk<cr>", "Git stage hunk")
 map.n("<leader>vs", "<cmd>Telescope git_status<cr>", "Git status")
 map.n("<leader>vb", "<cmd>Telescope git_branches<cr>", "Git branches")
 map.n("<leader>vl", "<cmd>Telescope git_commits<cr>", "Git commits")
 map.n("<leader>vL", "<cmd>Telescope git_bcommits<cr>", "Git commits (current buffer)")
 map.n("<leader>vd", "<cmd>Gitsigns diffthis HEAD<cr>", "Git diff")
+map.n("<leader>vu", gh_link, "Github URL")
 
 -- dap
 map.n("<leader>db", "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "DAP Breakpoint")
