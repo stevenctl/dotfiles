@@ -57,15 +57,23 @@ return {
 	flatten_plugin_list = flatten_plugin_list,
 	-- TODO hint support
 	map = {
+		-- op pending
+		o = function(k, a, d, o)
+			map("o", k, a, d, o)
+		end,
+		-- normal
 		n = function(k, a, d, o)
 			map("n", k, a, d, o)
 		end,
+		-- terminal
 		t = function(k, a, d, o)
 			map("t", k, a, d, o)
 		end,
+		-- visual
 		v = function(k, a, d, o)
 			map("v", k, a, d, o)
 		end,
+		-- visual block
 		x = function(k, a, d, o)
 			map("x", k, a, d, o)
 		end

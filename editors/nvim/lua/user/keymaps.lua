@@ -7,6 +7,14 @@ map.n("<ESC>", ":noh<cr>", "No Highlight")
 map.n("<leader>cn", ":Navbuddy<CR>", "Navbuddy")
 map.n("<M-K>", vim.diagnostic.open_float, "Diangostic float")
 
+-- start/end jump
+map.n("H", "^", "Start of line")
+map.n("L", "$", "End of line")
+map.v("H", "^", "Start of line")
+map.v("L", "$", "End of line")
+map.o("H", "^", "Start of line")
+map.o("L", "$", "End of line")
+
 -- AI
 map.n("<leader>ac", ":GpChatToggle<cr>", "AI Chat Toggle")
 map.n("<leader>as", ":GpStop<cr>", "AI stop")

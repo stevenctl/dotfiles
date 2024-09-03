@@ -20,7 +20,6 @@ lazy.setup(flatten_plugin_list(
 		{ "nmac427/guess-indent.nvim",               config = true },
 		{ "nvim-treesitter/nvim-treesitter-context", config = true },
 		{ "LunarVim/bigfile.nvim",                   config = true },
-		{ "m4xshen/hardtime.nvim",                   config = true },
 
 		-- Mini QoL
 		{ 'echasnovski/mini.ai',                     version = '*', config = true }, -- extra text objects
@@ -36,7 +35,13 @@ lazy.setup(flatten_plugin_list(
 		-- Colorschemes and beautification
 		require("user.colors"),
 		require("user.plugins.lualine"),
-		{ 'rcarriga/nvim-notify',    config = true },
+		{
+			'rcarriga/nvim-notify',
+			config = true,
+			opts = {
+				background_colour = "#000000",
+			}
+		},
 
 		-- File navigation
 		require("user.plugins.nvimtree"),
