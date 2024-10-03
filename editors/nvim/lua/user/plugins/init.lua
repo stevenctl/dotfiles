@@ -53,5 +53,8 @@ lazy.setup(flatten_plugin_list(
 
 		-- Gitsigns
 		{ "lewis6991/gitsigns.nvim", config = true },
+
+		-- Kubernetes
+		{"ramilito/kubectl.nvim", config = true},
 	}
 ))

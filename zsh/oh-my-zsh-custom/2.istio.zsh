@@ -1,9 +1,9 @@
 alias k=kubectl
 export ISTIO=$HOME/go/src/istio.io/istio
 export ZTUNNEL=$ISTIO/../ztunnel
-export ISTIO_VERSION=1.22.3
+export ISTIO_VERSION=1.23.2
 export ISTIO_DIR="$HOME/istio-${ISTIO_VERSION}"
-export PATH="$PATH:${ISTIO_DIR}/bin"
+export PATH="${ISTIO_DIR}/bin:$PATH"
 export PATH="$PATH:$HOME/.gloo-mesh/bin"
 export PATH=$HOME/.gloo/bin:$PATH
 export ENVOY_DOCKER_OPTIONS="-v $GCP_CREDENTIALS:$GCP_CREDENTIALS"

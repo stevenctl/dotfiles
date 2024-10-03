@@ -28,6 +28,9 @@ map.n("<leader>ai", ":GpImplement<cr>", "AI implement based on comments")
 map.v("<leader>ai", ":GpImplement<cr>", "AI implement based on comments")
 map.n("<leader>aa", ":GpNextAgent<cr>", "AI next agent")
 
+-- k8s
+map.n("<leader>k", require("kubectl").toggle, "kubectl")
+
 -- Quickfix
 map.n("<leader>q", ":copen<cr>", "Quickfix toggle")
 map.n("<leader>Q", vim.diagnostic.setloclist, "Diagnostic loclist")
