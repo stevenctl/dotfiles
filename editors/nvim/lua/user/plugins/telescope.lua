@@ -1,10 +1,13 @@
 function _G.get_hovered_directory()
-	local tree_ok, tree_lib = pcall(require, "nvim-tree.lib")
-	if not tree_ok then
+	local api_ok, api_lib = pcall(require, "nvim-tree.api")
+	if not api_ok then
 		print("nvim-tre is required")
 		return
 	end
-	local node = tree_lib.get_node_at_cursor()
+
+	local tree_lib = api_lib.tree
+
+	local node = tree_lib.get_node_under_cursor()
 
 	if node and node.type == "directory" then
 		return node.absolute_path
