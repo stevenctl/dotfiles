@@ -56,5 +56,14 @@ lazy.setup(flatten_plugin_list(
 
 		-- Kubernetes
 		{"ramilito/kubectl.nvim", config = true},
+
+		{
+			"mistricky/codesnap.nvim",
+			build = "make",
+			opts = {
+				watermark = "",
+				bg_padding = 0,
+			}
+		},
 	}
 ))
