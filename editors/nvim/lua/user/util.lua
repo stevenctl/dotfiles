@@ -36,7 +36,6 @@ function _G.flatten_plugin_list(...)
 	return out
 end
 
--- params: mode, keys, action, desc (optional), opts (optional)
 local function map(m, k, a, d, o)
 	if o == nil then
 		o = { silent = true, noremap = true }

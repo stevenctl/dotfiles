@@ -16,6 +16,8 @@ vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.cmdheight = 0
 
+vim.opt.laststatus = 3
+
 -- TODO install treesitter for folds?
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"

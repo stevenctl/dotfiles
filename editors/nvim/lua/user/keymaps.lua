@@ -18,15 +18,45 @@ map.o("H", "^", "Start of line")
 map.o("L", "$", "End of line")
 
 -- AI
-map.n("<leader>ac", ":GpChatToggle<cr>", "AI Chat Toggle")
-map.n("<leader>as", ":GpStop<cr>", "AI stop")
-map.n("<leader>ar", ":GpRewrite<cr>", "AI rewrite inplace")
-map.v("<leader>ar", ":GpRewrite<cr>", "AI rewrite inplace")
-map.n("<leader>aw", ":GpVnew<cr>", "AI rewrite in vsplit")
-map.v("<leader>aw", ":GpVnew<cr>", "AI rewrite in vsplit")
-map.n("<leader>ai", ":GpImplement<cr>", "AI implement based on comments")
-map.v("<leader>ai", ":GpImplement<cr>", "AI implement based on comments")
-map.n("<leader>aa", ":GpNextAgent<cr>", "AI next agent")
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'Avante', 'AvanteInput', 'AvanteSelectedFiles' },
+	callback = function(ev)
+		local opts = { buffer = ev.buf, silent = false }
+		map.n("q", ":AvanteToggle<cr>", "AI Toggle", opts)
+		map.n("<esc>", "<nop>", "noop", opts)
+	end
+})
+vim.api.nvim_create_autocmd('FileType', {
+	pattern = { 'Avante', 'AvanteSelectedFiles' },
+	callback = function(ev)
+		local opts = { buffer = ev.buf, silent = false }
+		local function focus_prompt()
+			for _, win in ipairs(vim.api.nvim_list_wins()) do
+				local buf = vim.api.nvim_win_get_buf(win)
+				local filetype = vim.api.nvim_buf_get_option(buf, 'filetype')
+				if filetype == 'AvanteInput' then
+					vim.api.nvim_set_current_win(win)
+					vim.api.nvim_command('startinsert')
+					break
+				end
+			end
+		end
+		map.n("i", focus_prompt, "noop", opts)
+	end
+})
+map.n("<leader>aC", ":AvanteClear<cr>:AvanteRefresh<CR>", "avante: clear")
+map.n("<leader>aR", ":AvanteRefresh<cr>", "avante: refresh")
+map.n("<leader>aP", ":AvanteSwitchProvider<cr>", "avante: provider")
+map.v("<leader>ar", function() require("avante.api").edit() end, "avante: edit")
+map.x("<leader>ar", function() require("avante.api").edit() end, "avante: edit")
+
+-- map.n("<leader>ar", ":GpRewrite<cr>", "AI rewrite inplace")
+-- map.v("<leader>ar", ":GpRewrite<cr>", "AI rewrite inplace")
+-- map.n("<leader>aw", ":GpVnew<cr>", "AI rewrite in vsplit")
+-- map.v("<leader>aw", ":GpVnew<cr>", "AI rewrite in vsplit")
+-- map.n("<leader>ai", ":GpImplement<cr>", "AI implement based on comments")
+-- map.v("<leader>ai", ":GpImplement<cr>", "AI implement based on comments")
+-- map.n("<leader>aa", ":GpNextAgent<cr>", "AI next agent")
 
 -- k8s
 map.n("<leader>k", require("kubectl").toggle, "kubectl")
@@ -62,7 +92,8 @@ map.t("<C-\\>", "<C-\\><C-n>", "Terminal normal mode")
 map.n("<TAB>", ":bnext<CR>", "Buffer next")
 map.n("<S-TAB>", ":bprev<CR>", "Buffer prev")
 map.n("<M-TAB>", ":b#<CR>", "Buffer last")
-map.n("<leader><TAB>", ":Telescope buffers path_display={'smart'} theme=get_cursor previewer=false initial_mode=normal<CR>", "Buffer pick")
+map.n("<leader><TAB>",
+	":Telescope buffers path_display={'smart'} theme=get_cursor previewer=false initial_mode=normal<CR>", "Buffer pick")
 map.n("<leader>x", ":bd<CR>", "Buffer delete")
 
 -- window nav
