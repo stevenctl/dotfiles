@@ -32,6 +32,7 @@ lazy.setup(flatten_plugin_list(
 		-- Keymapping
 		require("user.plugins.clue"),
 
+
 		-- Colorschemes and beautification
 		require("user.colors"),
 		require("user.plugins.lualine"),
@@ -64,6 +65,20 @@ lazy.setup(flatten_plugin_list(
 				watermark = "",
 				bg_padding = 0,
 			}
+		},
+
+		-- Database
+		{
+			"kndndrj/nvim-dbee",
+			requires = {
+				"MunifTanjim/nui.nvim",
+			},
+			run = function()
+				require("dbee").install()
+			end,
+			config = function()
+				require("dbee").setup( --[[optional config]])
+			end
 		},
 	}
 ))
