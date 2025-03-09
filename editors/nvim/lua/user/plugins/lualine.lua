@@ -1,3 +1,7 @@
+function lspprogress()
+	return require('lsp-progress').progress()
+end
+
 return {
 	'nvim-lualine/lualine.nvim',
 	dependencies = { 'nvim-tree/nvim-web-devicons', "yavorski/lualine-macro-recording.nvim" },
@@ -7,8 +11,8 @@ return {
 			lualine_a = { 'mode' },
 			lualine_b = { 'branch', 'diff', },
 			lualine_c = { 'filename', 'macro_recording' },
-			lualine_x = { 'filetype' },
-			lualine_y = { 'diagnostics' },
+			lualine_y = { lspprogress, 'filetype' },
+			-- lualine_y = { 'diagnostics' },
 			lualine_z = { 'selectioncount', 'searchcount', 'location', },
 		},
 	}
