@@ -4,6 +4,12 @@ if gpt_ok then
 end
 
 
+local claude_ok, claude_key = pcall(require, "user.plugins.claude_api_key")
+if claude_ok then
+	vim.fn.setenv("ANTHROPIC_API_KEY", claude_key)
+end
+
+
 vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "",
 	callback = function()
@@ -24,7 +30,7 @@ return {
 		opts = {
 			-- add any opts here
 			-- for example
-			provider = "openai",
+			provider = "claude",
 			auto_suggestions_provider = "openai",
 			openai = {
 				endpoint = "https://api.openai.com/v1",
@@ -34,13 +40,49 @@ return {
 				max_tokens = 4096,
 			},
 			behaviour = {
-				auto_suggestions = true,
+				auto_suggestions = false,
 			},
 			mappings = {
+				diff = {
+					ours = "co",
+					theirs = "ct",
+					all_theirs = "ca",
+					both = "cb",
+					cursor = "cc",
+					next = "]x",
+					prev = "[x",
+				},
+				suggestion = {
+					accept = "<M-l>",
+					next = "<M-]>",
+					prev = "<M-[>",
+					dismiss = "<C-]>",
+				},
+				jump = {
+					next = "]]",
+					prev = "[[",
+				},
 				submit = {
 					normal = "<CR>",
 					insert = "<C-CR>",
 				},
+				cancel = {
+					normal = { "<C-c>", "<Esc>", "q" },
+					insert = { "<C-c>" },
+				},
+				sidebar = {
+					apply_all = "A",
+					apply_cursor = "a",
+					retry_user_request = "r",
+					edit_user_request = "e",
+					switch_windows = "<Tab>",
+					reverse_switch_windows = "<S-Tab>",
+					remove_file = "d",
+					add_file = "@",
+					close = { "<Esc>", "q" },
+					close_from_input = nil, -- e.g., { normal = "<Esc>", insert = "<C-d>" }
+				},
+
 			}
 		},
 

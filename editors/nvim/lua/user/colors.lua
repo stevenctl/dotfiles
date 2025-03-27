@@ -1,7 +1,8 @@
--- local colorscheme = "kanagawa-dragon"
-local colorscheme = "catppuccin"
+local colorscheme = "kanagawa-dragon"
+-- local colorscheme = "everforest"
 local enable_transparency = true
 vim.o.termguicolors = true
+-- vim.o.background = "kanagawa-dragon"
 
 -- Installed themes
 local themes = {
@@ -11,7 +12,7 @@ local themes = {
   { "sainnhe/everforest",        name = "everforest" },
   { "catppuccin/nvim",           name = "catppuccin" },
   { 'AlphaTechnolog/pywal.nvim', name = 'wal' },
-  { "rebelot/kanagawa.nvim" },
+  { "rebelot/kanagawa.nvim",     opts = { transparent = true } },
 }
 
 -- Everforest
@@ -35,6 +36,7 @@ if enable_transparency then
     pattern = "*",
     callback = function()
       local hl_groups = {
+        "LineNr",
         "Normal",
         "SignColumn",
         "NormalNC",
@@ -43,6 +45,16 @@ if enable_transparency then
         "NvimTreeNormalNC",
         "EndOfBuffer",
         "MsgArea",
+        "GitSignsAdd",
+        "GitSignsChange",
+        "GitSignsDelete",
+
+        "DiagnosticVirtualTextError",
+        "DiagnosticError",
+        "DiagnosticSignError",
+        "DiagnosticSignHint",
+        "DiagnosticSignInfo",
+        "DiagnosticSignWarn",
       }
       for _, name in ipairs(hl_groups) do
         vim.cmd(string.format("highlight %s ctermbg=none guibg=none", name))
