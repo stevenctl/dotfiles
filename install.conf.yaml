@@ -1,0 +1,62 @@
+- defaults:
+    link:
+      create: true # make parent dirs
+      relink: true # replace old links
+      force: false # don't overwrite without wraning
+    shell:
+      stdout: false # noisy but useful for debugging
+      stderr: true
+
+# update dotbot itself
+- shell:
+  - [git submodule update --recursive -f, Updating submodules...]
+
+# zsh
+- link:
+    ~/.zshrc:
+      path: zsh/.zshrc
+    ~/.zshenv:
+      path: zsh/.zshenv
+    ~/.zshrc:
+      path: zsh/.zshrc
+- shell:
+  - [./scripts/setup-zsh.sh, Setting up zsh]
+
+# kitty
+- link:
+    ~/.config/kitty/kitty.conf: config/kitty/kitty.conf
+    ~/.config/kitty/everforest-kitty.conf: config/kitty/everforest-kitty.conf
+
+# languages and SDKs
+- shell:
+  - [./scripts/setup-c.sh, Installing Base Devtools (cc/base-devel/build-essential)]
+- shell:
+  - [./scripts/setup-go.sh, Installing Go]
+- shell:
+  - [./scripts/setup-rust.sh, Installing Rust]
+- shell:
+  - [./scripts/setup-nodejs.sh, Installing Node JS]
+
+
+# vim/neovim
+# - shell:
+#   - [./setup-neovim.sh, Installing neovim]
+- link:
+    ~/.config/nvim:
+      path: config/vim/nvim
+    ~/.vimrc:
+      path: config/vim/.vimrc
+    ~/.ideavimrc:
+      path: config/vim/.ideavimrc
+
+# window manager (i3)
+- shell:
+  - [./scripts/setup-i3.sh, Installing i3]
+- link:
+  ~/.i3/config: config/i3wm/i3.conf
+
+
+# random utils
+# do these last as they may need things like `go` or `cargo`
+- shell:
+  - [./scripts/setup-shell-utils.sh, Installing shell utils]
