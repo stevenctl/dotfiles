@@ -3,5 +3,7 @@ source ~/dotfiles/scripts/common.sh
 
 do_install i3
 
-[ -f /usr/bin/kde-i3.sh ] || sudo ln -s $HOME/dotfiles/config/i3wm/kde-i3.sh /usr/bin/kde-i3.sh
-[ -f /usr/share/xsessions/kde-i3.desktop ] || sudo ln -s $HOME/dotfiles/config/i3wm/kde-i3.desktop /usr/share/xsessions/kde-i3.desktop
+sudo rm /usr/local/bin/kde-i3.sh
+sudo rm /usr/share/xsessions/kde-i3.desktop
+[ -f /usr/bin/kde-i3.sh ] || sudo cp $HOME/dotfiles/config/i3wm/kde-i3.sh /usr/local/bin/kde-i3.sh
+[ -f /usr/share/xsessions/kde-i3.desktop ] || sudo cp $HOME/dotfiles/config/i3wm/kde-i3.desktop /usr/share/xsessions/kde-i3.desktop

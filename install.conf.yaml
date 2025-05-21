@@ -11,6 +11,12 @@
 - shell:
   - [git submodule update --recursive -f, Updating submodules...]
 
+# core package manager stuff
+- shell:
+  - [./scripts/setup-yay.sh, Setup Brew (arch)]
+  # - [./scripts/setup-brew.sh, Setup Brew (mac)]
+
+
 # zsh
 - link:
     ~/.zshrc:
@@ -52,9 +58,17 @@
 # window manager (i3)
 - shell:
   - [./scripts/setup-i3.sh, Installing i3]
-- link:
-  ~/.i3/config: config/i3wm/i3.conf
 
+# docker and k8s
+- shell:
+  - [./scripts/setup-docker.sh, Installing Docker]
+- shell:
+  - [./scripts/setup-k8s.sh, Installing Kubernetes Stuff]
+
+
+- link:
+    ~/.config/i3/config:
+      path: config/i3wm/i3.conf
 
 # random utils
 # do these last as they may need things like `go` or `cargo`
