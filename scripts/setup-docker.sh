@@ -14,7 +14,7 @@ case "$(uname -s)" in
     if [[ -f /etc/arch-release ]]; then
       # Arch-based
       if command -v yay &>/dev/null; then
-        yay -S --noconfirm docker-desktop
+        yay -S --noconfirm --needed docker-desktop
       else
         echo "⚠️  Need an AUR helper (e.g. yay) to install docker-desktop-bin" >&2
         exit 1

@@ -74,3 +74,4 @@
 # do these last as they may need things like `go` or `cargo`
 - shell:
   - [./scripts/setup-shell-utils.sh, Installing shell utils]
+  - [./scripts/setup-github.sh, Installing github cli]
