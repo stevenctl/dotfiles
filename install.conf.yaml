@@ -14,7 +14,7 @@
 # core package manager stuff
 - shell:
   - [./scripts/setup-yay.sh, Setup Brew (arch)]
-  # - [./scripts/setup-brew.sh, Setup Brew (mac)]
+  - [./scripts/setup-homebrew.sh, Setup Brew (mac)]
 
 
 # zsh
@@ -58,6 +58,10 @@
 # window manager (i3)
 - shell:
   - [./scripts/setup-i3.sh, Installing i3]
+
+# Chinese IME (fcitx5)
+- shell:
+  - [./scripts/setup-pinyin.sh, Installing Chinese Pinyin Keyboard]
 
 # docker and k8s
 - shell:

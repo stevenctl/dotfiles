@@ -1,16 +1,7 @@
 #!/usr/bin/env zsh
 
-make_kind_cluster() {
-	kind_registry
-	KIND_CONFIG="${KIND_CONFIG:-$HOME/dotfiles/zsh/custom/kind/kind-cluster.yaml}"
-	kind delete cluster --name istio-localdev || true
-	kind create cluster --config "${KIND_CONFIG}"
-	kind_registry
-}
 
-
-
-kind_registry() {
+function ind_registry() {
 	# create registry container unless it already exists
 	reg_name='kind-registry'
 	reg_port='5000'
@@ -33,6 +24,14 @@ kind_registry() {
 		localRegistryHosting.v1: |
 			host: "localhost:${reg_port}"
 			help: "https://kind.sigs.k8s.io/docs/user/local-registry/"
-	EOF
+EOF
 }
 
+
+function make_kind_cluster() {
+	kind_registry
+	KIND_CONFIG="${KIND_CONFIG:-$HOME/dotfiles/zsh/custom/kind/kind-cluster.yaml}"
+	kind delete cluster --name istio-localdev || true
+	kind create cluster --config "${KIND_CONFIG}"
+	kind_registry
+}
