@@ -1,6 +1,10 @@
 #!/usr/bin/env zsh
 source ~/dotfiles/scripts/common.sh
 
+if [ -n "$SKIP_GITHUB" ]; then
+  exit 0
+fi
+
 function setup_github() {
   if which pacman > /dev/null 2>&1; then
     do_install github-cli

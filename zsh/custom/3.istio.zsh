@@ -4,6 +4,8 @@ export ISTIO_VERSION=1.25.0
 export ISTIO_DIR="$HOME/istio-${ISTIO_VERSION}"
 export PATH="${ISTIO_DIR}/bin:$PATH"
 export ENVOY_DOCKER_OPTIONS="-v $GCP_CREDENTIALS:$GCP_CREDENTIALS"
+export HUB="localhost:5000"
+export TAG="local-dev"
 
 function download_istio_bin() {
 	[ -d "${ISTIO_DIR}" ] && return 0
@@ -26,6 +28,14 @@ function istio_build_docker() {
 		return 1
 	fi
   tools/docker --targets=pilot,proxyv2,app,install-cni,ztunnel --hub=$HUB --tag=$TAG --variants distroless
+}
+
+function istio_build_docker_push_istiod() {
+	if [ "$(pwd)" != "$ISTIO" ]; then
+		echo "Must run from $ISTIO"
+		return 1
+	fi
+  tools/docker --targets=pilot --push --builder crane --hub=$HUB --tag=$TAG --variants distroless
 }
 
 function istio_split_bug_report() {

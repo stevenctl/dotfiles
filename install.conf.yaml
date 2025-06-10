@@ -45,8 +45,8 @@
 
 
 # vim/neovim
-# - shell:
-#   - [./setup-neovim.sh, Installing neovim]
+- shell:
+  - [./scripts/setup-neovim.sh, Installing neovim]
 - link:
     ~/.config/nvim:
       path: config/vim/nvim

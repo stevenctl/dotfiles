@@ -10,7 +10,7 @@ kfp() {
 
     Description:
       Fetches and prints the name of the first pod matching the given label or selector.
-    EOF
+EOF
     return
   fi
 
