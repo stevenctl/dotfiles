@@ -11,6 +11,7 @@ local handlers = {
 			capabilities = capabilities,
 			settings = {
 				gopls = {
+					buildFlags = "-tags=integ",
 					env = { GOFLAGS = "-tags=integ" },
 					usePlaceholders = true,
 					gofumpt = true,
@@ -75,5 +76,5 @@ return flatten_plugin_list {
 	{ "neovim/nvim-lspconfig",             dependencies = { navbuddy } },
 	require("user.lsp.lspsaga"),
 	require("user.lsp.dap"),
-	{ 'akinsho/flutter-tools.nvim', config = true, dependencies = { 'nvim-lua/plenary.nvim', lazy=false } },
+	{ 'akinsho/flutter-tools.nvim', config = true, dependencies = { 'nvim-lua/plenary.nvim', lazy = false } },
 }

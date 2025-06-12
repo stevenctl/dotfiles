@@ -59,7 +59,7 @@ map.x("<leader>ar", function() require("avante.api").edit() end, "avante: edit")
 -- map.n("<leader>aa", ":GpNextAgent<cr>", "AI next agent")
 
 -- k8s
-map.n("<leader>k", require("kubectl").toggle, "kubectl")
+-- map.n("<leader>k", require("kubectl").toggle, "kubectl")
 
 -- Quickfix
 map.n("<leader>q", ":copen<cr>", "Quickfix toggle")
