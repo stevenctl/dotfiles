@@ -35,3 +35,12 @@ function make_kind_cluster() {
 	kind create cluster --config "${KIND_CONFIG}"
 	kind_registry
 }
+
+function kind_export_kubeconfig() {
+    clusters=("${(s: :)$(kind get clusters | tr '\n' ' ')}")
+    for cluster in "${clusters[@]}"; do
+        if [[ -n "${cluster// }" ]]; then
+            kind export kubeconfig --name "$cluster"
+        fi
+    done
+}
