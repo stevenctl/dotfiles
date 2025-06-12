@@ -13,7 +13,7 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive 
+git submodule update --init --recursive
 
 # Pre-reqs, do them before dotbot
 . "${BASEDIR}"/setup-homebrew.sh
@@ -23,10 +23,11 @@ git submodule update --init --recursive
 [ "$(uname)" == "Darwin" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
 # ./setup-python.sh
 
+echo "dotbot time"
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
+echo "dotbot done"
 
 if [ "$(uname)" = "Darwin" ]; then
   echo "Run the following command or restart your shell"
   echo 'eval "$(/opt/homebrew/bin/brew shellenv)"'
 fi
-
