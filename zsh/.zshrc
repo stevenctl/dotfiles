@@ -31,10 +31,7 @@ autoload -Uz compinit
 compinit
 
 # MAN
-export MANPAGER="lvim -c 'Man!' -o -"
-
-# Generated for envman. Do not edit.
-[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+export MANPAGER="nvim -c 'Man!' -o -"
 
 
 export NVM_DIR="$HOME/.nvm"
@@ -56,3 +53,4 @@ if [ -f '/home/landow/google-cloud-sdk/path.zsh.inc' ]; then . '/home/landow/goo
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/landow/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/landow/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="$PATH:$(go env GOPATH)/bin"
