@@ -5,7 +5,7 @@ if [ -n "${SKIP_SETUP_SCRIPTS}" ]; then
 fi
 
 function install_go() {
-  GO_VERSION=1.22.4
+  GO_VERSION=1.23.6
   if which go > /dev/null 2>&1; then
     INSTALLED_VERSION=$(go version | grep -ohE '[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{1,2}')
     if [ "$GO_VERSION" == "$INSTALLED_VERSION" ]; then
@@ -32,11 +32,12 @@ function install_go() {
   if [ ! -f "${FILE}" ]; then
     URL="https://go.dev/dl/$FILE"
     echo "Downloading ${URL}"
-    wget "${URL}" 
+    wget "${URL}"
   fi
-  sudo rm -rf /usr/local/go 
+  sudo rm -rf /usr/local/go
   sudo tar -C /usr/local -xzf "${FILE}"
   echo "Installed."
+  rm "$FILE"
 }
 
 function install_utils() {
