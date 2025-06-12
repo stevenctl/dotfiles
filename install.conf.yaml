@@ -1,91 +1,92 @@
 - defaults:
     link:
-      create: true
-      relink: true
+      create: true # make parent dirs
+      relink: true # replace old links
+      force: false # don't overwrite without warning
     shell:
+      stdout: false # noisy but useful for debugging
       stderr: true
 
-# We have a few submodules
+# update dotbot itself
 - shell:
   - [git submodule update --recursive -f, Updating submodules...]
 
-# Languages
+# core package manager stuff
 - shell:
-  - [./setup-python.sh, Setting up python and pip]
-  - [./setup-node.sh, Setting up node (javascript)]
-  - [./setup-go.sh, Setting up go]
-  - [./setup-rust.sh, "Setting up rust"]
-  - [./setup-protobuf.sh, Setting up proto]
+  - [./scripts/setup-yay.sh, Setup Brew (arch)]
+  - [./scripts/setup-homebrew.sh, Setup Brew (mac)]
 
-# Utils & Software
+
+# zsh
+- link:
+    ~/.zshrc:
+      path: zsh/.zshrc
+    ~/.zshenv:
+      path: zsh/.zshenv
+    ~/.zshrc:
+      path: zsh/.zshrc
 - shell:
-  - [./setup-shell-utils.sh, Installing shell utils ]
-  - [./setup-lazygit.sh, Installing lazygit]
-  - [./setup-github.sh, Installing github]
-  - [./setup-gcloud.sh, Installing gcloud]
-  - [./setup-k8s.sh, Installing kubectl and kind]
+  - [./scripts/setup-zsh.sh, Setting up zsh]
+
+# terminal emulator (kitty)
+- link:
+    ~/.config/kitty/kitty.conf: config/kitty/kitty.conf
+    ~/.config/kitty/everforest-kitty.conf: config/kitty/everforest-kitty.conf
+
+# languages and SDKs
+- shell:
+  - [./scripts/setup-c.sh, Installing Base Devtools (cc/base-devel/build-essential)]
+- shell:
+  - [./scripts/setup-go.sh, Installing Go]
+- shell:
+  - [./scripts/setup-rust.sh, Installing Rust]
+- shell:
+  - [./scripts/setup-nodejs.sh, Installing Node JS]
 
 # vim/neovim
 - shell:
-  - [./setup-neovim.sh, Installing neovim]
+  - [./scripts/setup-neovim.sh, Installing neovim]
 - link:
-    ~/.config/lvim:
-      force: true
-      path: editors/lvim
-    ~/.config/nvim:
-      force: true
-      path: editors/nvim
-    ~/.vimrc:
-      force: true
-      path: editors/.vimrc
-    ~/.ideavimrc:
-      force: true
-      path: editors/.ideavimrc
+    ~/.config/nvim: config/vim/nvim
+    ~/.vimrc: config/vim/.vimrc
+    ~/.ideavimrc: config/jetbrains/.ideavimrc
 
-# ZSH
+# window manager (i3)
 - shell:
-  - [./setup-zsh.sh, Setting up zsh]
-- clean: ['~', '~/.oh-my-zsh/custom/', '~/.oh-my-zsh/custom/plugins/']
-# TODO should probably throw all this in setup-zsh.sh
-- shell:
-  - [mkdir -p ~/.oh-my-zsh/custom/, Creating oh-my-zsh custom forlders]
-  - [mkdir -p ~/.oh-my-zsh/custom/plugins, Creating oh-my-zsh custom plugins forlders]
+  - [./scripts/setup-i3-rice.sh, Installing i3 with 米饭!]
 - link:
-    ~/.zshenv:
-      force: true
-      path: zsh/.zshenv
-    ~/.zshrc:
-      force: true
-      path: zsh/.zshrc
-    ~/.p10k.zsh: zsh/.p10k.zsh
-# Terminal Emulator
-- link:
-    ~/.config/foot/foot.ini: linux/foot.ini
-    ~/.config/alacritty/alacritty.yml: linux/alacritty.yml
-    ~/.config/kitty/kitty.conf: linux/kitty.conf
-# Window manager
-- link:
-    ~/.config/picom.conf:
-      force: true
-      path: wm/picom.conf
-    # i3/sway
-    ~/.i3/config:
-      force: true
-      path: wm/i3.conf
-    ~/.config/rofi/config.rasi: linux/rofi.rasi
-    ~/.config/sway/config.d/user.conf: wm/sway.user.conf
+    ~/.config/picom.conf: ./config/wm/picom.conf
+    ~/.config/i3/config: ./config/wm/i3.conf
+    ~/.i3/config: ./config/wm/i3.conf
+    ~/.config/rofi/config.rasi: ./config/wm/rofi.rasi
+    ~/.config/sway/config.d/user.conf: ./config/wm/sway.user.conf
     # polybar
-    ~/.config/polybar/config: wm/polybar.ini
-    ~/.i3/polybar.sh: wm/polybar.sh
-    ~/.i3/nvidia-smi-polybar.sh: wm/nvidia-smi-polybar.sh
+    ~/.config/polybar/config: ./config/wm/polybar.ini
+    ~/.i3/polybar.sh: ./config/wm/polybar.sh
+    ~/.i3/nvidia-smi-polybar.sh: ./config/wm/nvidia-smi-polybar.sh
     # hypr
-    ~/.config/hypr/hyprland.conf:
-      force: true
-      path: ./wm/hyprland.conf
+    ~/.config/hypr/hyprland.conf: ./config/wm/hyprland.conf
     # waybar
-    ~/.config/waybar/config.jsonc: ./wm/waybar/config.jsonc
-    ~/.config/waybar/style.css: ./wm/waybar/style.css
+    ~/.config/waybar/config.jsonc: ./config/wm/waybar/config.jsonc
+    ~/.config/waybar/style.css: ./config/wm/waybar/style.css
     # wal
-    ~/.config/wal/templates/colors-hyprland.conf: ./wm/wal/colors-hyprland.conf
+    ~/.config/wal/templates/colors-hyprland.conf: ./config/wm/wal/colors-hyprland.conf
+
+
+# Chinese IME (fcitx5)
 - shell:
-  - [./setup-window-manager.sh, Ricing wm on arch ]
+  - [./scripts/setup-pinyin.sh, Installing Chinese Pinyin Keyboard]
+
+# docker and k8s
+- shell:
+  - [./scripts/setup-docker.sh, Installing Docker]
+- shell:
+  - [./scripts/setup-k8s.sh, Installing Kubernetes Stuff]
+
+
+
+# random utils
+# do these last as they may need things like `go` or `cargo`
+- shell:
+  - [./scripts/setup-shell-utils.sh, Installing shell utils]
+  - [./scripts/setup-github.sh, Installing github cli]

@@ -2,9 +2,6 @@
 
 set -e
 
-# get password prompt out of the way early
-sudo echo Ready to go...
-
 CONFIG="install.conf.yaml"
 DOTBOT_DIR="dotbot"
 
@@ -13,21 +10,6 @@ BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
 cd "${BASEDIR}"
 git -C "${DOTBOT_DIR}" submodule sync --quiet --recursive
-git submodule update --init --recursive
+git submodule update --init --recursive "${DOTBOT_DIR}"
 
-# Pre-reqs, do them before dotbot
-. "${BASEDIR}"/setup-homebrew.sh
-[ "$(uname)" == "Linux" ] && command -v apt-get && sudo apt-get update -y
-[ "$(uname)" == "Linux" ] && command -v dnf && sudo dnf update -y
-[ "$(uname)" == "Darwin" ] && brew update
-[ "$(uname)" == "Darwin" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
-# ./setup-python.sh
-
-echo "dotbot time"
 "${BASEDIR}/${DOTBOT_DIR}/${DOTBOT_BIN}" -d "${BASEDIR}" -c "${CONFIG}" "${@}"
-echo "dotbot done"
-
-if [ "$(uname)" = "Darwin" ]; then
-  echo "Run the following command or restart your shell"
-  echo 'eval "$(/opt/homebrew/bin/brew shellenv)"'
-fi
