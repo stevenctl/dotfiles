@@ -29,6 +29,14 @@ lazy.setup(flatten_plugin_list(
 		{ 'echasnovski/mini.splitjoin',              version = '*', config = true }, -- gS toggles arguments on one or separate line
 		{ 'echasnovski/mini.trailspace',             version = '*', config = true }, -- fix trailing spaces (keymapped with formatting)
 
+		-- what is happening in the background
+		{ "j-hui/fidget.nvim",
+			opts = {
+				progress = { display = { render_limit = 8 } },
+				notification = { window = { align = "top" }},
+			}
+		},
+
 		-- Keymapping
 		require("user.plugins.clue"),
 

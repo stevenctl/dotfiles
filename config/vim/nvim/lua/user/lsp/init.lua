@@ -68,9 +68,9 @@ return flatten_plugin_list {
 		lspconfig.gdscript.setup({})
 	end },
 	require("user.lsp.treesitter"),
-	{ "folke/neodev.nvim",                 config = true,                 priority = 100, },
+
+	{ "folke/lazydev.nvim",                config = true,                 priority = 1000, },
 	{ "williamboman/mason.nvim",           config = true },
-	-- { "williamboman/mason.nvim",           dir = "C:\\Users\\Steven\\mason.nvim\\lua\\mason", config = true },
 	{ "williamboman/mason-lspconfig.nvim", opts = { handlers = handlers } },
 	{ "neovim/nvim-lspconfig",             dependencies = { navbuddy } },
 	require("user.lsp.lspsaga"),

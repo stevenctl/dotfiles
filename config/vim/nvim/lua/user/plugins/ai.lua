@@ -21,33 +21,49 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 
 return {
-
+	{
+			"ravitemer/mcphub.nvim",
+			dependencies = {
+					"nvim-lua/plenary.nvim",
+			},
+			build = "npm install -g mcp-hub@latest",  -- Installs `mcp-hub` node binary globally
+			config = function()
+					require("mcphub").setup()
+			end
+	},
 	{
 		"yetone/avante.nvim",
 		event = "VeryLazy",
 		lazy = false,
-		version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
+		version = false, -- never set this to "*"! never! (accoring to avante's readme)
 		opts = {
-			-- add any opts here
-			-- for example
-			provider = "claude",
-			auto_suggestions_provider = "openai",
+			provider = "openai",
+			-- cursor_applying_provider = "openai",
+			-- auto_suggestions_provider = "openai",
+			behaviour = {
+				auto_suggestions = false, -- expensive! slow! wrong!
+				minimize_diff = true,
+				enable_cursor_planning_mode = true,
+			},
 			providers = {
 				openai = {
-					endpoint = "https://api.openai.com/v1",
-					model = "gpt-4o", -- your desired model (or use gpt-4o, etc.)
-					timeout = 30000, -- timeout in milliseconds
+					model = "gpt-4o",
 					extra_request_body = {
-						temperature = 0, -- adjust if needed
-						max_tokens = 4096,
+						-- timeout = 30000,
+						temperature = 0,
+						max_tokens = 16384,
+						-- reasoning_effort = "medium",
 					},
 				},
 				claude = {
+					model = "claude-sonnet-4-0",
+					extra_request_body = {
+						timeout = 30000,
+						temperature = 0.25,
+						max_tokens = 16384,
+					},
 					-- Claude configuration is automatically set up through the API key
 				},
-			},
-			behaviour = {
-				auto_suggestions = false,
 			},
 			mappings = {
 				diff = {
@@ -90,7 +106,19 @@ return {
 					close_from_input = nil, -- e.g., { normal = "<Esc>", insert = "<C-d>" }
 				},
 
-			}
+			},
+			-- system_prompt as function ensures LLM always has latest MCP server state
+			-- This is evaluated for every message, even in existing chats
+			system_prompt = function()
+					local hub = require("mcphub").get_hub_instance()
+					return hub and hub:get_active_servers_prompt() or ""
+			end,
+			-- Using function prevents requiring mcphub before it's loaded
+			custom_tools = function()
+					return {
+							require("mcphub.extensions.avante").mcp_tool(),
+					}
+			end,
 		},
 
 		-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
@@ -134,85 +162,4 @@ return {
 			},
 		},
 	},
-	-- {
-	-- 	"robitx/gp.nvim",
-	-- 	config = function()
-	-- 		local default_chat_system_prompt = "You are a general AI assistant.\n\n"
-	-- 				.. "The user provided the additional info about how they would like you to respond:\n\n"
-	-- 				.. "- If you're unsure don't guess and say you don't know instead.\n"
-	-- 				.. "- Ask question if you need clarification to provide better answer.\n"
-	-- 				.. "- Think deeply and carefully from first principles step by step.\n"
-	-- 				.. "- Zoom out first to see the big picture and then zoom in to details.\n"
-	-- 				.. "- Use Socratic method to improve your thinking and coding skills.\n"
-	-- 				.. "- Don't elide any code from your output if the answer requires coding.\n"
-	-- 				.. "- Take a deep breath; You've got this!\n"
-	--
-	-- 		local default_code_system_prompt = "You are an AI working as a code editor.\n\n"
-	-- 				.. "Please AVOID COMMENTARY OUTSIDE OF THE SNIPPET RESPONSE.\n"
-	-- 				.. "START AND END YOUR ANSWER WITH:\n\n```"
-	-- 		local cfg = {
-	-- 			chat_user_prefix = "You:",
-	-- 			providers = {
-	-- 				openai = {
-	-- 					disable = false,
-	-- 					endpoint = "https://api.openai.com/v1/chat/completions",
-	-- 				},
-	-- 				ollama = {
-	-- 					disable = false,
-	-- 					endpoint = "http://localhost:11434/v1/chat/completions",
-	-- 				},
-	-- 			},
-	-- 			agents = {
-	-- 				-- ChatGPT
-	-- 				{
-	-- 					name = "ChatGPT4o",
-	-- 					chat = true,
-	-- 					command = false,
-	-- 					model = { model = "gpt-4o", temperature = 1.1, top_p = 1 },
-	-- 					system_prompt = default_chat_system_prompt,
-	-- 				},
-	-- 				{
-	-- 					provider = "openai",
-	-- 					name = "CodeGPT4o",
-	-- 					chat = false,
-	-- 					command = true,
-	-- 					model = { model = "gpt-4o", temperature = 0.8, top_p = 1 },
-	-- 					system_prompt = default_code_system_prompt,
-	-- 				},
-	-- 				-- ollama (codegemma)
-	-- 				{
-	-- 					provider = "ollama",
-	-- 					name = "ChatGemma",
-	-- 					chat = true,
-	-- 					command = true,
-	-- 					model = { model = "codegemma" },
-	-- 					system_prompt = default_chat_system_prompt,
-	-- 				},
-	-- 				{
-	-- 					provider = "ollama",
-	-- 					name = "CodeGemma",
-	-- 					chat = false,
-	-- 					command = true,
-	-- 					model = { model = "codegemma" },
-	-- 					system_prompt = default_code_system_prompt,
-	-- 				},
-	-- 				-- disable default ollama
-	-- 				{
-	-- 					provider = "ollama",
-	-- 					name     = "ChatOllamaLlama3",
-	-- 					disable  = true,
-	-- 				},
-	-- 				{
-	-- 					provider = "ollama",
-	-- 					name     = "CodeOllamaLlama3",
-	-- 					disable  = true,
-	-- 				},
-	-- 			}
-	-- 		}
-	-- 		if gpt_ok then
-	-- 			cfg.openai_api_key = gpt_api_key
-	-- 		end
-	-- 		require("gp").setup(cfg)
-	-- 	end,
-	-- }
 }
