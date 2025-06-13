@@ -182,7 +182,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 
 		local opts = { buffer = ev.buf, silent = false }
-		map.n("<M-F>", format, "Format code", opts)
+		map.n("<C-M-l>", format, "Format code", opts)
 		map.n("<leader>ca", ":Lspsaga code_action<CR>", "Code action", opts)
 		map.n("[d", vim.diagnostic.goto_prev, "Diagnostic prev", opts)
 		map.n("d]", vim.diagnostic.goto_next, "Diagnostic next", opts)
