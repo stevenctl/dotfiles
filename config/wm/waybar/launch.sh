@@ -19,7 +19,7 @@ noreload() {
 
 start() {
   # reloader should only have one instance
-  (flock -n 100 || noreload; reloader) 100>~/dotfiles/wm/waybar/launch.lock 
+  (flock -n 100 || noreload; reloader) 100>~/dotfiles/config/wm/waybar/launch.lock 
 }
 
 killall waybar || start

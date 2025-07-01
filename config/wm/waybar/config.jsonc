@@ -111,7 +111,7 @@
   "custom/gpu_temp": {
     "interval": "5",
     "format": " {}°C",
-    "exec": "/home/landow/dotfiles/wm/nvidia-smi-polybar.sh temperature"
+    "exec": "/home/landow/dotfiles/config/wm/nvidia-smi-polybar.sh temperature"
   },
   "cpu": {
     "format": "   {usage}%",
@@ -119,6 +119,6 @@
   "custom/gpu_usage": {
     "interval": "5",
     "format": "󰢮 {}%",
-    "exec": "/home/landow/dotfiles/wm/nvidia-smi-polybar.sh utilization"
+    "exec": "/home/landow/dotfiles/config/wm/nvidia-smi-polybar.sh utilization"
   },
 }
