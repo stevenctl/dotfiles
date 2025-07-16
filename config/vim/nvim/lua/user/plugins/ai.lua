@@ -37,7 +37,7 @@ return {
 		lazy = false,
 		version = false, -- never set this to "*"! never! (accoring to avante's readme)
 		opts = {
-			provider = "openai",
+			provider = "claude",
 			-- cursor_applying_provider = "openai",
 			-- auto_suggestions_provider = "openai",
 			behaviour = {
@@ -57,11 +57,11 @@ return {
 				},
 				claude = {
 					model = "claude-sonnet-4-0",
-					extra_request_body = {
-						timeout = 30000,
-						temperature = 0.25,
-						max_tokens = 16384,
-					},
+					-- extra_request_body = {
+					-- 	timeout = 30000,
+					-- 	temperature = 0.25,
+					-- 	max_tokens = 16384,
+					-- },
 					-- Claude configuration is automatically set up through the API key
 				},
 			},
