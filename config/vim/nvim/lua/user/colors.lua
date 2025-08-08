@@ -2,7 +2,6 @@ local colorscheme = "kanagawa-dragon"
 -- local colorscheme = "everforest"
 local enable_transparency = true
 vim.o.termguicolors = true
--- vim.o.background = "kanagawa-dragon"
 
 -- Installed themes
 local themes = {
