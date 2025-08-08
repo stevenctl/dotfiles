@@ -25,7 +25,11 @@ export PATH="$PATH:$HOME/.godot/"
 export PATH="$PATH:/usr/share/dotnet"
 
 # Flutter
-export ANDROID_HOME=/usr/lib/android-sdk
+export ANDROID_HOME="$HOME/Android/Sdk"
+if [ -d "/usr/lib/android-sdk" ]; then
+  export ANDROID_HOME="/usr/lib/android-sdk"
+fi
+
 export ANDROID_SDK_ROOT=$ANDROID_HOME
 export CHROME_EXECUTABLE=google-chrome-stable
 export FLUTTER_HOME="$HOME/flutter"
