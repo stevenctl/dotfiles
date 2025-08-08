@@ -67,6 +67,14 @@ function kind_registry() {
 
 	docker network connect "kind" "${reg_name}" || true
 
+	REGISTRY_DIR="/etc/containerd/certs.d/localhost:${reg_port}"
+	for node in $(kind get nodes); do
+		docker exec "${node}" mkdir -p "${REGISTRY_DIR}"
+		cat <<EOF | docker exec -i "${node}" cp /dev/stdin "${REGISTRY_DIR}/hosts.toml"
+[host."http://${reg_name}:5000"]
+EOF
+	done
+
 	cat <<EOF | kubectl apply -f -
 apiVersion: v1
 kind: ConfigMap
