@@ -6,10 +6,14 @@ if not ok then
 	return
 end
 
+-- my custom "plugins"
+require("user.plugins.qfgrep")
+
 
 -- Install plugins
 lazy.setup(flatten_plugin_list(
 	{
+
 		-- AI
 		require("user.plugins.ai"),
 
@@ -30,10 +34,11 @@ lazy.setup(flatten_plugin_list(
 		{ 'echasnovski/mini.trailspace',             version = '*', config = true }, -- fix trailing spaces (keymapped with formatting)
 
 		-- what is happening in the background
-		{ "j-hui/fidget.nvim",
+		{
+			"j-hui/fidget.nvim",
 			opts = {
 				progress = { display = { render_limit = 8 } },
-				notification = { window = { align = "top" }},
+				notification = { window = { align = "top" } },
 			}
 		},
 

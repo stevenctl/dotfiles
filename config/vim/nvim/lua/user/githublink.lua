@@ -16,7 +16,15 @@ local function copy_github_permalink()
 		return
 	end
 
-	local github_base_url = remote_url:gsub("%.git$", ""):gsub("^git@github.com:", "https://github.com/") .. "/blob/main/"
+	-- Get the current branch name
+	local branch_handle = io.popen("git rev-parse --abbrev-ref HEAD")
+	local current_branch = "main"
+	if branch_handle then
+		current_branch = branch_handle:read("*a"):gsub("\n", "")
+		branch_handle:close()
+	end
+	
+	local github_base_url = remote_url:gsub("%.git$", ""):gsub("^git@github.com:", "https://github.com/") .. "/blob/" .. current_branch .. "/"
 
 	-- Get the current file's relative path within the repository
 	local filepath = vim.fn.expand('%')
