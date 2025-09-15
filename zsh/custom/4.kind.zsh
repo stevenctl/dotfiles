@@ -90,10 +90,11 @@ EOF
 
 
 function make_kind_cluster() {
+	local cluster_name="${1:-istio-localdev}"
 	kind_registry
 	KIND_CONFIG="${KIND_CONFIG:-$HOME/dotfiles/zsh/custom/kind/kind-cluster.yaml}"
-	kind delete cluster --name istio-localdev || true
-	kind create cluster --config "${KIND_CONFIG}"
+	kind delete cluster --name "${cluster_name}" || true
+	kind create cluster --name "${cluster_name}" --config "${KIND_CONFIG}"
 	kind_registry
 }
 
