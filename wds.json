@@ -1,0 +1,1583 @@
+[
+    {
+        "uid": "NetworkGateway/network-1/172.18.7.111/15008",
+        "workloadIps": [
+            "172.18.7.111"
+        ],
+        "protocol": "TCP",
+        "name": "NetworkGateway/network-1/172.18.7.111/15008",
+        "namespace": "istio-gateway",
+        "serviceAccount": "istio-eastwest",
+        "workloadName": "",
+        "workloadType": "deployment",
+        "canonicalName": "",
+        "canonicalRevision": "",
+        "clusterId": "network-1",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "NetworkGateway/network-2/172.18.7.151/15008",
+        "workloadIps": [
+            "172.18.7.151"
+        ],
+        "protocol": "TCP",
+        "name": "NetworkGateway/network-2/172.18.7.151/15008",
+        "namespace": "istio-gateway",
+        "serviceAccount": "istio-eastwest",
+        "workloadName": "",
+        "workloadType": "deployment",
+        "canonicalName": "",
+        "canonicalRevision": "",
+        "clusterId": "network-2",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-2",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/echo/all-global-v1-667656d876-djbkc",
+        "workloadIps": [
+            "10.20.0.21"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "all-global-v1-667656d876-djbkc",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "all-global-v1",
+        "workloadType": "pod",
+        "canonicalName": "all-global",
+        "canonicalRevision": "v1",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/echo/all-waypoint-v1-84b58bff96-f8c27",
+        "workloadIps": [
+            "10.20.0.15"
+        ],
+        "waypoint": {
+            "destination": "echo/waypoint.echo.svc.cluster.local"
+        },
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "all-waypoint-v1-84b58bff96-f8c27",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "all-waypoint-v1",
+        "workloadType": "pod",
+        "canonicalName": "all-waypoint",
+        "canonicalRevision": "v1",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/echo/global-takeover-v1-7746b45dcf-thwpx",
+        "workloadIps": [
+            "10.20.0.18"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "global-takeover-v1-7746b45dcf-thwpx",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "global-takeover-v1",
+        "workloadType": "pod",
+        "canonicalName": "global-takeover",
+        "canonicalRevision": "v1",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/echo/local-global-v1-6fd69c979c-5vdt6",
+        "workloadIps": [
+            "10.20.0.14"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "local-global-v1-6fd69c979c-5vdt6",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "local-global-v1",
+        "workloadType": "pod",
+        "canonicalName": "local-global",
+        "canonicalRevision": "v1",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/echo/local-v1-6f448fb9cf-4vbdk",
+        "workloadIps": [
+            "10.20.0.16"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "local-v1-6f448fb9cf-4vbdk",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "local-v1",
+        "workloadType": "pod",
+        "canonicalName": "local",
+        "canonicalRevision": "v1",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/echo/local-waypoint-v1-86b4444b44-5frln",
+        "workloadIps": [
+            "10.20.0.19"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "local-waypoint-v1-86b4444b44-5frln",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "local-waypoint-v1",
+        "workloadType": "pod",
+        "canonicalName": "local-waypoint",
+        "canonicalRevision": "v1",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/echo/remote-global-v1-77dbdb98bd-7cxq4",
+        "workloadIps": [
+            "10.20.0.17"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "remote-global-v1-77dbdb98bd-7cxq4",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "remote-global-v1",
+        "workloadType": "pod",
+        "canonicalName": "remote-global",
+        "canonicalRevision": "v1",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/echo/remote-waypoint-v1-6c7dd48b66-fxqz7",
+        "workloadIps": [
+            "10.20.0.13"
+        ],
+        "waypoint": {
+            "destination": "echo/waypoint.echo.svc.cluster.local"
+        },
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "remote-waypoint-v1-6c7dd48b66-fxqz7",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "remote-waypoint-v1",
+        "workloadType": "pod",
+        "canonicalName": "remote-waypoint",
+        "canonicalRevision": "v1",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/echo/sidecar-v1-76b55fc486-fg696",
+        "workloadIps": [
+            "10.20.0.20"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "sidecar-v1-76b55fc486-fg696",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "sidecar-v1",
+        "workloadType": "pod",
+        "canonicalName": "sidecar",
+        "canonicalRevision": "v1",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/echo/waypoint-5c4685f578-x797k",
+        "workloadIps": [
+            "10.20.0.22"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "waypoint-5c4685f578-x797k",
+        "namespace": "echo",
+        "serviceAccount": "waypoint",
+        "workloadName": "waypoint",
+        "workloadType": "pod",
+        "canonicalName": "waypoint",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/istio-gateway/istio-eastwest-7658b499c9-8j9df",
+        "workloadIps": [
+            "10.20.0.12"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "istio-eastwest-7658b499c9-8j9df",
+        "namespace": "istio-gateway",
+        "serviceAccount": "istio-eastwest",
+        "workloadName": "istio-eastwest",
+        "workloadType": "pod",
+        "canonicalName": "istio-eastwest",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/istio-system/istio-cni-node-lzskg",
+        "workloadIps": [
+            "10.20.0.10"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "istio-cni-node-lzskg",
+        "namespace": "istio-system",
+        "serviceAccount": "istio-cni",
+        "workloadName": "istio-cni-node",
+        "workloadType": "pod",
+        "canonicalName": "istio-cni",
+        "canonicalRevision": "1.0.0",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/istio-system/istio-egressgateway-77b8ddb5b9-ld644",
+        "workloadIps": [
+            "10.20.0.8"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "istio-egressgateway-77b8ddb5b9-ld644",
+        "namespace": "istio-system",
+        "serviceAccount": "istio-egressgateway-service-account",
+        "workloadName": "istio-egressgateway",
+        "workloadType": "pod",
+        "canonicalName": "istio-egressgateway",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/istio-system/istio-ingressgateway-58cc686bb-mv6vm",
+        "workloadIps": [
+            "10.20.0.24"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "istio-ingressgateway-58cc686bb-mv6vm",
+        "namespace": "istio-system",
+        "serviceAccount": "istio-ingressgateway-service-account",
+        "workloadName": "istio-ingressgateway",
+        "workloadType": "pod",
+        "canonicalName": "istio-ingressgateway",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/istio-system/istiod-fdd98779d-tn4qz",
+        "workloadIps": [
+            "10.20.0.27"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "istiod-fdd98779d-tn4qz",
+        "namespace": "istio-system",
+        "serviceAccount": "istiod",
+        "workloadName": "istiod",
+        "workloadType": "pod",
+        "canonicalName": "istiod",
+        "canonicalRevision": "1.0.0",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/istio-system/ztunnel-hghxl",
+        "workloadIps": [
+            "10.20.0.11"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "ztunnel-hghxl",
+        "namespace": "istio-system",
+        "serviceAccount": "ztunnel",
+        "workloadName": "ztunnel",
+        "workloadType": "pod",
+        "canonicalName": "ztunnel",
+        "canonicalRevision": "1.0.0",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/kube-system/coredns-66bc5c9577-j6hp8",
+        "workloadIps": [
+            "10.20.0.3"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "coredns-66bc5c9577-j6hp8",
+        "namespace": "kube-system",
+        "serviceAccount": "coredns",
+        "workloadName": "coredns",
+        "workloadType": "pod",
+        "canonicalName": "coredns",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/kube-system/coredns-66bc5c9577-lwl9l",
+        "workloadIps": [
+            "10.20.0.2"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "coredns-66bc5c9577-lwl9l",
+        "namespace": "kube-system",
+        "serviceAccount": "coredns",
+        "workloadName": "coredns",
+        "workloadType": "pod",
+        "canonicalName": "coredns",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/kube-system/etcd-remote-control-plane",
+        "workloadIps": [
+            "172.18.0.3"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "etcd-remote-control-plane",
+        "namespace": "kube-system",
+        "serviceAccount": "default",
+        "workloadName": "etcd-remote-control-plane",
+        "workloadType": "pod",
+        "canonicalName": "etcd-remote-control-plane",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/kube-system/kindnet-t4tdb",
+        "workloadIps": [
+            "172.18.0.3"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "kindnet-t4tdb",
+        "namespace": "kube-system",
+        "serviceAccount": "kindnet",
+        "workloadName": "kindnet",
+        "workloadType": "pod",
+        "canonicalName": "kindnet",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/kube-system/kube-apiserver-remote-control-plane",
+        "workloadIps": [
+            "172.18.0.3"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "kube-apiserver-remote-control-plane",
+        "namespace": "kube-system",
+        "serviceAccount": "default",
+        "workloadName": "kube-apiserver-remote-control-plane",
+        "workloadType": "pod",
+        "canonicalName": "kube-apiserver-remote-control-plane",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/kube-system/kube-controller-manager-remote-control-plane",
+        "workloadIps": [
+            "172.18.0.3"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "kube-controller-manager-remote-control-plane",
+        "namespace": "kube-system",
+        "serviceAccount": "default",
+        "workloadName": "kube-controller-manager-remote-control-plane",
+        "workloadType": "pod",
+        "canonicalName": "kube-controller-manager-remote-control-plane",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/kube-system/kube-proxy-hgr2s",
+        "workloadIps": [
+            "172.18.0.3"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "kube-proxy-hgr2s",
+        "namespace": "kube-system",
+        "serviceAccount": "kube-proxy",
+        "workloadName": "kube-proxy",
+        "workloadType": "pod",
+        "canonicalName": "kube-proxy",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/kube-system/kube-scheduler-remote-control-plane",
+        "workloadIps": [
+            "172.18.0.3"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "kube-scheduler-remote-control-plane",
+        "namespace": "kube-system",
+        "serviceAccount": "default",
+        "workloadName": "kube-scheduler-remote-control-plane",
+        "workloadType": "pod",
+        "canonicalName": "kube-scheduler-remote-control-plane",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/kube-system/metrics-server-c85687fd8-jpvt7",
+        "workloadIps": [
+            "10.20.0.5"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "metrics-server-c85687fd8-jpvt7",
+        "namespace": "kube-system",
+        "serviceAccount": "metrics-server",
+        "workloadName": "metrics-server",
+        "workloadType": "pod",
+        "canonicalName": "metrics-server",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/local-path-storage/local-path-provisioner-6944fccc5b-rj9wn",
+        "workloadIps": [
+            "10.20.0.4"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "local-path-provisioner-6944fccc5b-rj9wn",
+        "namespace": "local-path-storage",
+        "serviceAccount": "local-path-provisioner-service-account",
+        "workloadName": "local-path-provisioner",
+        "workloadType": "pod",
+        "canonicalName": "local-path-provisioner",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/metallb-system/controller-8659bd896d-k6xhh",
+        "workloadIps": [
+            "10.20.0.6"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "controller-8659bd896d-k6xhh",
+        "namespace": "metallb-system",
+        "serviceAccount": "controller",
+        "workloadName": "controller",
+        "workloadType": "pod",
+        "canonicalName": "metallb",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/metallb-system/speaker-984z5",
+        "workloadIps": [
+            "172.18.0.3"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "speaker-984z5",
+        "namespace": "metallb-system",
+        "serviceAccount": "speaker",
+        "workloadName": "speaker",
+        "workloadType": "pod",
+        "canonicalName": "metallb",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/sample/helloworld-v1-7c56bdc7b5-p9mg8",
+        "workloadIps": [
+            "10.20.0.28"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "helloworld-v1-7c56bdc7b5-p9mg8",
+        "namespace": "sample",
+        "serviceAccount": "default",
+        "workloadName": "helloworld-v1",
+        "workloadType": "pod",
+        "canonicalName": "helloworld",
+        "canonicalRevision": "v1",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote//Pod/sample/sleep-746f9d766c-vht8q",
+        "workloadIps": [
+            "10.20.0.25"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "sleep-746f9d766c-vht8q",
+        "namespace": "sample",
+        "serviceAccount": "sleep",
+        "workloadName": "sleep",
+        "workloadType": "pod",
+        "canonicalName": "sleep",
+        "canonicalRevision": "latest",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "remote-control-plane",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/discovery.k8s.io/EndpointSlice/default/kubernetes/172.18.0.3",
+        "workloadIps": [
+            "172.18.0.3"
+        ],
+        "protocol": "TCP",
+        "name": "kubernetes",
+        "namespace": "default",
+        "serviceAccount": "default",
+        "workloadName": "",
+        "workloadType": "deployment",
+        "canonicalName": "",
+        "canonicalRevision": "",
+        "clusterId": "remote",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.cross-network-primary.echo.all-global",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-2/172.18.7.151"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.cross-network-primary.echo.all-global",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.cross-network-primary.echo.all-global",
+        "workloadType": "pod",
+        "canonicalName": "all-global",
+        "canonicalRevision": "latest",
+        "clusterId": "cross-network-primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-2",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.cross-network-primary.echo.all-waypoint",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-2/172.18.7.151"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.cross-network-primary.echo.all-waypoint",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.cross-network-primary.echo.all-waypoint",
+        "workloadType": "pod",
+        "canonicalName": "all-waypoint",
+        "canonicalRevision": "latest",
+        "clusterId": "cross-network-primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-2",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.cross-network-primary.echo.cross-net-only-waypoint",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-2/172.18.7.151"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.cross-network-primary.echo.cross-net-only-waypoint",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.cross-network-primary.echo.cross-net-only-waypoint",
+        "workloadType": "pod",
+        "canonicalName": "autogen.cross-network-primary.echo.cross-net-only-waypoint",
+        "canonicalRevision": "latest",
+        "clusterId": "cross-network-primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-2",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.cross-network-primary.echo.global-takeover",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-2/172.18.7.151"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.cross-network-primary.echo.global-takeover",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.cross-network-primary.echo.global-takeover",
+        "workloadType": "pod",
+        "canonicalName": "global-takeover",
+        "canonicalRevision": "latest",
+        "clusterId": "cross-network-primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-2",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.cross-network-primary.echo.local-waypoint",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-2/172.18.7.151"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.cross-network-primary.echo.local-waypoint",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.cross-network-primary.echo.local-waypoint",
+        "workloadType": "pod",
+        "canonicalName": "local-waypoint",
+        "canonicalRevision": "latest",
+        "clusterId": "cross-network-primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-2",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.cross-network-primary.echo.remote-global",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-2/172.18.7.151"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.cross-network-primary.echo.remote-global",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.cross-network-primary.echo.remote-global",
+        "workloadType": "pod",
+        "canonicalName": "remote-global",
+        "canonicalRevision": "latest",
+        "clusterId": "cross-network-primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-2",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.cross-network-primary.echo.remote-waypoint",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-2/172.18.7.151"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.cross-network-primary.echo.remote-waypoint",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.cross-network-primary.echo.remote-waypoint",
+        "workloadType": "pod",
+        "canonicalName": "remote-waypoint",
+        "canonicalRevision": "latest",
+        "clusterId": "cross-network-primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-2",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.cross-network-primary.echo.sidecar",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-2/172.18.7.151"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.cross-network-primary.echo.sidecar",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.cross-network-primary.echo.sidecar",
+        "workloadType": "pod",
+        "canonicalName": "sidecar",
+        "canonicalRevision": "latest",
+        "clusterId": "cross-network-primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-2",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.primary.echo.all-global",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.primary.echo.all-global",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.primary.echo.all-global",
+        "workloadType": "pod",
+        "canonicalName": "all-global",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Unhealthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.primary.echo.all-waypoint",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.primary.echo.all-waypoint",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.primary.echo.all-waypoint",
+        "workloadType": "pod",
+        "canonicalName": "all-waypoint",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Unhealthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.primary.echo.global-takeover",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.primary.echo.global-takeover",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.primary.echo.global-takeover",
+        "workloadType": "pod",
+        "canonicalName": "global-takeover",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Unhealthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.primary.echo.local-global",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.primary.echo.local-global",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.primary.echo.local-global",
+        "workloadType": "pod",
+        "canonicalName": "autogen.primary.echo.local-global",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Unhealthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.primary.echo.local-waypoint",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.primary.echo.local-waypoint",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.primary.echo.local-waypoint",
+        "workloadType": "pod",
+        "canonicalName": "local-waypoint",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Unhealthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.primary.echo.remote-waypoint",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.primary.echo.remote-waypoint",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.primary.echo.remote-waypoint",
+        "workloadType": "pod",
+        "canonicalName": "remote-waypoint",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Unhealthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.primary.echo.sidecar",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.primary.echo.sidecar",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.primary.echo.sidecar",
+        "workloadType": "pod",
+        "canonicalName": "sidecar",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Unhealthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogen.primary.echo.waypoint",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.primary.echo.waypoint",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "autogen.primary.echo.waypoint",
+        "workloadType": "pod",
+        "canonicalName": "autogen.primary.echo.waypoint",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Unhealthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogenflat.primary.echo.all-global-v1-54697ff976-w4p7c.71f29c733265",
+        "workloadIps": [
+            "10.10.0.21"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogenflat.primary.echo.all-global-v1-54697ff976-w4p7c.71f29c733265",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "all-global",
+        "workloadType": "pod",
+        "canonicalName": "all-global",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogenflat.primary.echo.all-waypoint-v1-67fd5bd456-m69bf.75181a937fe1",
+        "workloadIps": [
+            "10.10.0.19"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogenflat.primary.echo.all-waypoint-v1-67fd5bd456-m69bf.75181a937fe1",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "all-waypoint",
+        "workloadType": "pod",
+        "canonicalName": "all-waypoint",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogenflat.primary.echo.global-takeover-v1-6ccdfc5b49-z6w62.9c1dc2a578e4",
+        "workloadIps": [
+            "10.10.0.14"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogenflat.primary.echo.global-takeover-v1-6ccdfc5b49-z6w62.9c1dc2a578e4",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "global-takeover",
+        "workloadType": "pod",
+        "canonicalName": "global-takeover",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogenflat.primary.echo.local-global-v1-69b9985656-fsnnn.4ef415112d58",
+        "workloadIps": [
+            "10.10.0.16"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogenflat.primary.echo.local-global-v1-69b9985656-fsnnn.4ef415112d58",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "local-global",
+        "workloadType": "pod",
+        "canonicalName": "local-global",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogenflat.primary.echo.local-waypoint-v1-5f4988b94d-qlrsq.3320c6b2fbb8",
+        "workloadIps": [
+            "10.10.0.17"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogenflat.primary.echo.local-waypoint-v1-5f4988b94d-qlrsq.3320c6b2fbb8",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "local-waypoint",
+        "workloadType": "pod",
+        "canonicalName": "local-waypoint",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogenflat.primary.echo.remote-waypoint-v1-7bb7d6cfdb-n7wm9.56b6529c83f6",
+        "workloadIps": [
+            "10.10.0.15"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogenflat.primary.echo.remote-waypoint-v1-7bb7d6cfdb-n7wm9.56b6529c83f6",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "remote-waypoint",
+        "workloadType": "pod",
+        "canonicalName": "remote-waypoint",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogenflat.primary.echo.sidecar-v1-7bf64d7b58-67v5p.485d2aa43e77",
+        "workloadIps": [
+            "10.10.0.20"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogenflat.primary.echo.sidecar-v1-7bf64d7b58-67v5p.485d2aa43e77",
+        "namespace": "echo",
+        "serviceAccount": "default",
+        "workloadName": "sidecar",
+        "workloadType": "pod",
+        "canonicalName": "sidecar",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/echo/autogenflat.primary.echo.waypoint-76665fcfc8-r2vdl.56df3deb4942",
+        "workloadIps": [
+            "10.10.0.22"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "TCP",
+        "name": "autogenflat.primary.echo.waypoint-76665fcfc8-r2vdl.56df3deb4942",
+        "namespace": "echo",
+        "serviceAccount": "waypoint",
+        "workloadName": "waypoint",
+        "workloadType": "pod",
+        "canonicalName": "waypoint",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/sample/autogen.cross-network-primary.sample.helloworld",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-2/172.18.7.151"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.cross-network-primary.sample.helloworld",
+        "namespace": "sample",
+        "serviceAccount": "default",
+        "workloadName": "autogen.cross-network-primary.sample.helloworld",
+        "workloadType": "pod",
+        "canonicalName": "helloworld",
+        "canonicalRevision": "latest",
+        "clusterId": "cross-network-primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-2",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/sample/autogen.primary.sample.helloworld",
+        "workloadIps": [],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogen.primary.sample.helloworld",
+        "namespace": "sample",
+        "serviceAccount": "default",
+        "workloadName": "autogen.primary.sample.helloworld",
+        "workloadType": "pod",
+        "canonicalName": "helloworld",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Unhealthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    },
+    {
+        "uid": "remote/networking.istio.io/WorkloadEntry/sample/autogenflat.primary.sample.helloworld-v1-7c56bdc7b5-889hv.c4d96e7d5a3e",
+        "workloadIps": [
+            "10.10.0.26"
+        ],
+        "networkGateway": {
+            "destination": "network-1/172.18.7.111"
+        },
+        "protocol": "HBONE",
+        "name": "autogenflat.primary.sample.helloworld-v1-7c56bdc7b5-889hv.c4d96e7d5a3e",
+        "namespace": "sample",
+        "serviceAccount": "default",
+        "workloadName": "helloworld",
+        "workloadType": "pod",
+        "canonicalName": "helloworld",
+        "canonicalRevision": "latest",
+        "clusterId": "primary",
+        "trustDomain": "primary.local",
+        "locality": {},
+        "node": "",
+        "network": "network-1",
+        "status": "Healthy",
+        "hostname": "",
+        "applicationTunnel": {
+            "protocol": ""
+        }
+    }
+]

@@ -3,4 +3,3 @@ export PATH="$PATH:$HOME/.local/share/gem/ruby/3.4.0/bin"
 
 export FLYCTL_INSTALL="/home/landow/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
-
