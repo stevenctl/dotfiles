@@ -1,13 +1,13 @@
 local handlers = {
 	function(server_name) -- default handler (optional)
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
-		require("lspconfig")[server_name].setup {
+		vim.lsp.config(server_name).setup {
 			capabilities = capabilities,
 		}
 	end,
 	["gopls"] = function()
 		local capabilities = require('cmp_nvim_lsp').default_capabilities()
-		require("lspconfig")["gopls"].setup {
+		vim.lsp.config("gopls").setup {
 			capabilities = capabilities,
 			settings = {
 				gopls = {
@@ -63,10 +63,9 @@ return flatten_plugin_list {
 			},
 		})
 	end },
-	{ "neovim/nvim-lspconfig", config = function()
-		local lspconfig = require("lspconfig")
-		lspconfig.gdscript.setup({})
-	end },
+	-- { "neovim/nvim-lspconfig", config = function()
+	-- 	vim.lsp.config("gdscript").setup({})
+	-- end },
 	require("user.lsp.treesitter"),
 
 	{ "folke/lazydev.nvim",                config = true,                 priority = 1000, },
@@ -75,5 +74,5 @@ return flatten_plugin_list {
 	{ "neovim/nvim-lspconfig",             dependencies = { navbuddy } },
 	require("user.lsp.lspsaga"),
 	require("user.lsp.dap"),
-	{ 'akinsho/flutter-tools.nvim', config = true, dependencies = { 'nvim-lua/plenary.nvim', lazy=false } },
+	{ 'akinsho/flutter-tools.nvim', config = true, dependencies = { 'nvim-lua/plenary.nvim', lazy = false } },
 }

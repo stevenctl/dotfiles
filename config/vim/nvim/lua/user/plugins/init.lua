@@ -65,8 +65,9 @@ lazy.setup(flatten_plugin_list(
 		require("user.plugins.cmp"),
 		require("user.lsp"),
 
-		-- Gitsigns
+		-- Git
 		{ "lewis6991/gitsigns.nvim", config = true },
+		{ "sindrets/diffview.nvim",  config = true },
 
 		-- Kubernetes
 		{ "ramilito/kubectl.nvim",   config = true },

@@ -2,7 +2,7 @@
 source ~/dotfiles/scripts/common.sh
 
 install_go() {
-  local GO_VERSION="1.24.3"
+  local GO_VERSION="1.25.3"
   if command -v go &>/dev/null; then
     local INSTALLED_VERSION
     INSTALLED_VERSION=$(go version | grep -oE '[0-9]+\.[0-9]+\.[0-9]+')
