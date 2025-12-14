@@ -1,5 +1,5 @@
-local colorscheme = "kanagawa-dragon"
--- local colorscheme = "everforest"
+-- local colorscheme = "kanagawa-dragon" -- TODO: this makes snack pickers ugly  because of kanagawa bg
+local colorscheme = "everforest"
 local enable_transparency = true
 vim.o.termguicolors = true
 
@@ -11,7 +11,7 @@ local themes = {
   { "sainnhe/everforest",        name = "everforest" },
   { "catppuccin/nvim",           name = "catppuccin" },
   { 'AlphaTechnolog/pywal.nvim', name = 'wal' },
-  { "rebelot/kanagawa.nvim",     opts = { transparent = true } },
+  { "rebelot/kanagawa.nvim",     opts = { transparent = enable_transparency } },
 }
 
 -- Everforest

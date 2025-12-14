@@ -70,20 +70,6 @@ map.n("<leader>Q", vim.diagnostic.setloclist, "Diagnostic loclist")
 map.v("p", 'p:let @+=@0<CR>:let @"=@0<CR>', "paste")
 map.x("p", 'p:let @+=@0<CR>:let @"=@0<CR>', "paste (before)")
 
--- File browsing
-local function open_file()
-	local ok, _ = pcall(vim.api.nvim_command, "Telescope smart_open")
-	if not ok then
-		vim.notify("smart-open failed.. fallback to Telescope git_files")
-		vim.api.nvim_command("Telescope git_files")
-	end
-end
-
-map.n("<leader>e", ":NvimTreeFocus<CR>", "NVIMTree")
-map.n("<C-F>", ":FindIn<CR>", "Find in Tree")
-map.n("<leader>o", open_file, "Open file")
-map.n("<leader>O", "<cmd> Telescope oldfiles <CR>", "Open recent file")
-
 -- Terminal
 map.n("<C-\\>", toggle_term, "Terminal toggle")
 map.t("<C-\\>", "<C-\\><C-n>", "Terminal normal mode")
@@ -92,9 +78,6 @@ map.t("<C-\\>", "<C-\\><C-n>", "Terminal normal mode")
 map.n("<TAB>", ":bnext<CR>", "Buffer next")
 map.n("<S-TAB>", ":bprev<CR>", "Buffer prev")
 map.n("<M-TAB>", ":b#<CR>", "Buffer last")
-map.n("<leader><TAB>",
-	":Telescope buffers path_display={'smart'} theme=get_cursor previewer=false initial_mode=normal<CR>", "Buffer pick")
-map.n("<leader>x", ":bd<CR>", "Buffer delete")
 
 -- window nav
 map.n("<C-h>", "<C-w>h", "Window left")
@@ -106,15 +89,6 @@ map.n("<C-l>", "<C-w>l", "Window right")
 map.n("<leader>sv", ":vsplit<cr>", "Split vertical")
 map.n("<leader>sh", ":split<cr>", "Split horizontal")
 
-
--- find
-map.n("<leader>ff", "<cmd> Telescope live_grep_args <CR>", "Find in files")
-map.n("<leader>fb", "<cmd> Telescope buffers <CR>", "Buffer pick")
-map.n("<leader>fh", "<cmd> Telescope help_tags <CR>", "Help")
-map.n("<leader>fk", "<cmd> Telescope keymaps <CR>", "Keymaps finder")
--- map.n("<leader>ft", "<cmd> Telescope terms <CR>", "terminals")
--- map.n("<leader>fT", "<cmd> Telescope themes <CR>", { silent = true })
-
 -- git
 map.n("<leader>vj", "<cmd>lua require 'gitsigns'.next_hunk({navigation_message = false})<cr>", "")
 map.n("<leader>vk", "<cmd>lua require 'gitsigns'.prev_hunk({navigation_message = false})<cr>", "")
@@ -122,12 +96,6 @@ map.n("<leader>vB", "<cmd>lua require 'gitsigns'.blame_line()<cr>", "Git blame")
 map.n("<leader>vh", "<cmd>lua require 'gitsigns'.preview_hunk()<cr>", "Git hunk")
 map.n("<leader>vr", "<cmd>lua require 'gitsigns'.reset_hunk()<cr>", "Git revert hunk")
 map.n("<leader>vR", "<cmd>lua require 'gitsigns'.reset_buffer()<cr>", "Git revert buffer")
-map.n("<leader>vA", "<cmd>:Gitsigns stage_hunk<cr>", "Git stage hunk")
-map.n("<leader>vs", "<cmd>Telescope git_status<cr>", "Git status")
-map.n("<leader>vb", "<cmd>Telescope git_branches<cr>", "Git branches")
-map.n("<leader>vl", "<cmd>Telescope git_commits<cr>", "Git commits")
-map.n("<leader>vL", "<cmd>Telescope git_bcommits<cr>", "Git commits (current buffer)")
-map.n("<leader>vd", "<cmd>Gitsigns diffthis HEAD<cr>", "Git diff")
 map.n("<leader>vu", gh_link, "Github URL")
 
 -- dap
@@ -151,12 +119,6 @@ map.n("<leader>dq", "<cmd>lua require'dap'.close()<cr>", "DAP close")
 map.n("<leader>dt", "<cmd>lua require'dap'.terminate()<cr>", "DAP terminate")
 map.n("<leader>dD", "<cmd>lua require'dap'.disconnect()<cr>", "DAP disconnect")
 map.n("<leader>dg", "<cmd>lua require'dap'.session()<cr>", "DAP session")
-
-
--- Comments
-map.n("<leader>/", "gcc", "Comment toggle", { noremap = false })
-map.v("<leader>/", "gc", "Comment toggle")
-map.x("<leader>/", "gc", "Comment toggle")
 
 -- LSP related
 local function fix_trail()
