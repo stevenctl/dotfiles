@@ -3,3 +3,4 @@ export PATH="$PATH:$HOME/.local/share/gem/ruby/3.4.0/bin"
 
 export FLYCTL_INSTALL="/home/landow/.fly"
 export PATH="$FLYCTL_INSTALL/bin:$PATH"
+export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$HOME/.dartcv/lib"
