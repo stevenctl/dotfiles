@@ -45,10 +45,48 @@ lazy.setup(flatten_plugin_list(
 		input = { enabled = true },
 		picker = {
 			enabled = true,
+			formatters = {
+				file = {
+					filename_first = true,
+				},
+			},
+			layout = function()
+				if vim.o.columns >= 120 then
+					return { preset = "telescope", cycle = true }
+				else
+					return {
+						cycle = true,
+						reverse = true,
+						preview = false,
+						layout = {
+							backdrop = false,
+							width = 0.5,
+							min_width = 80,
+							height = 0.4,
+							min_height = 3,
+							box = "vertical",
+							border = true,
+							title = "{title}",
+							title_pos = "center",
+							{ win = "list", border = "bottom" },
+							{ win = "input", height = 1, border = "none" },
+						},
+					}
+				end
+			end,
+			win = {
+				input = {
+					keys = {
+						["<Tab>"] = { "list_down", mode = { "i", "n" } },
+						["<S-Tab>"] = { "list_up", mode = { "i", "n" } },
+					},
+				},
+			},
 			sources = {
+				buffers = {
+					layout = { preset = "select" },
+				},
 				grep = {
-					live = false,
-					search = ".",
 					actions = {
 						filter_filetype = function(picker)
 							vim.ui.input({ prompt = "Filetype (-t, empty to clear): " }, function(ft)
@@ -84,8 +122,9 @@ lazy.setup(flatten_plugin_list(
 		-- pickers
 		{ "<leader>o", function() Snacks.picker.smart() end, desc = "Open File" },
 		{ "<leader>O", function() Snacks.picker.recent() end, desc = "Recent Files" },
+		{ "<leader>:", function() Snacks.picker.commands() end, desc = "Commands" , mode = { "n", "v", "x" }},
 		-- big TODO: ff is not fuzzy enough!
-		{ "<leader>ff", function() Snacks.picker.grep({search = ".", live = false}) end, desc = "Find in Files (Grep)" },
+		{ "<leader>ff", function() Snacks.picker.grep() end, desc = "Find in Files (Grep)" },
 		{ "<leader>/", function() Snacks.picker.lines() end, desc = "Find in current file" },
 		{ "<leader>fw", function() Snacks.picker.grep_word() end, desc = "Find Word or Selection (Grep)", mode = { "n", "v", "x" } },
 		{ "<leader><tab>", function() Snacks.picker.buffers() end, desc = "Buffer Picker" },
@@ -108,9 +147,6 @@ lazy.setup(flatten_plugin_list(
 		{ "<leader>vH", function() Snacks.picker.git_log_file() end, desc = "Git Buffer Commits" },
 		{ "<leader>vd", function() Snacks.picker.git_diff({staged=false}) end, desc = "Git Diff" },
 
-		-- zen
-   { "<leader>z",  function() Snacks.zen() end, desc = "Toggle Zen Mode" },
-   { "<leader>Z",  function() Snacks.zen.zoom() end, desc = "Toggle Zoom" },
 
 
 
