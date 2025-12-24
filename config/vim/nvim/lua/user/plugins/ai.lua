@@ -57,7 +57,8 @@ return {
 		lazy = false,
 		version = false, -- never set this to "*"! never! (accoring to avante's readme)
 		opts = {
-			provider = "claude",
+			build = "make BUILD_FROM_SOURCE=true",
+			provider = "openai",
 			-- cursor_applying_provider = "openai",
 			-- auto_suggestions_provider = "openai",
 			behaviour = {
@@ -142,7 +143,7 @@ return {
 		},
 
 		-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-		build = "make",
+		build = "make BUILD_FROM_SOURCE=true",
 		-- build = "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false" -- for windows
 		dependencies = {
 			"stevearc/dressing.nvim",
