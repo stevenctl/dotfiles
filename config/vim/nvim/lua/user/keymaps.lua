@@ -18,37 +18,8 @@ map.o("H", "^", "Start of line")
 map.o("L", "$", "End of line")
 
 -- AI
-vim.api.nvim_create_autocmd('FileType', {
-	pattern = { 'Avante', 'AvanteInput', 'AvanteSelectedFiles' },
-	callback = function(ev)
-		local opts = { buffer = ev.buf, silent = false }
-		map.n("q", ":AvanteToggle<cr>", "AI Toggle", opts)
-		map.n("<esc>", "<nop>", "noop", opts)
-	end
-})
-vim.api.nvim_create_autocmd('FileType', {
-	pattern = { 'Avante', 'AvanteSelectedFiles' },
-	callback = function(ev)
-		local opts = { buffer = ev.buf, silent = false }
-		local function focus_prompt()
-			for _, win in ipairs(vim.api.nvim_list_wins()) do
-				local buf = vim.api.nvim_win_get_buf(win)
-				local filetype = vim.api.nvim_buf_get_option(buf, 'filetype')
-				if filetype == 'AvanteInput' then
-					vim.api.nvim_set_current_win(win)
-					vim.api.nvim_command('startinsert')
-					break
-				end
-			end
-		end
-		map.n("i", focus_prompt, "noop", opts)
-	end
-})
-map.n("<leader>aC", ":AvanteClear<cr>:AvanteRefresh<CR>", "avante: clear")
-map.n("<leader>aR", ":AvanteRefresh<cr>", "avante: refresh")
-map.n("<leader>aP", ":AvanteSwitchProvider<cr>", "avante: provider")
-map.v("<leader>ar", function() require("avante.api").edit() end, "avante: edit")
-map.x("<leader>ar", function() require("avante.api").edit() end, "avante: edit")
+map.n("<leader>ar", function() require("nvim-redraft").edit() end, "AI edit")
+map.n("<leader>am", function() require("nvim-redraft").select_model() end, "AI model")
 
 -- map.n("<leader>ar", ":GpRewrite<cr>", "AI rewrite inplace")
 -- map.v("<leader>ar", ":GpRewrite<cr>", "AI rewrite inplace")
@@ -69,6 +40,10 @@ map.n("<leader>Q", vim.diagnostic.setloclist, "Diagnostic loclist")
 -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
 map.v("p", 'p:let @+=@0<CR>:let @"=@0<CR>', "paste")
 map.x("p", 'p:let @+=@0<CR>:let @"=@0<CR>', "paste (before)")
+
+-- File browsing
+map.n("<leader>e", ":NvimTreeFocus<CR>", "NVIMTree")
+map.n("<C-F>", ":FindIn<CR>", "Find in Tree")
 
 -- Terminal
 map.n("<C-\\>", toggle_term, "Terminal toggle")

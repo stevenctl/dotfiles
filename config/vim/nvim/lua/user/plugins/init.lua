@@ -141,8 +141,8 @@ lazy.setup(flatten_plugin_list(
 				zen = { enabled = true },
 			},
 			keys = {
-				-- file explorer
-				{ "<leader>e",       function() Snacks.explorer({ diagnostics = false }) end,   desc = "File Explorer" },
+				-- file explorer (use <leader>E since NvimTree uses <leader>e)
+				{ "<leader>E",       function() Snacks.explorer({ diagnostics = false }) end,   desc = "Snacks Explorer" },
 
 				-- close current buffer
 				{ "<leader>x",       function() Snacks.bufdelete() end,                         desc = "Close Buffer" },
@@ -229,7 +229,7 @@ lazy.setup(flatten_plugin_list(
 		},
 
 		-- File navigation
-		-- require("user.plugins.nvimtree"),
+		require("user.plugins.nvimtree"),
 		-- require("user.plugins.telescope"),
 
 		-- LSP, completion, etc
