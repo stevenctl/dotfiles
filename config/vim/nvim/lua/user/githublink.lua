@@ -23,11 +23,19 @@ local function copy_github_permalink()
 		current_branch = branch_handle:read("*a"):gsub("\n", "")
 		branch_handle:close()
 	end
-	
-	local github_base_url = remote_url:gsub("%.git$", ""):gsub("^git@github.com:", "https://github.com/") .. "/blob/" .. current_branch .. "/"
+
+	local github_base_url = remote_url:gsub("%.git$", ""):gsub("^git@github.com:", "https://github.com/") ..
+	"/blob/" .. current_branch .. "/"
 
 	-- Get the current file's relative path within the repository
-	local filepath = vim.fn.expand('%')
+	local filepath = vim.fn.expand('%:p')
+	local repo_root_handle = io.popen("git rev-parse --show-toplevel")
+	local repo_root = ""
+	if repo_root_handle then
+		repo_root = repo_root_handle:read("*a"):gsub("\n", "")
+		repo_root_handle:close()
+	end
+	filepath = filepath:sub(#repo_root + 2) -- +2 to skip the trailing slash
 
 	-- Get the current line number
 	local line_number = vim.fn.line('.')

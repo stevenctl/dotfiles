@@ -103,12 +103,12 @@ lazy.setup(flatten_plugin_list(
 					sources = {
 						-- no preview for file pickers
 						buffers = { layout = { preset = "select" } },
-						files = { preview = false },
-						smart = { preview = false },
-						recent = { preview = false },
+						-- files = { preview = false },
+						-- smart = { preview = false },
+						-- recent = { preview = false },
 						-- preview for search/git pickers
 						grep = {
-							preview = true,
+							-- preview = true,
 							actions = {
 								filter_filetype = function(picker)
 									vim.ui.input({ prompt = "Filetype (-t, empty to clear): " }, function(ft)
@@ -126,13 +126,13 @@ lazy.setup(flatten_plugin_list(
 								},
 							},
 						},
-						grep_word = { preview = true },
-						lines = { preview = true },
-						git_status = { preview = true },
-						git_log = { preview = true },
-						git_log_file = { preview = true },
-						git_log_line = { preview = true },
-						git_diff = { preview = true },
+						grep_word = {  },
+						lines = {  },
+						git_status = {  },
+						git_log = {  },
+						git_log_file = {  },
+						git_log_line = {  },
+						git_diff = {  },
 					},
 				},
 				rename = { enabled = true },
