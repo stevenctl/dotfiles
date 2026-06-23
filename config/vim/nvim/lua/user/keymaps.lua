@@ -105,7 +105,7 @@ local function fix_trail()
 end
 local function format()
 	fix_trail()
-	vim.lsp.buf.format()
+	vim.lsp.buf.format({ async = true })
 	vim.cmd("Format")
 end
 

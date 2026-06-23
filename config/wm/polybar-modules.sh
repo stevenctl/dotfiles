@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Base modules that are always shown
-MODULES_RIGHT="filesystem pulseaudio memory cpu temperature"
+# Base modules that are always shown (mon-* = display layout controls)
+MODULES_RIGHT="mon-display mon-side filesystem pulseaudio memory cpu temperature"
 
 # Check for NVIDIA GPU
 if command -v nvidia-smi >/dev/null 2>&1; then

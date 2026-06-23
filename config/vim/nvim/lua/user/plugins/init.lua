@@ -16,6 +16,20 @@ lazy.setup(flatten_plugin_list(
 		-- AI
 		require("user.plugins.ai"),
 
+		-- Chinese
+		{
+			dir = vim.fn.expand("~/gamedev/bookchoy.nvim"),
+			name = "bookchoy.nvim",
+			dependencies = { "kkharji/sqlite.lua" },
+			ft = { "markdown", "text" },
+			opts = {
+				-- db_path = vim.fn.expand("~/gamedev/chinese_app/data/cidian/prepared/custom/custom_dictionary.sqlite3"),
+			},
+			config = function(_, opts)
+				require("bookchoy").setup(opts)
+			end,
+		},
+
 		-- General Editing
 		require("user.plugins.todo"),
 		require("user.plugins.bqf"),
@@ -126,13 +140,13 @@ lazy.setup(flatten_plugin_list(
 								},
 							},
 						},
-						grep_word = {  },
-						lines = {  },
-						git_status = {  },
-						git_log = {  },
-						git_log_file = {  },
-						git_log_line = {  },
-						git_diff = {  },
+						grep_word = {},
+						lines = {},
+						git_status = {},
+						git_log = {},
+						git_log_file = {},
+						git_log_line = {},
+						git_diff = {},
 					},
 				},
 				rename = { enabled = true },

@@ -64,6 +64,11 @@
     ~/.config/polybar/config: ./config/wm/polybar.ini
     ~/.i3/polybar.sh: ./config/wm/polybar.sh
     ~/.i3/nvidia-smi-polybar.sh: ./config/wm/nvidia-smi-polybar.sh
+    # multi-monitor control (mon) + workspace placement (i3-resnap)
+    ~/.i3/mon: ./config/wm/mon
+    ~/.i3/i3-resnap: ./config/wm/i3-resnap
+    ~/.local/bin/mon: ./config/wm/mon
+    ~/.local/bin/i3-resnap: ./config/wm/i3-resnap
     # hypr
     ~/.config/hypr/hyprland.conf: ./config/wm/hyprland.conf
     # waybar

@@ -1,0 +1,320 @@
+#!/usr/bin/env bash
+#
+# mon — tiny multi-monitor configurator that wraps xrandr.
+#
+# Assumes exactly one external display. Auto-detects display names,
+# resolutions and refresh rates so you never have to hand-craft xrandr.
+#
+# Interactive:   ./mon
+# Scripted:      ./mon --extend --right --scale 1.5
+#                ./mon --mirror --scale 1.0
+#                ./mon --external         # external only, laptop off
+#                ./mon --off              # laptop only, external off
+#                ./mon --status           # show what's connected
+#
+# Flags:
+#   -e, --extend            extend the external display
+#   -m, --mirror            mirror the external display onto the laptop
+#   -x, --external          use only the external (laptop off)
+#       --off               turn the external off (laptop only)
+#   -s, --scale N           UI scale: 0.8 1.0 1.5 2.0  (bigger = bigger UI)
+#   -l, --left              external is left of the laptop   (extend only)
+#   -r, --right             external is right of the laptop  (extend only)
+#   -a, --above             external is above the laptop     (extend only)
+#       --rate N            external refresh rate (default capped, see config)
+#       --status            print detected displays and exit
+#   -n, --dry-run           print the xrandr command without running it
+#   -h, --help              show this help
+
+set -euo pipefail
+
+# --- config -----------------------------------------------------------------
+# The external's EDID claims 60Hz at native res, but this HDMI link can't
+# actually drive it (black screen / no signal). Cap the external rate to a
+# value that works. Leave empty to use the EDID-preferred rate. Override per
+# run with --rate N.
+DEFAULT_EXT_RATE="50"
+
+die() { echo "mon: error: $*" >&2; exit 1; }
+command -v xrandr >/dev/null 2>&1 || die "xrandr not found in PATH"
+
+query=$(xrandr --query)
+
+# --- detect displays --------------------------------------------------------
+connected=$(echo "$query" | awk '/ connected/{print $1}')
+
+# internal = the laptop panel (eDP/LVDS/DSI), else the primary, else first.
+internal=$(echo "$query" | awk '
+  / connected/ && $1 ~ /^(eDP|LVDS|DSI)/ {print $1; exit}')
+[ -z "${internal:-}" ] && internal=$(echo "$query" | awk '/ connected primary/{print $1; exit}')
+[ -z "${internal:-}" ] && internal=$(echo "$connected" | head -n1)
+[ -z "${internal:-}" ] && die "no connected displays found"
+
+external=$(echo "$connected" | grep -vx "$internal" | head -n1 || true)
+
+# preferred resolution (the mode marked '+') for an output, with a fallback
+# to the first listed mode.
+pref_res() {
+  echo "$query" | awk -v out="$1" '
+    $1==out {f=1; next}
+    f && /^[^[:space:]]/ {exit}        # reached the next output block
+    f && /^[[:space:]]/ {
+      if (first=="") first=$1
+      if (/\+/) {print $1; found=1; exit}
+    }
+    END { if (!found) print first }'
+}
+
+# preferred refresh rate (Hz) for an output: rate on the preferred ('+') line,
+# stripping the '*'/'+' markers; falls back to the first rate listed.
+pref_hz() {
+  echo "$query" | awk -v out="$1" '
+    $1==out {f=1; next}
+    f && /^[^[:space:]]/ {exit}
+    f && /^[[:space:]]/ {
+      if (firstrate=="") { firstrate=$2; gsub(/[*+]/,"",firstrate) }
+      if (/\+/) {
+        last=""
+        for (i=2;i<=NF;i++) {
+          if ($i ~ /\+/) {            # the preferred marker; rate may be attached or just before
+            cand=$i; gsub(/[*+]/,"",cand)
+            if (cand=="") cand=last
+            print cand; found=1; exit
+          }
+          v=$i; gsub(/[*+]/,"",v)
+          if (v ~ /[0-9]/) last=v
+        }
+      }
+    }
+    END { if (!found) print firstrate }'
+}
+
+if [ -n "${external:-}" ]; then
+  ires=$(pref_res "$internal");  ihz=$(pref_hz "$internal")
+  eres=$(pref_res "$external");  ehz=$(pref_hz "$external")
+fi
+
+print_status() {
+  echo "Laptop (internal): $internal  ${ires:-?} @ ${ihz:-?}Hz"
+  if [ -n "${external:-}" ]; then
+    echo "External:          $external  ${eres:-?} @ ${ehz:-?}Hz"
+  else
+    echo "External:          (none connected)"
+  fi
+}
+
+# --- state detection + bar interface ----------------------------------------
+# These let a status bar (polybar) read the current layout and drive controls.
+ext_connected() { [ -n "${external:-}" ]; }
+
+# active geometry "WxH+X+Y" for an output, empty if the output is off
+active_geom() { xrandr --query | awk -v o="$1" '$1==o{ if(match($0,/[0-9]+x[0-9]+\+[0-9]+\+[0-9]+/)) print substr($0,RSTART,RLENGTH) }'; }
+geom_x() { local g="${1#*+}"; echo "${g%+*}"; }
+geom_y() { echo "${1##*+}"; }
+
+# current layout: extend | mirror | external | laptop
+current_mode() {
+  local ig eg
+  ig=$(active_geom "$internal")
+  eg=""; ext_connected && eg=$(active_geom "$external")
+  if [ -z "$eg" ]; then echo laptop; return; fi
+  if [ -z "$ig" ]; then echo external; return; fi
+  if [ "$(geom_x "$ig")" = "$(geom_x "$eg")" ] && [ "$(geom_y "$ig")" = "$(geom_y "$eg")" ]; then
+    echo mirror
+  else
+    echo extend
+  fi
+}
+
+# external's position relative to the laptop (only meaningful when extending)
+current_side() {
+  local ig eg
+  ig=$(active_geom "$internal"); eg=$(active_geom "$external")
+  if   [ "$(geom_x "$eg")" -lt "$(geom_x "$ig")" ]; then echo left
+  elif [ "$(geom_x "$eg")" -gt "$(geom_x "$ig")" ]; then echo right
+  elif [ "$(geom_y "$eg")" -lt "$(geom_y "$ig")" ]; then echo above
+  else echo right; fi
+}
+
+# external's current UI scale, snapped to the offered steps (so actions preserve it)
+current_scale() {
+  ext_connected || { echo 1.0; return; }
+  local a
+  a=$(xrandr --verbose 2>/dev/null | awk -v o="$external" '$1==o{f=1;next} f&&/Transform:/{print $2; exit}')
+  [ -n "$a" ] || { echo 1.0; return; }
+  awk -v a="$a" 'BEGIN{ if(a==0){print "1.0"; exit}
+    ui=1/a; best="1.0"; bd=1e9; n=split("0.8 1.0 1.5 2.0",s," ");
+    for(i=1;i<=n;i++){d=ui-s[i]; if(d<0)d=-d; if(d<bd){bd=d;best=s[i]}} print best }'
+}
+
+case "${1:-}" in
+  bar-mode)
+    if ! ext_connected; then echo "laptop (no ext)"; else
+      case "$(current_mode)" in
+        extend) echo "extend" ;; external) echo "ext-only" ;;
+        mirror) echo "mirror" ;; *) echo "laptop" ;;
+      esac
+    fi; exit 0 ;;
+  bar-side)
+    if ext_connected && [ "$(current_mode)" = extend ]; then
+      case "$(current_side)" in
+        left) echo "◀ left" ;; right) echo "right ▶" ;; above) echo "▲ above" ;;
+      esac
+    fi; exit 0 ;;
+  cycle)         # extend -> ext-only -> laptop -> extend
+    ext_connected || exec "$0" --off
+    case "$(current_mode)" in
+      extend)   exec "$0" --external --scale "$(current_scale)" ;;
+      external) exec "$0" --off ;;
+      *)        exec "$0" --extend --left --scale 1.0 ;;
+    esac ;;
+  cycle-back)    # reverse of cycle
+    ext_connected || exec "$0" --off
+    case "$(current_mode)" in
+      extend)   exec "$0" --off ;;
+      external) exec "$0" --extend --left --scale 1.0 ;;
+      *)        exec "$0" --external --scale "$(current_scale)" ;;
+    esac ;;
+  toggle-side)   # flip left/right while extending
+    { ext_connected && [ "$(current_mode)" = extend ]; } || exit 0
+    case "$(current_side)" in
+      left) exec "$0" --extend --right --scale "$(current_scale)" ;;
+      *)    exec "$0" --extend --left  --scale "$(current_scale)" ;;
+    esac ;;
+  detect)
+    printf 'mode=%s side=%s ext=%s scale=%s\n' "$(current_mode)" \
+      "$([ "$(current_mode)" = extend ] && current_side || echo -)" \
+      "$(ext_connected && echo yes || echo no)" "$(current_scale)"; exit 0 ;;
+esac
+
+# --- args -------------------------------------------------------------------
+mode=""; scale=""; pos=""; dry=0; rate="$DEFAULT_EXT_RATE"
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -e|--extend) mode=extend ;;
+    -m|--mirror) mode=mirror ;;
+    -x|--external|--external-only|--solo) mode=external ;;
+    --off)       mode=off ;;
+    -s|--scale)  shift; scale="${1:-}" ;;
+    --rate)      shift; rate="${1:-}" ;;
+    -l|--left)   pos=left ;;
+    -r|--right)  pos=right ;;
+    -a|--above)  pos=above ;;
+    --status)    print_status; exit 0 ;;
+    -n|--dry-run) dry=1 ;;
+    -h|--help)   sed -n '3,27p' "$0" | sed 's/^#\s\?//'; exit 0 ;;
+    *) die "unknown option: $1 (try --help)" ;;
+  esac
+  shift
+done
+
+# --- interactive picker -----------------------------------------------------
+# choose <varname> <prompt> <opt1> <opt2> ...
+# The FIRST option is the default — Enter (empty input) selects it.
+choose() {
+  local __var="$1" prompt="$2"; shift 2
+  local opts=("$@") i ans
+  echo "$prompt" >&2
+  for i in "${!opts[@]}"; do
+    printf '  %d) %s%s\n' $((i+1)) "${opts[$i]}" \
+      "$([ "$i" -eq 0 ] && echo '  (default)')" >&2
+  done
+  while :; do
+    printf '> [%s] ' "${opts[0]}" >&2; read -r ans </dev/tty || die "no input"
+    [ -z "$ans" ] && ans=1                       # bare Enter -> default
+    [[ "$ans" =~ ^[0-9]+$ ]] && (( ans>=1 && ans<=${#opts[@]} )) && break
+    echo "  pick 1-${#opts[@]} (or Enter for default)" >&2
+  done
+  printf -v "$__var" '%s' "${opts[$((ans-1))]}"
+}
+
+if [ -z "$mode" ]; then
+  [ -z "${external:-}" ] && { print_status; die "no external display connected"; }
+  echo; print_status; echo
+  choose mode "Mode?" extend mirror external off
+fi
+
+if [ "$mode" != "off" ] && [ -z "${external:-}" ]; then
+  die "no external display connected (only --off is possible)"
+fi
+
+if [ "$mode" != "off" ] && [ -z "$scale" ]; then
+  choose scale "UI scale on the external? (bigger number = bigger UI)" 1.0 0.8 1.5 2.0
+fi
+[ -n "$scale" ] && [[ "$scale" =~ ^[0-9]+(\.[0-9]+)?$ ]] || { [ "$mode" = off ] || die "bad scale: $scale"; }
+
+if [ "$mode" = "extend" ] && [ -z "$pos" ]; then
+  choose pos "External position relative to the laptop?" left right above
+fi
+
+# --- build the xrandr command ----------------------------------------------
+# xrandr's --scale is inverse to UI size (scale 2 = more desktop, smaller UI).
+# Users think in UI-magnification terms (like the OS display settings), so we
+# invert: requested UI scale S  ->  xrandr scale = 1/S.
+xs=""
+if [ -n "$scale" ] && [ "$mode" != "off" ]; then
+  xs=$(awk -v s="$scale" 'BEGIN{printf "%.4f", 1/s}')
+fi
+
+# external refresh rate: --rate / DEFAULT_EXT_RATE override, else EDID preferred
+ext_rate="${rate:-${ehz:-}}"
+
+cmd=(xrandr)
+case "$mode" in
+  off)
+    cmd+=(--output "$internal" --auto --primary)
+    [ -n "${external:-}" ] && cmd+=(--output "$external" --off)
+    ;;
+  mirror)
+    # Scale the external so its logical size matches the laptop, then overlay.
+    iw=${ires%x*}; ih=${ires#*x}
+    ew=${eres%x*}; eh=${eres#*x}
+    msx=$(awk -v a="$iw" -v b="$ew" 'BEGIN{printf "%.4f", a/b}')
+    msy=$(awk -v a="$ih" -v b="$eh" 'BEGIN{printf "%.4f", a/b}')
+    cmd+=(--output "$internal" --mode "$ires" --rate "$ihz" --pos 0x0 --primary
+          --output "$external" --mode "$eres" --rate "$ext_rate" --same-as "$internal"
+          --scale "${msx}x${msy}")
+    ;;
+  external)
+    # External only; laptop panel off.
+    cmd+=(--output "$external" --mode "$eres" --rate "$ext_rate" --scale "${xs}x${xs}"
+          --pos 0x0 --primary
+          --output "$internal" --off)
+    ;;
+  extend)
+    case "$pos" in
+      left)  rel="--left-of" ;;
+      right) rel="--right-of" ;;
+      above) rel="--above" ;;
+      *) die "internal: bad position '$pos'" ;;
+    esac
+    cmd+=(--output "$internal" --mode "$ires" --rate "$ihz" --pos 0x0 --primary
+          --output "$external" --mode "$eres" --rate "$ext_rate" --scale "${xs}x${xs}"
+          "$rel" "$internal")
+    ;;
+  *) die "unknown mode: $mode" ;;
+esac
+
+echo "+ ${cmd[*]}"
+[ "$dry" -eq 1 ] && exit 0
+"${cmd[@]}"
+
+# Repaint the wallpaper onto the new layout (i3/X11 don't redraw it on a
+# layout change). Best-effort: pywal, then nitrogen, then feh's restore script.
+if command -v wal >/dev/null 2>&1; then
+  wal -R >/dev/null 2>&1 || true
+elif command -v nitrogen >/dev/null 2>&1; then
+  nitrogen --restore >/dev/null 2>&1 || true
+elif [ -x "$HOME/.fehbg" ]; then
+  "$HOME/.fehbg" >/dev/null 2>&1 || true
+fi
+
+# Re-snap i3 workspaces onto their assigned outputs (the i3 config is the
+# source of truth — see ./i3-resnap). Best-effort; no-op outside i3.
+resnap="$(dirname "$0")/i3-resnap"
+[ -x "$resnap" ] || resnap="$(command -v i3-resnap 2>/dev/null || true)"
+if [ -n "$resnap" ] && [ -x "$resnap" ] && i3-msg -t get_version >/dev/null 2>&1; then
+  "$resnap" || true
+fi
+
+echo "done."

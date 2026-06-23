@@ -28,3 +28,13 @@ export NVM_DIR="$HOME/.nvm"
 
 # bun completions
 [ -s "/home/landow/.bun/_bun" ] && source "/home/landow/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+# opencode
+export PATH=/home/landow/.opencode/bin:$PATH
+
+# Reduce Flutter/Dart LSP network chatter on slow connections
+export FLUTTER_SUPPRESS_ANALYTICS=true
