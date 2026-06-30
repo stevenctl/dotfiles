@@ -18,7 +18,9 @@ vim.opt.cmdheight = 0
 
 vim.opt.laststatus = 3
 
--- treesitter folds are set per-buffer in user/lsp/treesitter.lua
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldlevelstart = 99 -- start with all folds open
 
 -- Powershell on Windows
 if string.find(vim.loop.os_uname().sysname, "Windows") then

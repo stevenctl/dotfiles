@@ -23,6 +23,26 @@ local handlers = {
 				},
 			},
 		}
+	end,
+	["rust_analyzer"] = function()
+		local capabilities = require('cmp_nvim_lsp').default_capabilities()
+		vim.lsp.config("rust_analyzer").setup {
+			capabilities = capabilities,
+			settings = {
+				["rust-analyzer"] = {
+					cargo = {
+						-- Use a separate target dir so rust-analyzer's checks/builds
+						-- don't fight the build lock with terminal `cargo build`.
+						-- Avoids recompiling proc-macros/build-scripts on every open.
+						targetDir = true,
+						buildScripts = { enable = true },
+					},
+					procMacro = { enable = true },
+					-- checkOnSave defaults to true (compiler diagnostics on save).
+					-- Set to false here if save-time `cargo check` is still too heavy.
+				},
+			},
+		}
 	end
 }
 
