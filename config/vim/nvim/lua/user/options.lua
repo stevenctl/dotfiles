@@ -18,9 +18,7 @@ vim.opt.cmdheight = 0
 
 vim.opt.laststatus = 3
 
--- TODO install treesitter for folds?
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- treesitter folds are set per-buffer in user/lsp/treesitter.lua
 
 -- Powershell on Windows
 if string.find(vim.loop.os_uname().sysname, "Windows") then

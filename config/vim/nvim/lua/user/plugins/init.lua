@@ -33,6 +33,11 @@ lazy.setup(flatten_plugin_list(
 		-- General Editing
 		require("user.plugins.todo"),
 		require("user.plugins.bqf"),
+		{
+			"stevenctl/bookchoy.nvim",
+			config = true,
+			dependencies = { "kkharji/sqlite.lua" },
+		},
 		-- { "lukas-reineke/indent-blankline.nvim",     main = "ibl",  opts = {} },
 		{ "nmac427/guess-indent.nvim",               config = true },
 		{ "nvim-treesitter/nvim-treesitter-context", config = true },

@@ -8,4 +8,4 @@ export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
 export PATH="$PATH:$ANDROID_HOME/platform-tools"
 export PATH="$PATH:$HOME/Android/Sdk/cmdline-tools/latest/bin"
 export PATH="$PATH:$HOME/Android/Sdk/platform-tools"
-
+export PATH="$ANDROID_HOME/emulator:$PATH"
