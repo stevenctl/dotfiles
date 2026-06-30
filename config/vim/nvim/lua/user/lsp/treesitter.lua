@@ -1,35 +1,23 @@
 vim.opt.smartindent = false
 return {
 	"nvim-treesitter/nvim-treesitter",
-	branch = "main",
 	build = ":TSUpdate",
-	lazy = false,
 	config = function()
-		local ts = require("nvim-treesitter")
-		ts.setup({})
-
-		-- folds are configured globally in user/options.lua via foldexpr.
-		-- main branch has no modules; enable highlighting per buffer,
-		-- auto-installing missing parsers (replaces auto_install = true)
-		vim.api.nvim_create_autocmd("FileType", {
-			group = vim.api.nvim_create_augroup("user.treesitter", { clear = true }),
-			callback = function(ev)
-				local lang = vim.treesitter.language.get_lang(ev.match)
-				if not lang then
-					return
-				end
-				if vim.tbl_contains(ts.get_installed(), lang) then
-					vim.treesitter.start(ev.buf, lang)
-				elseif vim.tbl_contains(ts.get_available(), lang) then
-					ts.install(lang):await(function(err)
-						if not err and vim.api.nvim_buf_is_valid(ev.buf) then
-							vim.api.nvim_buf_call(ev.buf, function()
-								vim.treesitter.start(ev.buf, lang)
-							end)
-						end
-					end)
-				end
-			end,
+		---@diagnostic disable-next-line: missing-fields
+		require("nvim-treesitter.configs").setup({
+			auto_install = true,
+			sync_install = false,
+			highlight = { enable = true },
+			-- indent = { enable = true },
+			incremental_selection = {
+				enable = true,
+				keymaps = {
+					init_selection = "gnn", -- set to `false` to disable one of the mappings
+					node_incremental = "grn",
+					scope_incremental = "grc",
+					node_decremental = "grm",
+				},
+			},
 		})
-	end,
+	end
 }
