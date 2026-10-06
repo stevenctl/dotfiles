@@ -30,7 +30,7 @@ map.n("<leader>am", function() require("nvim-redraft").select_model() end, "AI m
 -- map.n("<leader>aa", ":GpNextAgent<cr>", "AI next agent")
 
 -- k8s
-map.n("<leader>k", require("kubectl").toggle, "kubectl")
+-- map.n("<leader>k", require("kubectl").toggle, "kubectl"),
 
 -- Quickfix
 map.n("<leader>q", ":copen<cr>", "Quickfix toggle")

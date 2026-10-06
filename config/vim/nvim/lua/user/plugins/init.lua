@@ -260,7 +260,7 @@ lazy.setup(flatten_plugin_list(
 		{ "sindrets/diffview.nvim",  config = true },
 
 		-- Kubernetes
-		{ "ramilito/kubectl.nvim",   config = true },
+		-- { "ramilito/kubectl.nvim",   config = true },
 
 		{
 			"mistricky/codesnap.nvim",

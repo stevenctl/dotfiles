@@ -38,6 +38,5 @@ export PATH=/home/landow/.opencode/bin:$PATH
 
 # Reduce Flutter/Dart LSP network chatter on slow connections
 export FLUTTER_SUPPRESS_ANALYTICS=true
-=======
-# opencode
-export PATH=/home/landow/.opencode/bin:$PATH
+
+export PATH="$PATH:$HOME/.huse"
