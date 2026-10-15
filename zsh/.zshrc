@@ -16,14 +16,10 @@ HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
 
-# autocomplete
-zstyle :compinstall filename "$HOME/.zshrc"
-autoload -Uz compinit
-compinit
+# autocomplete (compinit is already run by oh-my-zsh)
 
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# nvm is loaded in custom/1.node.zsh
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # bun completions
